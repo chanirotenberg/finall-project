@@ -1,0 +1,185 @@
+[2025-05-12 22:08:18] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:08:18] INFO: Fetched todos for userId: 1
+[2025-05-12 22:08:18] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:08:18] INFO: Fetched todos for userId: 1
+[2025-05-12 22:08:19] INFO: Fetching user by id: 1
+[2025-05-12 22:08:19] INFO: Fetched user by ID: 1
+[2025-05-12 22:08:19] INFO: Fetching user by id: 1
+[2025-05-12 22:08:19] INFO: Fetched user by ID: 1
+[2025-05-12 22:08:41] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:08:41] INFO: Fetched todos for userId: 1
+[2025-05-12 22:08:41] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:08:41] INFO: Fetched todos for userId: 1
+[2025-05-12 22:08:41] INFO: Fetching user by id: 1
+[2025-05-12 22:08:41] INFO: Fetched user by ID: 1
+[2025-05-12 22:08:41] INFO: Fetching user by id: 1
+[2025-05-12 22:08:41] INFO: Fetched user by ID: 1
+[2025-05-12 22:09:13] INFO: Server is running on http://localhost:3000
+[2025-05-12 22:09:13] INFO: ⛔ Dropping existing tables...
+[2025-05-12 22:09:13] INFO: ✅ Connected to MySQL successfully
+[2025-05-12 22:09:13] INFO: 🛠️ Creating tables...
+[2025-05-12 22:09:13] INFO: ✅ Inserting data...
+[2025-05-12 22:09:15] INFO: ✅ All data inserted successfully.
+[2025-05-12 22:09:20] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:09:20] INFO: Fetched todos for userId: 1
+[2025-05-12 22:09:20] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:09:20] INFO: Fetched todos for userId: 1
+[2025-05-12 22:09:20] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:09:20] INFO: Fetched user by ID: 1
+[2025-05-12 22:09:20] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:09:20] INFO: Fetched user by ID: 1
+[2025-05-12 22:09:27] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:09:28] INFO: Fetched todos for userId: 1
+[2025-05-12 22:09:28] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:09:28] INFO: Fetched todos for userId: 1
+[2025-05-12 22:09:28] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:09:28] INFO: Fetched user by ID: 1
+[2025-05-12 22:09:28] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:09:28] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:10] INFO: Server is running on http://localhost:3000
+[2025-05-12 22:11:11] INFO: ⛔ Dropping existing tables...
+[2025-05-12 22:11:11] INFO: ✅ Connected to MySQL successfully
+[2025-05-12 22:11:11] INFO: 🛠️ Creating tables...
+[2025-05-12 22:11:11] INFO: ✅ Inserting data...
+[2025-05-12 22:11:13] INFO: ✅ All data inserted successfully.
+[2025-05-12 22:11:25] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:25] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:25] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:25] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:26] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:26] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:26] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:26] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:37] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:37] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:38] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:38] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:38] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:38] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:38] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:38] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:49] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:49] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:49] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:11:49] INFO: Fetched todos for userId: 1
+[2025-05-12 22:11:50] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:50] INFO: Fetched user by ID: 1
+[2025-05-12 22:11:50] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:11:50] INFO: Fetched user by ID: 1
+[2025-05-12 22:12:26] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:12:26] INFO: Fetched todos for userId: 1
+[2025-05-12 22:12:27] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-12 22:12:27] INFO: Fetched todos for userId: 1
+[2025-05-12 22:12:27] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:12:27] INFO: Fetched user by ID: 1
+[2025-05-12 22:12:27] INFO: Fetching user in controllers by id: 1
+[2025-05-12 22:12:27] INFO: Fetched user by ID: 1
+[2025-05-12 22:17:38] INFO: Searching users in controllers with filters: {"username":"Bret"}
+[2025-05-12 22:17:38] INFO: Search users with filters: {"username":"Bret"}
+[2025-05-13 00:23:18] INFO: Searching users in controllers with filters: {"username":"Bret"}
+[2025-05-13 00:23:18] INFO: Search users with filters: {"username":"Bret"}
+[2025-05-13 00:23:18] INFO: Fetching password in controllers for userId: 1
+[2025-05-13 00:23:18] INFO: Fetching password hash for user ID: 1
+[2025-05-13 00:23:35] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:23:35] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:23:35] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:23:35] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:24:12] INFO: Searching posts with filters: {}
+[2025-05-13 00:24:12] INFO: Searching posts with filters: {}
+[2025-05-13 00:45:49] INFO: Searching users in controllers with filters: {"username":"Bret"}
+[2025-05-13 00:45:49] INFO: Search users with filters: {"username":"Bret"}
+[2025-05-13 00:45:49] INFO: Fetching password in controllers for userId: 1
+[2025-05-13 00:45:49] INFO: Fetching password hash for user ID: 1
+[2025-05-13 00:45:55] INFO: Fetching user in controllers by id: 1
+[2025-05-13 00:45:55] INFO: Fetched user by ID: 1
+[2025-05-13 00:45:55] INFO: Fetching user in controllers by id: 1
+[2025-05-13 00:45:55] INFO: Fetched user by ID: 1
+[2025-05-13 00:45:57] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-13 00:45:57] INFO: Fetched todos for userId: 1
+[2025-05-13 00:45:57] INFO: Fetching todos for user with filters: {"userId":"1"}
+[2025-05-13 00:45:57] INFO: Fetched todos for userId: 1
+[2025-05-13 00:46:02] INFO: Updating todo with id: 13, fields: {"completed":true}
+[2025-05-13 00:46:02] INFO: Updated todo ID 13 with fields: {"completed":true}
+[2025-05-13 00:46:02] INFO: Updating todo with id: 13, fields: {"completed":false}
+[2025-05-13 00:46:02] INFO: Updated todo ID 13 with fields: {"completed":false}
+[2025-05-13 00:46:03] INFO: Updating todo with id: 13, fields: {"completed":true}
+[2025-05-13 00:46:03] INFO: Updated todo ID 13 with fields: {"completed":true}
+[2025-05-13 00:46:05] INFO: Deleting todo with id: 13
+[2025-05-13 00:46:05] INFO: Deleted todo ID 13
+[2025-05-13 00:46:09] INFO: Updating todo with id: 14, fields: {"title":"repellendus sunt dolores architecto voluptatumננננננננננ"}
+[2025-05-13 00:46:09] INFO: Updated todo ID 14 with fields: {"title":"repellendus sunt dolores architecto voluptatumננננננננננ"}
+[2025-05-13 00:46:11] INFO: Updating todo with id: 14, fields: {"completed":false}
+[2025-05-13 00:46:11] INFO: Updated todo ID 14 with fields: {"completed":false}
+[2025-05-13 00:46:12] INFO: Updating todo with id: 14, fields: {"completed":true}
+[2025-05-13 00:46:12] INFO: Updated todo ID 14 with fields: {"completed":true}
+[2025-05-13 00:46:13] INFO: Deleting todo with id: 14
+[2025-05-13 00:46:13] INFO: Deleted todo ID 14
+[2025-05-13 00:46:20] INFO: Updating todo with id: 15, fields: {"title":"ab voluptatum amet volןםןןם"}
+[2025-05-13 00:46:20] INFO: Updated todo ID 15 with fields: {"title":"ab voluptatum amet volןםןןם"}
+[2025-05-13 00:46:28] INFO: Creating todo for userId: 1, title: גכעיחצ
+[2025-05-13 00:46:28] INFO: Created todo ID 201 for userId: 1
+[2025-05-13 00:47:18] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:47:18] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:47:18] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:47:18] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:47:25] INFO: Searching posts with filters: {}
+[2025-05-13 00:47:25] INFO: Searching posts with filters: {}
+[2025-05-13 00:47:49] INFO: Creating post for userId: 1, title: vvchdvhfvdh
+[2025-05-13 00:47:49] INFO: Creating post for userId: 1, title: vvchdvhfvdh
+[2025-05-13 00:47:51] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:47:51] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 00:48:01] INFO: Searching comments with filters: {"postId":"4"}
+[2025-05-13 00:48:01] INFO: Searching comments with filters: {"postId":"4"}
+[2025-05-13 00:48:01] INFO: Searching comments with filters: {"postId":"4"}
+[2025-05-13 00:48:01] INFO: Searching comments with filters: {"postId":"4"}
+[2025-05-13 00:48:16] INFO: Searching users in controllers with filters: {"username":"Bret"}
+[2025-05-13 00:48:16] INFO: Search users with filters: {"username":"Bret"}
+[2025-05-13 00:48:16] INFO: Creating comment for postId: 4, name: Bret
+[2025-05-13 00:48:16] INFO: Creating comment for postId: 4, name: Bret
+[2025-05-13 00:48:23] INFO: Updating comment with id: 501, fields: {"body":"vwdvewvdhpo"}
+[2025-05-13 00:48:23] INFO: Updating comment with id: 501, fields: {"body":"vwdvewvdhpo"}
+[2025-05-13 00:48:24] INFO: Deleting comment with id: 501
+[2025-05-13 00:48:24] INFO: Deleting comment with id: 501
+[2025-05-13 01:08:33] INFO: Server is running on http://localhost:3000
+[2025-05-13 01:08:33] INFO: ⛔ Dropping existing tables...
+[2025-05-13 01:08:33] INFO: ✅ Connected to MySQL successfully
+[2025-05-13 01:08:33] INFO: 🛠️ Creating tables...
+[2025-05-13 01:08:33] INFO: ✅ Inserting data...
+[2025-05-13 01:08:36] INFO: ✅ All data inserted successfully.
+[2025-05-13 01:09:17] INFO: Searching users in controllers with filters: {"username":"Bret"}
+[2025-05-13 01:09:17] INFO: Search users with filters: {"username":"Bret"}
+[2025-05-13 01:09:17] INFO: Fetching password in controllers for userId: 1
+[2025-05-13 01:09:17] INFO: Fetching password hash for user ID: 1
+[2025-05-13 01:09:19] INFO: Fetching user in controllers by id: 1
+[2025-05-13 01:09:19] INFO: Fetched user by ID: 1
+[2025-05-13 01:09:19] INFO: Fetching user in controllers by id: 1
+[2025-05-13 01:09:19] INFO: Fetched user by ID: 1
+[2025-05-13 01:09:20] INFO: Fetched todos for userId: 1
+[2025-05-13 01:09:20] INFO: Fetched todos for userId: 1
+[2025-05-13 01:10:03] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:10:03] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:10:03] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:10:03] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:10:04] INFO: Searching posts with filters: {}
+[2025-05-13 01:10:04] INFO: Searching posts with filters: {}
+[2025-05-13 01:10:05] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:10:05] INFO: Searching posts with filters: {"userId":"1"}
+[2025-05-13 01:53:14] INFO: Fetching user in controllers by id: 1
+[2025-05-13 01:53:14] INFO: Fetched user by ID: 1
+[2025-05-13 01:53:14] INFO: Fetching user in controllers by id: 1
+[2025-05-13 01:53:14] INFO: Fetched user by ID: 1
+[2025-05-28 03:06:17] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 03:22:21] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 03:28:42] ERROR: Unhandled error: Access denied for user ''@'localhost' (using password: NO)
+[2025-05-28 03:30:49] ERROR: Unhandled error: Access denied for user ''@'localhost' (using password: NO)
+[2025-05-28 03:38:41] ERROR: Unhandled error: Access denied for user ''@'localhost' (using password: NO)
+[2025-05-28 03:41:22] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 03:41:26] ERROR: Unhandled error: Access denied for user ''@'localhost' (using password: NO)
+[2025-05-28 03:44:04] ERROR: Unhandled error: Access denied for user ''@'localhost' (using password: NO)
+[2025-05-28 03:46:19] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 18:36:19] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 19:00:12] INFO: 🚀 Server is running on http://localhost:3000
+[2025-05-28 19:00:15] ERROR: Unhandled error: user is not defined
+[2025-05-28 19:03:40] ERROR: Unhandled error: user is not defined
+[2025-05-28 19:11:01] ERROR: Unhandled error: user is not defined
+[2025-05-28 19:11:12] INFO: 🚀 Server is running on http://localhost:3000

@@ -1,0 +1,208 @@
+.todosContainer {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .todosHeader {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 1rem;
+  }
+  
+  .controlPanel {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+  }
+  
+  .selectCriteria {
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .sortButton {
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sortButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .radioGroup {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 16px;
+    color: #495057;
+  }
+  
+  .searchInput {
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+  
+  .addTodoContainer {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .addTodoInput {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    height: 30px;
+  }
+  
+  .addButton {
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .addButton:hover {
+    background-color: #218838;
+  }
+  
+  .cancelButton {
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cancelButton:hover {
+    background-color: #c82333;
+  }
+  
+  .todosList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .todoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .todoItem:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .todoContent {
+    flex: 1;
+    margin-right: 1rem;
+    font-size: 16px;
+    color: #495057;
+    text-align: start;
+  }
+  
+  .todoContent strong {
+    color: #343a40;
+  }
+  
+  .editContainer {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .editInput {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    width: 600px;
+  }
+  
+  .editButton,
+  .deleteButton,
+  .toggleCheckbox {
+    padding: 0.5rem 1rem;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .editButton {
+    background-color: #f1f1f1;
+    color: #212529;
+  }
+  
+  .editButton:hover {
+    background-color: #cdcdcd;
+  }
+  
+  .deleteButton {
+    background-color: #f1f1f1;
+    color: rgb(0, 0, 0);
+  }
+  
+  .deleteButton:hover {
+    background-color: #cdcdcd;
+  }
+  
+  .toggleCheckbox {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .toggleCheckbox:hover {
+    background-color: #218838;
+  }
+  

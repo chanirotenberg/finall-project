@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "password123",
+      "role": "user",
+      "verified": true
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "password": "securepass",
+      "role": "owner",
+      "verified": true
+    },
+    {
+      "id": 3,
+      "name": "Admin",
+      "email": "admin@example.com",
+      "password": "adminpass",
+      "role": "admin",
+      "verified": true
+    }
+  ],
+  "halls": [
+    {
+      "id": 1,
+      "name": "Grand Ballroom",
+      "location": "Tel Aviv",
+      "price": 15000.00,
+      "capacity": 300,
+      "description": "Beautiful hall for weddings and large events.",
+      "owner_id": 2,
+      "approved": true
+    },
+    {
+      "id": 2,
+      "name": "Sea View Hall",
+      "location": "Haifa",
+      "price": 12000.00,
+      "capacity": 200,
+      "description": "Amazing sea view, perfect for parties and corporate events.",
+      "owner_id": 2,
+      "approved": true
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "hall_id": 1,
+      "event_date": "2025-06-15",
+      "status": "confirmed",
+      "payment": 5000.00,
+      "cancellation_fee": 500.00
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "hall_id": 2,
+      "event_date": "2025-07-20",
+      "status": "pending",
+      "payment": 2000.00,
+      "cancellation_fee": 300.00
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "hall_id": 1,
+      "rating": 5,
+      "comment": "The best night of our lives! Highly recommend.",
+      "discount_given": true
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "hall_id": 2,
+      "rating": 4,
+      "comment": "Great view and service, but the food could be better.",
+      "discount_given": false
+    }
+  ]
+}
