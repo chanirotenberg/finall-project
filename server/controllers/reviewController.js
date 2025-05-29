@@ -1,6 +1,6 @@
 import {
   getAllReviewsService,
-  getReviewByIdService,
+  getReviewByHallIdService,
   createReviewService,
   updateReviewService,
   deleteReviewService
@@ -8,17 +8,20 @@ import {
 
 export const getAllReviews = async (req, res, next) => {
   try {
-    const reviews = await getAllReviewsService();
+    const { hall_id } = req.query;
+    const reviews = await getAllReviewsService(hall_id);
     res.json(reviews);
   } catch (err) {
     next(err);
   }
 };
 
-export const getReviewById = async (req, res, next) => {
+
+export const getReviewByHallId = async (req, res, next) => {
   try {
-    const review = await getReviewByIdService(req.params.id);
+    const review = await getReviewByHallIdService(req.params.id);
     if (!review) return res.status(404).json({ error: 'Review not found' });
+    console.log(review)
     res.json(review);
   } catch (err) {
     next(err);

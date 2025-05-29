@@ -2,10 +2,19 @@ import getDb from './dbService.js';
 
 const pool = getDb();
 
-export const getAllHallsService = async () => {
-  const [rows] = await pool.query('SELECT * FROM halls');
+export const getAllHallsService = async (category) => {
+  let query = "SELECT * FROM halls";
+  let params = [];
+
+  if (category) {
+    query += " WHERE category = ?";
+    params.push(category);
+  }
+
+  const [rows] = await pool.query(query, params);
   return rows;
 };
+
 
 export const getHallByIdService = async (id) => {
   const [rows] = await pool.query('SELECT * FROM halls WHERE id = ?', [id]);

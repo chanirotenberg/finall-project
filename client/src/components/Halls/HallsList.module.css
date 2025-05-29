@@ -1,0 +1,24 @@
+.hallsListContainer {
+  padding: 20px;
+}
+
+.pageTitle {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.hallCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.noResults {
+  text-align: center;
+  font-size: 1.2rem;
+}

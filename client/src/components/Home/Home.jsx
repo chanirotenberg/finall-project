@@ -21,16 +21,20 @@ function Home() {
     }
   };
 
+  const handleCategoryClick = (category) => {
+    navigate(`/halls?category=${encodeURIComponent(category)}`);
+  };
+
   return (
     <div className={styles.homeContainer}>
       <nav className={styles.navBar}>
-        <button onClick={() => navigate("/halls")} className={styles.navButton}>
+        <button onClick={() => handleCategoryClick("חתונות")} className={styles.navButton}>
           אולמות חתונות
         </button>
-        <button onClick={() => navigate("/halls")} className={styles.navButton}>
+        <button onClick={() => handleCategoryClick("אירועים קטנים")} className={styles.navButton}>
           אולמות אירועים קטנים
         </button>
-        <button onClick={() => navigate("/halls")} className={styles.navButton}>
+        <button onClick={() => handleCategoryClick("גני אירועים")} className={styles.navButton}>
           גני אירועים
         </button>
         <div className={styles.personalArea}>

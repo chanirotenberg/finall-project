@@ -2,14 +2,22 @@ import getDb from './dbService.js';
 
 const pool = getDb();
 
-export const getAllReviewsService = async () => {
-  const [rows] = await pool.query('SELECT * FROM reviews');
+export const getAllReviewsService = async (hall_id) => {
+  let query = 'SELECT * FROM reviews';
+  let params = [];
+
+  if (hall_id) {
+    query += ' WHERE hall_id = ?';
+    params.push(hall_id);
+  }
+
+  const [rows] = await pool.query(query, params);
   return rows;
 };
 
-export const getReviewByIdService = async (id) => {
-  const [rows] = await pool.query('SELECT * FROM reviews WHERE id = ?', [id]);
-  return rows[0];
+export const getReviewByHallIdService = async (id) => {
+  const [rows] = await pool.query('SELECT * FROM reviews WHERE hall_id = ?', [id]);
+  return rows;
 };
 
 export const createReviewService = async (reviewData) => {

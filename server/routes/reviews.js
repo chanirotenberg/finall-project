@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getAllReviews,
-  getReviewById,
+  getReviewByHallId,
   createReview,
   updateReview,
   deleteReview
@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.get('/', getAllReviews);
-router.get('/:id', getReviewById);
+router.get('/:id', getReviewByHallId);
 router.post('/', createReview);
 router.put('/:id', updateReview);
 router.delete('/:id', deleteReview);

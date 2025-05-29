@@ -37,18 +37,19 @@ let pool;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
       
-      CREATE TABLE halls (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        location VARCHAR(150) NOT NULL,
-        price DECIMAL(10, 2) NOT NULL,
-        capacity INT NOT NULL,
-        description TEXT,
-        owner_id INT,
-        approved BOOLEAN DEFAULT FALSE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
-      );
+       CREATE TABLE halls (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    location VARCHAR(150) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    capacity INT NOT NULL,
+    description TEXT,
+    category ENUM('חתונות', 'אירועים קטנים', 'גני אירועים') NOT NULL,
+    owner_id INT,
+    approved BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
+  );
       
       CREATE TABLE bookings (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -96,10 +97,11 @@ let pool;
     // Insert halls
     for (const hall of db.halls) {
       await pool.query(
-        `INSERT INTO halls (id, name, location, price, capacity, description, owner_id, approved) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-        [hall.id, hall.name, hall.location, hall.price, hall.capacity, hall.description, hall.owner_id, hall.approved]
+        `INSERT INTO halls (id, name, location, price, capacity, description, category, owner_id, approved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [hall.id, hall.name, hall.location, hall.price, hall.capacity, hall.description, hall.category, hall.owner_id, hall.approved]
       );
     }
+
 
     // Insert bookings
     for (const booking of db.bookings) {

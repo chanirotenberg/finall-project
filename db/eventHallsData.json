@@ -1,88 +1,69 @@
 {
   "users": [
-    {
-      "id": 1,
-      "name": "Alice",
-      "email": "alice@example.com",
-      "password": "password123",
-      "role": "user",
-      "verified": true
-    },
-    {
-      "id": 2,
-      "name": "Bob",
-      "email": "bob@example.com",
-      "password": "securepass",
-      "role": "owner",
-      "verified": true
-    },
-    {
-      "id": 3,
-      "name": "Admin",
-      "email": "admin@example.com",
-      "password": "adminpass",
-      "role": "admin",
-      "verified": true
-    }
+    { "id": 1, "name": "Alice", "email": "alice@example.com", "password": "password123", "role": "user", "verified": true },
+    { "id": 2, "name": "Bob", "email": "bob@example.com", "password": "securepass", "role": "owner", "verified": true },
+    { "id": 3, "name": "Admin", "email": "admin@example.com", "password": "adminpass", "role": "admin", "verified": true }
   ],
   "halls": [
-    {
-      "id": 1,
-      "name": "Grand Ballroom",
-      "location": "Tel Aviv",
-      "price": 15000.00,
-      "capacity": 300,
-      "description": "Beautiful hall for weddings and large events.",
-      "owner_id": 2,
-      "approved": true
-    },
-    {
-      "id": 2,
-      "name": "Sea View Hall",
-      "location": "Haifa",
-      "price": 12000.00,
-      "capacity": 200,
-      "description": "Amazing sea view, perfect for parties and corporate events.",
-      "owner_id": 2,
-      "approved": true
-    }
+    { "id": 1, "name": "Grand Ballroom", "location": "Tel Aviv", "price": 15000, "capacity": 300, "description": "Elegant wedding hall.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 2, "name": "Sea View Hall", "location": "Haifa", "price": 12000, "capacity": 200, "description": "Stunning sea view.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 3, "name": "Royal Wedding Venue", "location": "Jerusalem", "price": 20000, "capacity": 400, "description": "Luxurious weddings.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 4, "name": "Sunset Celebrations", "location": "Netanya", "price": 14000, "capacity": 250, "description": "Romantic sunset vibes.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 5, "name": "Classic Banquet", "location": "Petah Tikva", "price": 13000, "capacity": 220, "description": "Perfect for weddings.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 6, "name": "Diamond Events", "location": "Rishon LeZion", "price": 17000, "capacity": 350, "description": "Top-tier service.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 7, "name": "Opal Grand Hall", "location": "Ashdod", "price": 14500, "capacity": 280, "description": "Modern wedding style.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 8, "name": "White Pearl Hall", "location": "Bat Yam", "price": 16000, "capacity": 300, "description": "Elegant white design.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 9, "name": "Silver Star Hall", "location": "Holon", "price": 12500, "capacity": 240, "description": "Great for big events.", "category": "חתונות", "owner_id": 2, "approved": true },
+    { "id": 10, "name": "Golden Dream", "location": "Beer Sheva", "price": 15500, "capacity": 320, "description": "Luxury and style.", "category": "חתונות", "owner_id": 2, "approved": true },
+
+    { "id": 11, "name": "Small Garden Venue", "location": "Tel Aviv", "price": 8000, "capacity": 80, "description": "Perfect for small events.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 12, "name": "Cozy Corner", "location": "Haifa", "price": 7000, "capacity": 60, "description": "Intimate atmosphere.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 13, "name": "Petite Palace", "location": "Jerusalem", "price": 9000, "capacity": 90, "description": "Elegant and small.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 14, "name": "Intimate Spot", "location": "Netanya", "price": 6500, "capacity": 50, "description": "For special gatherings.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 15, "name": "Mini Events", "location": "Petah Tikva", "price": 8500, "capacity": 70, "description": "Small celebrations.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 16, "name": "Tiny Diamond", "location": "Rishon LeZion", "price": 7800, "capacity": 60, "description": "Chic and cozy.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 17, "name": "Little Star Venue", "location": "Ashdod", "price": 8200, "capacity": 75, "description": "Bright and charming.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 18, "name": "Boutique Hall", "location": "Bat Yam", "price": 9000, "capacity": 85, "description": "Stylish boutique feel.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 19, "name": "Chic Corner", "location": "Holon", "price": 7700, "capacity": 65, "description": "Trendy atmosphere.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+    { "id": 20, "name": "Small Dream", "location": "Beer Sheva", "price": 8800, "capacity": 80, "description": "Compact luxury.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+
+    { "id": 21, "name": "Lush Garden", "location": "Tel Aviv", "price": 20000, "capacity": 350, "description": "Expansive garden venue.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 22, "name": "Blooming Garden", "location": "Haifa", "price": 19000, "capacity": 330, "description": "Floral paradise.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 23, "name": "Paradise Gardens", "location": "Jerusalem", "price": 22000, "capacity": 400, "description": "Ultimate garden event.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 24, "name": "Sunny Meadows", "location": "Netanya", "price": 18500, "capacity": 300, "description": "Sunshine and flowers.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 25, "name": "Green Haven", "location": "Petah Tikva", "price": 21000, "capacity": 370, "description": "Green oasis.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 26, "name": "Eden Garden", "location": "Rishon LeZion", "price": 19500, "capacity": 340, "description": "Natural beauty.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 27, "name": "Orchid Gardens", "location": "Ashdod", "price": 20500, "capacity": 360, "description": "Elegant orchids.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 28, "name": "Palm Garden", "location": "Bat Yam", "price": 21500, "capacity": 380, "description": "Tropical feel.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 29, "name": "Rose Garden", "location": "Holon", "price": 22500, "capacity": 390, "description": "Romantic roses.", "category": "גני אירועים", "owner_id": 2, "approved": true },
+    { "id": 30, "name": "Sunflower Fields", "location": "Beer Sheva", "price": 23000, "capacity": 400, "description": "Bright sunflower space.", "category": "גני אירועים", "owner_id": 2, "approved": true }
   ],
-  "bookings": [
-    {
-      "id": 1,
-      "user_id": 1,
-      "hall_id": 1,
-      "event_date": "2025-06-15",
-      "status": "confirmed",
-      "payment": 5000.00,
-      "cancellation_fee": 500.00
-    },
-    {
-      "id": 2,
-      "user_id": 1,
-      "hall_id": 2,
-      "event_date": "2025-07-20",
-      "status": "pending",
-      "payment": 2000.00,
-      "cancellation_fee": 300.00
-    }
-  ],
+  "bookings": [],
   "reviews": [
-    {
-      "id": 1,
-      "user_id": 1,
-      "hall_id": 1,
-      "rating": 5,
-      "comment": "The best night of our lives! Highly recommend.",
-      "discount_given": true
-    },
-    {
-      "id": 2,
-      "user_id": 1,
-      "hall_id": 2,
-      "rating": 4,
-      "comment": "Great view and service, but the food could be better.",
-      "discount_given": false
-    }
-  ]
+  { "id": 1, "user_id": 1, "hall_id": 1, "rating": 5, "comment": "Amazing experience!", "discount_given": true },
+  { "id": 2, "user_id": 1, "hall_id": 1, "rating": 4, "comment": "Great service.", "discount_given": false },
+  { "id": 3, "user_id": 1, "hall_id": 2, "rating": 3, "comment": "Good, but room for improvement.", "discount_given": false },
+  { "id": 4, "user_id": 1, "hall_id": 2, "rating": 4, "comment": "Lovely atmosphere.", "discount_given": true },
+  { "id": 5, "user_id": 1, "hall_id": 3, "rating": 5, "comment": "Best wedding ever!", "discount_given": true },
+  { "id": 6, "user_id": 1, "hall_id": 3, "rating": 5, "comment": "Stunning decor.", "discount_given": true },
+  { "id": 7, "user_id": 1, "hall_id": 4, "rating": 4, "comment": "Nice place.", "discount_given": false },
+  { "id": 8, "user_id": 1, "hall_id": 4, "rating": 3, "comment": "Okay food.", "discount_given": false },
+  { "id": 9, "user_id": 1, "hall_id": 5, "rating": 5, "comment": "Highly recommend!", "discount_given": true },
+  { "id": 10, "user_id": 1, "hall_id": 5, "rating": 4, "comment": "Good value.", "discount_given": true },
+  
+  { "id": 11, "user_id": 1, "hall_id": 11, "rating": 4, "comment": "Small but perfect.", "discount_given": false },
+  { "id": 12, "user_id": 1, "hall_id": 11, "rating": 5, "comment": "Cozy and beautiful.", "discount_given": true },
+  { "id": 13, "user_id": 1, "hall_id": 12, "rating": 3, "comment": "Simple space.", "discount_given": false },
+  { "id": 14, "user_id": 1, "hall_id": 12, "rating": 4, "comment": "Nice staff.", "discount_given": true },
+  
+  { "id": 15, "user_id": 1, "hall_id": 21, "rating": 5, "comment": "Breathtaking gardens!", "discount_given": true },
+  { "id": 16, "user_id": 1, "hall_id": 21, "rating": 4, "comment": "Gorgeous space.", "discount_given": true },
+  { "id": 17, "user_id": 1, "hall_id": 22, "rating": 5, "comment": "Perfect for photos.", "discount_given": true },
+  { "id": 18, "user_id": 1, "hall_id": 22, "rating": 5, "comment": "Unforgettable night.", "discount_given": true },
+    { "id": 19, "user_id": 1, "hall_id": 21, "rating": 3, "comment": "Breathtaking gardens!", "discount_given": true },
+  { "id": 20, "user_id": 1, "hall_id": 21, "rating": 2, "comment": "Gorgeous space.", "discount_given": true },
+  { "id": 21, "user_id": 1, "hall_id": 22, "rating": 1, "comment": "Perfect for photos.", "discount_given": true },
+  { "id": 22, "user_id": 1, "hall_id": 22, "rating": 5, "comment": "Unforgettable night.", "discount_given": true }
+]
+
 }

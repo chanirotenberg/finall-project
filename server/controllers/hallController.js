@@ -9,12 +9,16 @@ import {
 
 export const getAllHalls = async (req, res, next) => {
   try {
-    const halls = await getAllHallsService();
+    const { category } = req.query;
+    console.log("SERVER QUERY CATEGORY:", category);
+    const halls = await getAllHallsService(category);
+    console.log("SERVER RETURNED HALLS COUNT:", halls.length);
     res.json(halls);
   } catch (err) {
     next(err);
   }
 };
+
 
 export const getHallById = async (req, res, next) => {
   try {
