@@ -35,7 +35,7 @@ const HallCard = ({ hall }) => {
   return (
     <div className={styles.card}>
       <img
-        src={hall.image || "https://via.placeholder.com/300x200"}
+        src={hall.image || '/images/hall.jpg'}
         alt={hall.name}
         className={styles.cardImage}
       />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ApiService from "../../services/ApiService";
 import HallCard from "./HallCard";
+import styles from "./HallsList.module.css";
 
 const HallsList = () => {
   const location = useLocation();
@@ -14,13 +15,11 @@ const HallsList = () => {
   useEffect(() => {
     const fetchHalls = async () => {
       try {
-        console.log("CATEGORY:", category);
         const url = category
           ? `http://localhost:3000/halls?category=${encodeURIComponent(category)}`
           : "http://localhost:3000/halls";
 
         const data = await ApiService.request({ url });
-        console.log("HALLS RECEIVED:", data.length);
         setHalls(data);
       } catch (err) {
         console.error("Error fetching halls:", err);
@@ -32,23 +31,19 @@ const HallsList = () => {
   }, [category]);
 
   if (error) {
-    return <div style={{ color: "red", textAlign: "center" }}>{error}</div>;
+    return <div className={styles.error}>{error}</div>;
   }
 
   return (
-    <div style={{ width: "100%", padding: "20px" }}>
-      <h2 style={{ textAlign: "center", fontSize: "2rem", marginBottom: "20px" }}>
+    <div className={styles.hallsListContainer}>
+      <h2 className={styles.pageTitle}>
         {category ? `אולמות בקטגוריה: ${category}` : "כל האולמות"}
       </h2>
-      <div>
+      <div className={styles.hallCardsGrid}>
         {halls.length > 0 ? (
-          halls.map((hall) => (
-            <div key={hall.id} style={{ marginBottom: "20px", border: "1px solid #ccc", padding: "10px" }}>
-              <HallCard hall={hall} />
-            </div>
-          ))
+          halls.map((hall) => <HallCard key={hall.id} hall={hall} />)
         ) : (
-          <p style={{ textAlign: "center" }}>לא נמצאו אולמות בקטגוריה זו.</p>
+          <p className={styles.noResults}>לא נמצאו אולמות בקטגוריה זו.</p>
         )}
       </div>
     </div>
