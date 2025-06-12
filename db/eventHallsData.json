@@ -4,41 +4,537 @@
     { "id": 2, "name": "Bob", "email": "bob@example.com", "password": "securepass", "role": "owner", "verified": true },
     { "id": 3, "name": "Admin", "email": "admin@example.com", "password": "adminpass", "role": "admin", "verified": true }
   ],
-  "halls": [
-    { "id": 1, "name": "Grand Ballroom", "location": "Tel Aviv", "price": 15000, "capacity": 300, "description": "Elegant wedding hall.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 2, "name": "Sea View Hall", "location": "Haifa", "price": 12000, "capacity": 200, "description": "Stunning sea view.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 3, "name": "Royal Wedding Venue", "location": "Jerusalem", "price": 20000, "capacity": 400, "description": "Luxurious weddings.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 4, "name": "Sunset Celebrations", "location": "Netanya", "price": 14000, "capacity": 250, "description": "Romantic sunset vibes.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 5, "name": "Classic Banquet", "location": "Petah Tikva", "price": 13000, "capacity": 220, "description": "Perfect for weddings.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 6, "name": "Diamond Events", "location": "Rishon LeZion", "price": 17000, "capacity": 350, "description": "Top-tier service.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 7, "name": "Opal Grand Hall", "location": "Ashdod", "price": 14500, "capacity": 280, "description": "Modern wedding style.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 8, "name": "White Pearl Hall", "location": "Bat Yam", "price": 16000, "capacity": 300, "description": "Elegant white design.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 9, "name": "Silver Star Hall", "location": "Holon", "price": 12500, "capacity": 240, "description": "Great for big events.", "category": "חתונות", "owner_id": 2, "approved": true },
-    { "id": 10, "name": "Golden Dream", "location": "Beer Sheva", "price": 15500, "capacity": 320, "description": "Luxury and style.", "category": "חתונות", "owner_id": 2, "approved": true },
+  "halls":[
+  {
+    "id": 1,
+    "name": "Grand Ballroom",
+    "location": "Tel Aviv",
+    "price": 15000,
+    "capacity": 300,
+    "description": "Elegant wedding hall.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "אווירה": "התאמה לכל אירוע.",
+      "קולינריה": "שירות ברמה הגבוהה ביותר.",
+      "מרחב": "תחזוקה שוטפת ברמה גבוהה.",
+      "התאמה אישית": "התאמה לכל אירוע."
+    }
+  },
+  {
+    "id": 2,
+    "name": "Sea View Hall",
+    "location": "Haifa",
+    "price": 12000,
+    "capacity": 200,
+    "description": "Stunning sea view.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "גמישות": "נוף מרהיב ועיצוב מרשים.",
+      "התאמה אישית": "יחס אישי וליווי צמוד.",
+      "עיצוב": "אוכל מוקפד ממטבח שף.",
+      "שירות": "שילוב של טבע וטכנולוגיה."
+    }
+  },
+  {
+    "id": 3,
+    "name": "Royal Wedding Venue",
+    "location": "Jerusalem",
+    "price": 20000,
+    "capacity": 400,
+    "description": "Luxurious weddings.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "שירות": "אוכל מוקפד ממטבח שף.",
+      "אווירה": "התאמה לכל אירוע.",
+      "חנייה נגישה": "צוות מקצועי ומסור.",
+      "צוות מנצח": "התאמה לכל אירוע.",
+      "מתקנים חדישים": "יחס אישי וליווי צמוד."
+    }
+  },
+  {
+    "id": 4,
+    "name": "Sunset Celebrations",
+    "location": "Netanya",
+    "price": 14000,
+    "capacity": 250,
+    "description": "Romantic sunset vibes.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מתקנים חדישים": "תחזוקה שוטפת ברמה גבוהה.",
+      "מרחב": "שילוב של טבע וטכנולוגיה.",
+      "אווירה": "נוף מרהיב ועיצוב מרשים.",
+      "צוות מנצח": "גישה נוחה וחנייה בשפע.",
+      "חנייה נגישה": "התאמה לכל אירוע."
+    }
+  },
+  {
+    "id": 5,
+    "name": "Classic Banquet",
+    "location": "Petah Tikva",
+    "price": 13000,
+    "capacity": 220,
+    "description": "Perfect for weddings.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "צוות מנצח": "תחזוקה שוטפת ברמה גבוהה.",
+      "אווירה": "תחזוקה שוטפת ברמה גבוהה.",
+      "גמישות": "נוף מרהיב ועיצוב מרשים.",
+      "קולינריה": "התאמה לכל אירוע.",
+      "מרחב": "נוף מרהיב ועיצוב מרשים."
+    }
+  },
+  {
+    "id": 6,
+    "name": "Diamond Events",
+    "location": "Rishon LeZion",
+    "price": 17000,
+    "capacity": 350,
+    "description": "Top-tier service.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "ניקיון": "נוף מרהיב ועיצוב מרשים.",
+      "עיצוב": "התאמה לכל אירוע.",
+      "גמישות": "גישה נוחה וחנייה בשפע.",
+      "צוות מנצח": "תחזוקה שוטפת ברמה גבוהה."
+    }
+  },
+  {
+    "id": 7,
+    "name": "Opal Grand Hall",
+    "location": "Ashdod",
+    "price": 14500,
+    "capacity": 280,
+    "description": "Modern wedding style.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מרחב": "צוות מקצועי ומסור.",
+      "התאמה אישית": "אולם מעוצב בקפידה.",
+      "קולינריה": "שילוב של טבע וטכנולוגיה.",
+      "ניקיון": "תחזוקה שוטפת ברמה גבוהה.",
+      "חנייה נגישה": "שילוב של טבע וטכנולוגיה."
+    }
+  },
+  {
+    "id": 8,
+    "name": "White Pearl Hall",
+    "location": "Bat Yam",
+    "price": 16000,
+    "capacity": 300,
+    "description": "Elegant white design.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מתקנים חדישים": "שירות ברמה הגבוהה ביותר.",
+      "עיצוב": "תחזוקה שוטפת ברמה גבוהה.",
+      "קולינריה": "תחזוקה שוטפת ברמה גבוהה."
+    }
+  },
+  {
+    "id": 9,
+    "name": "Silver Star Hall",
+    "location": "Holon",
+    "price": 12500,
+    "capacity": 240,
+    "description": "Great for big events.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "ניקיון": "גישה נוחה וחנייה בשפע.",
+      "מתקנים חדישים": "שילוב של טבע וטכנולוגיה.",
+      "קולינריה": "צוות מקצועי ומסור.",
+      "טכנולוגיה": "צוות מקצועי ומסור.",
+      "צוות מנצח": "אולם מעוצב בקפידה."
+    }
+  },
+  {
+    "id": 10,
+    "name": "Golden Dream",
+    "location": "Beer Sheva",
+    "price": 15500,
+    "capacity": 320,
+    "description": "Luxury and style.",
+    "category": "חתונות",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "התאמה אישית": "שילוב של טבע וטכנולוגיה.",
+      "טכנולוגיה": "אוכל מוקפד ממטבח שף.",
+      "שירות": "נוף מרהיב ועיצוב מרשים.",
+      "אווירה": "תחזוקה שוטפת ברמה גבוהה."
+    }
+  },
+  {
+    "id": 11,
+    "name": "Small Garden Venue",
+    "location": "Tel Aviv",
+    "price": 8000,
+    "capacity": 80,
+    "description": "Perfect for small events.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "עיצוב": "תחזוקה שוטפת ברמה גבוהה.",
+      "מתקנים חדישים": "יחס אישי וליווי צמוד.",
+      "קולינריה": "התאמה לכל אירוע.",
+      "ניקיון": "שירות ברמה הגבוהה ביותר.",
+      "התאמה אישית": "שילוב של טבע וטכנולוגיה."
+    }
+  },
+  {
+    "id": 12,
+    "name": "Cozy Corner",
+    "location": "Haifa",
+    "price": 7000,
+    "capacity": 60,
+    "description": "Intimate atmosphere.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מרחב": "שילוב של טבע וטכנולוגיה.",
+      "ניקיון": "ציוד חדיש ומתקדם.",
+      "טכנולוגיה": "שירות ברמה הגבוהה ביותר.",
+      "גמישות": "צוות מקצועי ומסור.",
+      "עיצוב": "ציוד חדיש ומתקדם."
+    }
+  },
+  {
+    "id": 13,
+    "name": "Petite Palace",
+    "location": "Jerusalem",
+    "price": 9000,
+    "capacity": 90,
+    "description": "Elegant and small.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "התאמה אישית": "צוות מקצועי ומסור.",
+      "צוות מנצח": "ציוד חדיש ומתקדם.",
+      "מתקנים חדישים": "גישה נוחה וחנייה בשפע."
+    }
+  },
+  {
+    "id": 14,
+    "name": "Intimate Spot",
+    "location": "Netanya",
+    "price": 6500,
+    "capacity": 50,
+    "description": "For special gatherings.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "אווירה": "אולם מעוצב בקפידה.",
+      "התאמה אישית": "אולם מעוצב בקפידה.",
+      "שירות": "יחס אישי וליווי צמוד."
+    }
+  },
+  {
+    "id": 15,
+    "name": "Mini Events",
+    "location": "Petah Tikva",
+    "price": 8500,
+    "capacity": 70,
+    "description": "Small celebrations.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מתקנים חדישים": "התאמה לכל אירוע.",
+      "טכנולוגיה": "אוכל מוקפד ממטבח שף.",
+      "גמישות": "אולם מעוצב בקפידה."
+    }
+  },
+  {
+    "id": 16,
+    "name": "Tiny Diamond",
+    "location": "Rishon LeZion",
+    "price": 7800,
+    "capacity": 60,
+    "description": "Chic and cozy.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "עיצוב": "אוכל מוקפד ממטבח שף.",
+      "קולינריה": "נוף מרהיב ועיצוב מרשים.",
+      "אווירה": "תחזוקה שוטפת ברמה גבוהה.",
+      "מתקנים חדישים": "ציוד חדיש ומתקדם."
+    }
+  },
+  {
+    "id": 17,
+    "name": "Little Star Venue",
+    "location": "Ashdod",
+    "price": 8200,
+    "capacity": 75,
+    "description": "Bright and charming.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מרחב": "יחס אישי וליווי צמוד.",
+      "התאמה אישית": "אווירה יוקרתית וחמימה.",
+      "גמישות": "אוכל מוקפד ממטבח שף."
+    }
+  },
+  {
+    "id": 18,
+    "name": "Boutique Hall",
+    "location": "Bat Yam",
+    "price": 9000,
+    "capacity": 85,
+    "description": "Stylish boutique feel.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מרחב": "אוכל מוקפד ממטבח שף.",
+      "ניקיון": "התאמה לכל אירוע.",
+      "טכנולוגיה": "אוכל מוקפד ממטבח שף.",
+      "קולינריה": "צוות מקצועי ומסור."
+    }
+  },
+  {
+    "id": 19,
+    "name": "Chic Corner",
+    "location": "Holon",
+    "price": 7700,
+    "capacity": 65,
+    "description": "Trendy atmosphere.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "צוות מנצח": "אווירה יוקרתית וחמימה.",
+      "עיצוב": "אולם מעוצב בקפידה.",
+      "טכנולוגיה": "יחס אישי וליווי צמוד.",
+      "שירות": "צוות מקצועי ומסור."
+    }
+  },
+  {
+    "id": 20,
+    "name": "Small Dream",
+    "location": "Beer Sheva",
+    "price": 8800,
+    "capacity": 80,
+    "description": "Compact luxury.",
+    "category": "אירועים קטנים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מרחב": "התאמה לכל אירוע.",
+      "התאמה אישית": "אוכל מוקפד ממטבח שף.",
+      "קולינריה": "נוף מרהיב ועיצוב מרשים.",
+      "אווירה": "ציוד חדיש ומתקדם."
+    }
+  },
+  {
+    "id": 21,
+    "name": "Lush Garden",
+    "location": "Tel Aviv",
+    "price": 20000,
+    "capacity": 350,
+    "description": "Expansive garden venue.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "גמישות": "התאמה לכל אירוע.",
+      "חנייה נגישה": "יחס אישי וליווי צמוד.",
+      "עיצוב": "התאמה לכל אירוע.",
+      "טכנולוגיה": "התאמה לכל אירוע."
+    }
+  },
+  {
+    "id": 22,
+    "name": "Blooming Garden",
+    "location": "Haifa",
+    "price": 19000,
+    "capacity": 330,
+    "description": "Floral paradise.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "גמישות": "יחס אישי וליווי צמוד.",
+      "עיצוב": "תחזוקה שוטפת ברמה גבוהה.",
+      "התאמה אישית": "אולם מעוצב בקפידה.",
+      "אווירה": "גישה נוחה וחנייה בשפע.",
+      "מרחב": "אולם מעוצב בקפידה."
+    }
+  },
+  {
+    "id": 23,
+    "name": "Paradise Gardens",
+    "location": "Jerusalem",
+    "price": 22000,
+    "capacity": 400,
+    "description": "Ultimate garden event.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "טכנולוגיה": "שילוב של טבע וטכנולוגיה.",
+      "התאמה אישית": "גישה נוחה וחנייה בשפע.",
+      "צוות מנצח": "נוף מרהיב ועיצוב מרשים.",
+      "מתקנים חדישים": "צוות מקצועי ומסור.",
+      "גמישות": "נוף מרהיב ועיצוב מרשים."
+    }
+  },
+  {
+    "id": 24,
+    "name": "Sunny Meadows",
+    "location": "Netanya",
+    "price": 18500,
+    "capacity": 300,
+    "description": "Sunshine and flowers.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "שירות": "נוף מרהיב ועיצוב מרשים.",
+      "צוות מנצח": "התאמה לכל אירוע.",
+      "מתקנים חדישים": "ציוד חדיש ומתקדם.",
+      "גמישות": "נוף מרהיב ועיצוב מרשים.",
+      "עיצוב": "יחס אישי וליווי צמוד."
+    }
+  },
+  {
+    "id": 25,
+    "name": "Green Haven",
+    "location": "Petah Tikva",
+    "price": 21000,
+    "capacity": 370,
+    "description": "Green oasis.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "קולינריה": "יחס אישי וליווי צמוד.",
+      "אווירה": "תחזוקה שוטפת ברמה גבוהה.",
+      "צוות מנצח": "אולם מעוצב בקפידה.",
+      "מרחב": "אווירה יוקרתית וחמימה.",
+      "חנייה נגישה": "אווירה יוקרתית וחמימה."
+    }
+  },
+  {
+    "id": 26,
+    "name": "Eden Garden",
+    "location": "Rishon LeZion",
+    "price": 19500,
+    "capacity": 340,
+    "description": "Natural beauty.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "טכנולוגיה": "התאמה לכל אירוע.",
+      "עיצוב": "התאמה לכל אירוע.",
+      "מתקנים חדישים": "תחזוקה שוטפת ברמה גבוהה.",
+      "אווירה": "אולם מעוצב בקפידה."
+    }
+  },
+  {
+    "id": 27,
+    "name": "Orchid Gardens",
+    "location": "Ashdod",
+    "price": 20500,
+    "capacity": 360,
+    "description": "Elegant orchids.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "חנייה נגישה": "תחזוקה שוטפת ברמה גבוהה.",
+      "שירות": "אוכל מוקפד ממטבח שף.",
+      "אווירה": "תחזוקה שוטפת ברמה גבוהה.",
+      "עיצוב": "אולם מעוצב בקפידה."
+    }
+  },
+  {
+    "id": 28,
+    "name": "Palm Garden",
+    "location": "Bat Yam",
+    "price": 21500,
+    "capacity": 380,
+    "description": "Tropical feel.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "גמישות": "שירות ברמה הגבוהה ביותר.",
+      "ניקיון": "שילוב של טבע וטכנולוגיה.",
+      "חנייה נגישה": "נוף מרהיב ועיצוב מרשים."
+    }
+  },
+  {
+    "id": 29,
+    "name": "Rose Garden",
+    "location": "Holon",
+    "price": 22500,
+    "capacity": 390,
+    "description": "Romantic roses.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "מתקנים חדישים": "אווירה יוקרתית וחמימה.",
+      "אווירה": "שירות ברמה הגבוהה ביותר.",
+      "צוות מנצח": "אווירה יוקרתית וחמימה."
+    }
+  },
+  {
+    "id": 30,
+    "name": "Sunflower Fields",
+    "location": "Beer Sheva",
+    "price": 23000,
+    "capacity": 400,
+    "description": "Bright sunflower space.",
+    "category": "גני אירועים",
+    "owner_id": 2,
+    "approved": true,
+    "about": {
+      "גמישות": "שירות ברמה הגבוהה ביותר.",
+      "ניקיון": "צוות מקצועי ומסור.",
+      "חנייה נגישה": "גישה נוחה וחנייה בשפע.",
+      "עיצוב": "שירות ברמה הגבוהה ביותר.",
+      "אווירה": "התאמה לכל אירוע."
+    }
+  }
+],
+  "bookings": [
+  { "id": 1, "user_id": 1, "hall_id": 1, "event_date": "2025-07-01", "status": "confirmed", "payment": 12000.00, "cancellation_fee": 0.00 },
+  { "id": 2, "user_id": 1, "hall_id": 5, "event_date": "2025-09-10", "status": "pending", "payment": 9000.00, "cancellation_fee": 0.00 },
+  { "id": 3, "user_id": 1, "hall_id": 11, "event_date": "2024-12-15", "status": "canceled", "payment": 8000.00, "cancellation_fee": 500.00 },
 
-    { "id": 11, "name": "Small Garden Venue", "location": "Tel Aviv", "price": 8000, "capacity": 80, "description": "Perfect for small events.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 12, "name": "Cozy Corner", "location": "Haifa", "price": 7000, "capacity": 60, "description": "Intimate atmosphere.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 13, "name": "Petite Palace", "location": "Jerusalem", "price": 9000, "capacity": 90, "description": "Elegant and small.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 14, "name": "Intimate Spot", "location": "Netanya", "price": 6500, "capacity": 50, "description": "For special gatherings.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 15, "name": "Mini Events", "location": "Petah Tikva", "price": 8500, "capacity": 70, "description": "Small celebrations.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 16, "name": "Tiny Diamond", "location": "Rishon LeZion", "price": 7800, "capacity": 60, "description": "Chic and cozy.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 17, "name": "Little Star Venue", "location": "Ashdod", "price": 8200, "capacity": 75, "description": "Bright and charming.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 18, "name": "Boutique Hall", "location": "Bat Yam", "price": 9000, "capacity": 85, "description": "Stylish boutique feel.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 19, "name": "Chic Corner", "location": "Holon", "price": 7700, "capacity": 65, "description": "Trendy atmosphere.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
-    { "id": 20, "name": "Small Dream", "location": "Beer Sheva", "price": 8800, "capacity": 80, "description": "Compact luxury.", "category": "אירועים קטנים", "owner_id": 2, "approved": true },
+  { "id": 4, "user_id": 2, "hall_id": 2, "event_date": "2025-08-05", "status": "confirmed", "payment": 14000.00, "cancellation_fee": 0.00 },
+  { "id": 5, "user_id": 2, "hall_id": 16, "event_date": "2025-11-11", "status": "pending", "payment": 7800.00, "cancellation_fee": 0.00 },
+  { "id": 6, "user_id": 2, "hall_id": 21, "event_date": "2025-06-20", "status": "confirmed", "payment": 20000.00, "cancellation_fee": 0.00 },
 
-    { "id": 21, "name": "Lush Garden", "location": "Tel Aviv", "price": 20000, "capacity": 350, "description": "Expansive garden venue.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 22, "name": "Blooming Garden", "location": "Haifa", "price": 19000, "capacity": 330, "description": "Floral paradise.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 23, "name": "Paradise Gardens", "location": "Jerusalem", "price": 22000, "capacity": 400, "description": "Ultimate garden event.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 24, "name": "Sunny Meadows", "location": "Netanya", "price": 18500, "capacity": 300, "description": "Sunshine and flowers.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 25, "name": "Green Haven", "location": "Petah Tikva", "price": 21000, "capacity": 370, "description": "Green oasis.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 26, "name": "Eden Garden", "location": "Rishon LeZion", "price": 19500, "capacity": 340, "description": "Natural beauty.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 27, "name": "Orchid Gardens", "location": "Ashdod", "price": 20500, "capacity": 360, "description": "Elegant orchids.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 28, "name": "Palm Garden", "location": "Bat Yam", "price": 21500, "capacity": 380, "description": "Tropical feel.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 29, "name": "Rose Garden", "location": "Holon", "price": 22500, "capacity": 390, "description": "Romantic roses.", "category": "גני אירועים", "owner_id": 2, "approved": true },
-    { "id": 30, "name": "Sunflower Fields", "location": "Beer Sheva", "price": 23000, "capacity": 400, "description": "Bright sunflower space.", "category": "גני אירועים", "owner_id": 2, "approved": true }
-  ],
-  "bookings": [],
+  { "id": 7, "user_id": 3, "hall_id": 3, "event_date": "2025-10-01", "status": "confirmed", "payment": 18000.00, "cancellation_fee": 0.00 },
+  { "id": 8, "user_id": 3, "hall_id": 12, "event_date": "2025-12-22", "status": "pending", "payment": 7200.00, "cancellation_fee": 0.00 },
+  { "id": 9, "user_id": 3, "hall_id": 23, "event_date": "2024-11-30", "status": "canceled", "payment": 21000.00, "cancellation_fee": 1000.00 }
+],
+
  "reviews": [  
     { "id": 1, "user_id": 1, "hall_id": 1, "rating": 5, "comment": "Amazing experience!", "discount_given": true },
     { "id": 2, "user_id": 1, "hall_id": 1, "rating": 4, "comment": "Great service.", "discount_given": false },
@@ -96,5 +592,1447 @@
     { "id": 54, "user_id": 1, "hall_id": 29, "rating": 5, "comment": "Unforgettable!", "discount_given": true },
     { "id": 55, "user_id": 1, "hall_id": 30, "rating": 5, "comment": "Sunflowers everywhere.", "discount_given": true },
     { "id": 56, "user_id": 1, "hall_id": 30, "rating": 4, "comment": "Beautiful setting.", "discount_given": false }
-  ]
+  ],
+   "catering_options": [
+        {
+            "id": 11,
+            "hall_id": 1,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 12,
+            "hall_id": 1,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 13,
+            "hall_id": 1,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 14,
+            "hall_id": 1,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 15,
+            "hall_id": 1,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 16,
+            "hall_id": 1,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 21,
+            "hall_id": 2,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 22,
+            "hall_id": 2,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 23,
+            "hall_id": 2,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 24,
+            "hall_id": 2,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 25,
+            "hall_id": 2,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 26,
+            "hall_id": 2,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 31,
+            "hall_id": 3,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 32,
+            "hall_id": 3,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 33,
+            "hall_id": 3,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 34,
+            "hall_id": 3,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 35,
+            "hall_id": 3,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 36,
+            "hall_id": 3,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 41,
+            "hall_id": 4,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 42,
+            "hall_id": 4,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 43,
+            "hall_id": 4,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 44,
+            "hall_id": 4,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 45,
+            "hall_id": 4,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 46,
+            "hall_id": 4,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 51,
+            "hall_id": 5,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 52,
+            "hall_id": 5,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 53,
+            "hall_id": 5,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 54,
+            "hall_id": 5,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 55,
+            "hall_id": 5,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 56,
+            "hall_id": 5,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 61,
+            "hall_id": 6,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 62,
+            "hall_id": 6,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 63,
+            "hall_id": 6,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 64,
+            "hall_id": 6,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 65,
+            "hall_id": 6,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 66,
+            "hall_id": 6,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 71,
+            "hall_id": 7,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 72,
+            "hall_id": 7,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 73,
+            "hall_id": 7,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 74,
+            "hall_id": 7,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 75,
+            "hall_id": 7,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 76,
+            "hall_id": 7,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 81,
+            "hall_id": 8,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 82,
+            "hall_id": 8,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 83,
+            "hall_id": 8,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 84,
+            "hall_id": 8,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 85,
+            "hall_id": 8,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 86,
+            "hall_id": 8,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 91,
+            "hall_id": 9,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 92,
+            "hall_id": 9,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 93,
+            "hall_id": 9,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 94,
+            "hall_id": 9,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 95,
+            "hall_id": 9,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 96,
+            "hall_id": 9,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 101,
+            "hall_id": 10,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 102,
+            "hall_id": 10,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 103,
+            "hall_id": 10,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 104,
+            "hall_id": 10,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 105,
+            "hall_id": 10,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 106,
+            "hall_id": 10,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 111,
+            "hall_id": 11,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 112,
+            "hall_id": 11,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 113,
+            "hall_id": 11,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 114,
+            "hall_id": 11,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 115,
+            "hall_id": 11,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 116,
+            "hall_id": 11,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 121,
+            "hall_id": 12,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 122,
+            "hall_id": 12,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 123,
+            "hall_id": 12,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 124,
+            "hall_id": 12,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 125,
+            "hall_id": 12,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 126,
+            "hall_id": 12,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 131,
+            "hall_id": 13,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 132,
+            "hall_id": 13,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 133,
+            "hall_id": 13,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 134,
+            "hall_id": 13,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 135,
+            "hall_id": 13,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 136,
+            "hall_id": 13,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 141,
+            "hall_id": 14,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 142,
+            "hall_id": 14,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 143,
+            "hall_id": 14,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 144,
+            "hall_id": 14,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 145,
+            "hall_id": 14,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 146,
+            "hall_id": 14,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 151,
+            "hall_id": 15,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 152,
+            "hall_id": 15,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 153,
+            "hall_id": 15,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 154,
+            "hall_id": 15,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 155,
+            "hall_id": 15,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 156,
+            "hall_id": 15,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 161,
+            "hall_id": 16,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 162,
+            "hall_id": 16,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 163,
+            "hall_id": 16,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 164,
+            "hall_id": 16,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 165,
+            "hall_id": 16,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 166,
+            "hall_id": 16,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 171,
+            "hall_id": 17,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 172,
+            "hall_id": 17,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 173,
+            "hall_id": 17,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 174,
+            "hall_id": 17,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 175,
+            "hall_id": 17,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 176,
+            "hall_id": 17,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 181,
+            "hall_id": 18,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 182,
+            "hall_id": 18,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 183,
+            "hall_id": 18,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 184,
+            "hall_id": 18,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 185,
+            "hall_id": 18,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 186,
+            "hall_id": 18,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 191,
+            "hall_id": 19,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 192,
+            "hall_id": 19,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 193,
+            "hall_id": 19,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 194,
+            "hall_id": 19,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 195,
+            "hall_id": 19,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 196,
+            "hall_id": 19,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 201,
+            "hall_id": 20,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 202,
+            "hall_id": 20,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 203,
+            "hall_id": 20,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 204,
+            "hall_id": 20,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 205,
+            "hall_id": 20,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 206,
+            "hall_id": 20,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 211,
+            "hall_id": 21,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 212,
+            "hall_id": 21,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 213,
+            "hall_id": 21,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 214,
+            "hall_id": 21,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 215,
+            "hall_id": 21,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 216,
+            "hall_id": 21,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 221,
+            "hall_id": 22,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 222,
+            "hall_id": 22,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 223,
+            "hall_id": 22,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 224,
+            "hall_id": 22,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 225,
+            "hall_id": 22,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 226,
+            "hall_id": 22,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 231,
+            "hall_id": 23,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 232,
+            "hall_id": 23,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 233,
+            "hall_id": 23,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 234,
+            "hall_id": 23,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 235,
+            "hall_id": 23,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 236,
+            "hall_id": 23,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 241,
+            "hall_id": 24,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 242,
+            "hall_id": 24,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 243,
+            "hall_id": 24,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 244,
+            "hall_id": 24,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 245,
+            "hall_id": 24,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 246,
+            "hall_id": 24,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 251,
+            "hall_id": 25,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 252,
+            "hall_id": 25,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 253,
+            "hall_id": 25,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 254,
+            "hall_id": 25,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 255,
+            "hall_id": 25,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 256,
+            "hall_id": 25,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 261,
+            "hall_id": 26,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 262,
+            "hall_id": 26,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 263,
+            "hall_id": 26,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 264,
+            "hall_id": 26,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 265,
+            "hall_id": 26,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 266,
+            "hall_id": 26,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 271,
+            "hall_id": 27,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 272,
+            "hall_id": 27,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 273,
+            "hall_id": 27,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 274,
+            "hall_id": 27,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 275,
+            "hall_id": 27,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 276,
+            "hall_id": 27,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 281,
+            "hall_id": 28,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 282,
+            "hall_id": 28,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 283,
+            "hall_id": 28,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 284,
+            "hall_id": 28,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 285,
+            "hall_id": 28,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 286,
+            "hall_id": 28,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 291,
+            "hall_id": 29,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 292,
+            "hall_id": 29,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 293,
+            "hall_id": 29,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 294,
+            "hall_id": 29,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 295,
+            "hall_id": 29,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 296,
+            "hall_id": 29,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        },
+        {
+            "id": 301,
+            "hall_id": 30,
+            "course_type": "first",
+            "option_name": "Grilled Salmon",
+            "price": 80,
+            "description": "Grilled salmon with herbs."
+        },
+        {
+            "id": 302,
+            "hall_id": 30,
+            "course_type": "first",
+            "option_name": "Caesar Salad",
+            "price": 40,
+            "description": "Fresh salad with Caesar dressing."
+        },
+        {
+            "id": 303,
+            "hall_id": 30,
+            "course_type": "second",
+            "option_name": "Rib Eye Steak",
+            "price": 150,
+            "description": "Juicy rib eye steak with sides."
+        },
+        {
+            "id": 304,
+            "hall_id": 30,
+            "course_type": "second",
+            "option_name": "Grilled Chicken",
+            "price": 100,
+            "description": "Grilled chicken with roasted vegetables."
+        },
+        {
+            "id": 305,
+            "hall_id": 30,
+            "course_type": "third",
+            "option_name": "Chocolate Lava Cake",
+            "price": 60,
+            "description": "Warm chocolate cake with molten center."
+        },
+        {
+            "id": 306,
+            "hall_id": 30,
+            "course_type": "third",
+            "option_name": "Vanilla Cheesecake",
+            "price": 50,
+            "description": "Delicious vanilla cheesecake."
+        }
+    ]
 }

@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setCurrentUser } = useUser();
+  const { login } = useUser();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,8 +22,10 @@ const Login = () => {
       });
 
       if (res.token) {
-        localStorage.setItem("token", res.token);
-        setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
+        login(
+          { id: res.user.id, name: res.user.name, email: res.user.email },
+          res.token
+        );
         setError("");
         navigate(`/users/${res.user.id}/home`);
       } else {

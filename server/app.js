@@ -8,6 +8,7 @@ import bookingRouter from './routes/bookings.js';
 import reviewRouter from './routes/reviews.js';
 import adminRouter from './routes/admin.js';
 import userRouter from './routes/users.js'
+import cateringRouter from './routes/catering.js';  // הוספת קייטרינג
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors({
 
 // רוטים ראשיים
 app.use('/auth', authRouter);
+app.use('/catering', cateringRouter);
 app.use('/halls', hallRouter);
 app.use('/bookings', bookingRouter);
 app.use('/reviews', reviewRouter);

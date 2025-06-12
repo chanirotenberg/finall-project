@@ -1,0 +1,24 @@
+.profileContainer {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 12px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+}

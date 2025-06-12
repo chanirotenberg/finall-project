@@ -3,7 +3,8 @@ import {
   getBookingByIdService,
   createBookingService,
   updateBookingService,
-  deleteBookingService
+  deleteBookingService,
+  getUnavailableDatesForHallService
 } from '../services/bookingService.js';
 
 export const getAllBookings = async (req, res, next) => {
@@ -53,3 +54,26 @@ export const deleteBooking = async (req, res, next) => {
     next(err);
   }
 };
+
+import { getBookingsByUserIdService } from '../services/bookingService.js';
+
+export const getMyBookings = async (req, res, next) => {
+  try {
+    const bookings = await getBookingsByUserIdService(req.user.id);
+    res.json(bookings);
+  } catch (err) {
+    next(err);
+  }
+};
+
+// controllers/bookingController.js
+export const getUnavailableDatesForHall = async (req, res, next) => {
+  try {
+    const hallId = req.params.hallId;
+    const dates = await getUnavailableDatesForHallService(hallId);
+    res.json(dates);
+  } catch (err) {
+    next(err);
+  }
+};
+

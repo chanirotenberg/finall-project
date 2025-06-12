@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./HallCard.module.css";
 import ApiService from "../../services/ApiService";
+import { useNavigate } from "react-router-dom";
+
 
 const HallCard = ({ hall }) => {
   const [averageRating, setAverageRating] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchHallReviews = async () => {
       try {
@@ -29,7 +31,7 @@ const HallCard = ({ hall }) => {
   }, [hall.id]);
 
   const handleViewDetails = () => {
-    alert(`נבחר אולם: ${hall.name}`);
+    navigate(`/halls/${hall.id}`);
   };
 
   return (

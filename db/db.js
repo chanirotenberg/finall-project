@@ -37,20 +37,21 @@ let pool;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
       
-       CREATE TABLE halls (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    location VARCHAR(150) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL,
-    capacity INT NOT NULL,
-    description TEXT,
-    category ENUM('חתונות', 'אירועים קטנים', 'גני אירועים') NOT NULL,
-    owner_id INT,
-    approved BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
-  );
-      
+      CREATE TABLE halls (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        location VARCHAR(150) NOT NULL,
+        price DECIMAL(10, 2) NOT NULL,
+        capacity INT NOT NULL,
+        description TEXT,
+        about JSON,
+        category ENUM('חתונות', 'אירועים קטנים', 'גני אירועים') NOT NULL,
+        owner_id INT,
+        approved BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
+      );
+
       CREATE TABLE bookings (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
@@ -64,6 +65,17 @@ let pool;
         FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE
       );
       
+      CREATE TABLE catering_options (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        hall_id INT NOT NULL,
+        course_type ENUM('first', 'second', 'third') NOT NULL,
+        option_name VARCHAR(255) NOT NULL,
+        price DECIMAL(10, 2) NOT NULL,
+        description TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE
+      );
+
       CREATE TABLE reviews (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
@@ -97,11 +109,29 @@ let pool;
     // Insert halls
     for (const hall of db.halls) {
       await pool.query(
-        `INSERT INTO halls (id, name, location, price, capacity, description, category, owner_id, approved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [hall.id, hall.name, hall.location, hall.price, hall.capacity, hall.description, hall.category, hall.owner_id, hall.approved]
+        `INSERT INTO halls (id, name, location, price, capacity, description, about, category, owner_id, approved) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          hall.id,
+          hall.name,
+          hall.location,
+          hall.price,
+          hall.capacity,
+          hall.description,
+          JSON.stringify(hall.about || {}),
+          hall.category,
+          hall.owner_id,
+          hall.approved
+        ]
       );
     }
 
+    // Insert catering options from the cateringData JSON file
+    for (const catering of db.catering_options) {
+      await pool.query(
+        `INSERT INTO catering_options (hall_id, course_type, option_name, price, description) VALUES (?, ?, ?, ?, ?)`,
+        [catering.hall_id, catering.course_type, catering.option_name, catering.price, catering.description]
+      );
+    }
 
     // Insert bookings
     for (const booking of db.bookings) {

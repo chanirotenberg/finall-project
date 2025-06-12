@@ -1,0 +1,82 @@
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.navbar a:hover {
+  color: #007bff;
+}
+
+.hallImage {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+section {
+  margin-top: 40px;
+}
+
+#about {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.aboutSection {
+  margin-bottom: 15px;
+}
+
+.aboutSection h4 {
+  margin: 0 0 5px;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.aboutSection p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.dateInput {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+  width: 200px;
+}
