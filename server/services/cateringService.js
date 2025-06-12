@@ -1,3 +1,7 @@
+import getDb from './dbService.js';
+
+const pool = getDb();
+
 export const getCateringOptionsService = async (hallId) => {
   const [rows] = await pool.query(
     'SELECT * FROM catering_options WHERE hall_id = ?', [hallId]

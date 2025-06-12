@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./HallCard.module.css";
 import ApiService from "../../services/ApiService";
 import { useNavigate } from "react-router-dom";
+
 
 
 const HallCard = ({ hall }) => {

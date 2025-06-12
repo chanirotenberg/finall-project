@@ -20,9 +20,11 @@ const CateringSelection = () => {
   useEffect(() => {
     const fetchCateringOptions = async () => {
       try {
+        console.log(hallId)
         const data = await ApiService.request({
           url: `http://localhost:3000/catering/hall/${hallId}`
         });
+        console.log("hallId")
 
         const options = { first: [], second: [], third: [] };
         data.forEach(option => {
