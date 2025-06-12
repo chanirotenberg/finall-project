@@ -6,7 +6,7 @@ import styles from "./Home.module.css";
 
 function Home() {
   const navigate = useNavigate();
-  const { isLoggedIn, logout } = useUser();
+  const { currentUser, isLoggedIn, logout } = useUser();
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handlePersonalAreaClick = () => {
@@ -22,7 +22,6 @@ function Home() {
     navigate(`/halls?category=${encodeURIComponent(category)}`);
   };
 
-  // סגירת dropdown בלחיצה מחוץ לתפריט (ללא useRef)
   useEffect(() => {
     const handleClickOutside = (event) => {
       const isPersonalButton = event.target.closest(`.${styles.personalButton}`);
@@ -51,29 +50,43 @@ function Home() {
         <button onClick={() => handleCategoryClick("גני אירועים")} className={styles.navButton}>
           גני אירועים
         </button>
+
+        {/* כפתור ניהול עבור מנהל בלבד */}
+        {isLoggedIn && currentUser?.role === "admin" && (
+          <button onClick={() => navigate("/admin")} className={styles.navButton}>
+            אזור ניהול
+          </button>
+        )}
+
         <div className={styles.personalArea}>
           <button onClick={handlePersonalAreaClick} className={styles.personalButton}>
             אזור אישי
           </button>
           {showDropdown && (
             <div className={styles.dropdownMenu}>
-              <button onClick={() => {
-                setShowDropdown(false);
-                navigate("/profile");
-              }}>
+              <button
+                onClick={() => {
+                  setShowDropdown(false);
+                  navigate("/profile");
+                }}
+              >
                 פרטים אישיים
               </button>
-              <button onClick={() => {
-                setShowDropdown(false);
-                navigate("/my-orders");
-              }}>
+              <button
+                onClick={() => {
+                  setShowDropdown(false);
+                  navigate("/my-orders");
+                }}
+              >
                 ההזמנות שלי
               </button>
-              <button onClick={() => {
-                setShowDropdown(false);
-                logout();
-                navigate("/");
-              }}>
+              <button
+                onClick={() => {
+                  setShowDropdown(false);
+                  logout();
+                  navigate("/");
+                }}
+              >
                 התנתקות
               </button>
             </div>
