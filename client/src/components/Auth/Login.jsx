@@ -23,7 +23,8 @@ const Login = () => {
 
       if (res.token) {
         localStorage.setItem("token", res.token);
-        setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
+        setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email,  role: res.user.role
+ });
         setError("");
         navigate(`/users/${res.user.id}/home`);
       } else {
