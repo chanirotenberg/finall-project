@@ -10,7 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
   const [error, setError] = useState("");
-  const { setCurrentUser } = useUser();
+const { login } = useUser();
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -30,9 +30,15 @@ const Register = () => {
         body: newUser,
       });
 
+
       if (res.token) {
-        localStorage.setItem("token", res.token);
-        setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
+        if (res.token && res.user) {
+          // שמירה ב-localStorage
+        login(res.user, res.token);
+
+        }
+        // localStorage.setItem("token", res.token);
+        // setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
         setError("");
         navigate(`/users/${res.user.id}/home`);
       } else {

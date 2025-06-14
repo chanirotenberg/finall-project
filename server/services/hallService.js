@@ -1,6 +1,11 @@
 import getDb from './dbService.js';
 
 const pool = getDb();
+export const getPendingHallsService = async () => {
+  const [rows] = await pool.query("SELECT * FROM halls WHERE approved = false");
+  return rows;
+};
+
 
 export const getAllHallsService = async (category) => {
   let query = "SELECT * FROM halls";
@@ -28,37 +33,42 @@ export const createHallService = async (hallData) => {
     price,
     capacity,
     description,
-    owner_id,
-    approved = false
+    category,
+    approved = false,
+    owner_id // ← זה חשוב
   } = hallData;
 
   const [result] = await pool.query(
-    'INSERT INTO halls (name, location, price, capacity, description, owner_id, approved) VALUES (?, ?, ?, ?, ?, ?, ?)',
-    [name, location, price, capacity, description, owner_id, approved]
+    `INSERT INTO halls (name, location, price, capacity, description, category, approved, owner_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    [name, location, price, capacity, description, category, approved, owner_id]
   );
 
   return { id: result.insertId, ...hallData };
 };
 
-export const updateHallService = async (id, hallData) => {
+
+
+export const updateHallService = async (id, data) => {
   const {
     name,
     location,
     price,
     capacity,
     description,
-    owner_id,
+    category,
     approved
-  } = hallData;
+  } = data;
 
   const [result] = await pool.query(
-    'UPDATE halls SET name = ?, location = ?, price = ?, capacity = ?, description = ?, owner_id = ?, approved = ? WHERE id = ?',
-    [name, location, price, capacity, description, owner_id, approved, id]
+    `UPDATE halls SET name=?, location=?, price=?, capacity=?, description=?, category=?, approved=? WHERE id=?`,
+    [name, location, price, capacity, description, category, approved, id]
   );
 
   if (result.affectedRows === 0) return null;
   return getHallByIdService(id);
 };
+
 
 export const deleteHallService = async (id) => {
   const [result] = await pool.query('DELETE FROM halls WHERE id = ?', [id]);

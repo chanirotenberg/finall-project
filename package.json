@@ -2,13 +2,18 @@
   "type": "module",
   "main": "index.js",
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/react-paypal-js": "^8.8.3",
     "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "mysql2": "^3.14.1",
+    "node-fetch": "^3.3.2",
+    "react-datepicker": "^8.4.0",
     "winston": "^3.17.0"
   },
   "name": "jsproject1",

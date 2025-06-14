@@ -77,3 +77,13 @@ export const getUnavailableDatesForHall = async (req, res, next) => {
   }
 };
 
+export const createBookingWithCatering = async (req, res) => {
+  try {
+    const booking = await createBookingService(req.body);
+    res.status(201).json(booking);
+  } catch (error) {
+    console.error('Error creating booking with catering:', error);
+    res.status(500).json({ error: 'Failed to create booking' });
+  }
+};
+

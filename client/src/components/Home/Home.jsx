@@ -36,11 +36,16 @@ function Home() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+
   }, []);
+  console.log("currentUser:", currentUser);
 
   return (
     <div className={styles.homeContainer}>
       <nav className={styles.navBar}>
+        {isLoggedIn && currentUser?.role === 'user' && (
+          <button onClick={() => navigate("/add-hall")}>הצע אולם חדש</button>
+        )}
         <button onClick={() => handleCategoryClick("חתונות")} className={styles.navButton}>
           אולמות חתונות
         </button>

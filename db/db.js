@@ -51,21 +51,7 @@ let pool;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
       );
-
-      CREATE TABLE bookings (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        hall_id INT NOT NULL,
-        event_date DATE NOT NULL,
-        status ENUM('pending', 'confirmed', 'canceled') DEFAULT 'pending',
-        payment DECIMAL(10, 2) DEFAULT 0.00,
-        cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE
-      );
-      
-      CREATE TABLE catering_options (
+        CREATE TABLE catering_options (
         id INT AUTO_INCREMENT PRIMARY KEY,
         hall_id INT NOT NULL,
         course_type ENUM('first', 'second', 'third') NOT NULL,
@@ -75,6 +61,30 @@ let pool;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE
       );
+
+ CREATE TABLE bookings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  hall_id INT NOT NULL,
+  event_date DATE NOT NULL,
+  status ENUM('pending', 'confirmed', 'canceled') DEFAULT 'pending',
+  payment DECIMAL(10, 2) DEFAULT 0.00,
+  cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
+  -- שדות הקייטרינג:
+  first_course_id INT,
+  second_course_id INT,
+  third_course_id INT,
+  total_catering_price DECIMAL(10, 2) DEFAULT 0.00,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE,
+  FOREIGN KEY (first_course_id) REFERENCES catering_options(id) ON DELETE SET NULL,
+  FOREIGN KEY (second_course_id) REFERENCES catering_options(id) ON DELETE SET NULL,
+  FOREIGN KEY (third_course_id) REFERENCES catering_options(id) ON DELETE SET NULL
+);
+
+      
+    
 
       CREATE TABLE reviews (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -136,10 +146,19 @@ let pool;
     // Insert bookings
     for (const booking of db.bookings) {
       await pool.query(
-        `INSERT INTO bookings (id, user_id, hall_id, event_date, status, payment, cancellation_fee) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        [booking.id, booking.user_id, booking.hall_id, booking.event_date, booking.status, booking.payment, booking.cancellation_fee]
+        `INSERT INTO bookings (
+      id, user_id, hall_id, event_date, status, payment, cancellation_fee,
+      first_course_id, second_course_id, third_course_id, total_catering_price
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          booking.id, booking.user_id, booking.hall_id, booking.event_date,
+          booking.status, booking.payment, booking.cancellation_fee,
+          booking.first_course_id, booking.second_course_id, booking.third_course_id,
+          booking.total_catering_price
+        ]
       );
     }
+
 
     // Insert reviews
     for (const review of db.reviews) {

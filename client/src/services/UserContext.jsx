@@ -4,24 +4,28 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
+  // טוען משתמש מה-localStorage כשנכנסים לדף
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
+    const storedUser = localStorage.getItem("currentUser");
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
   }, []);
 
   const login = (user, token) => {
     localStorage.setItem("token", token);
+    localStorage.setItem("currentUser", JSON.stringify(user));
     setCurrentUser(user);
-    setIsLoggedIn(true);
   };
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
     setCurrentUser(null);
-    setIsLoggedIn(false);
   };
+
+  const isLoggedIn = !!currentUser;
 
   return (
     <UserContext.Provider value={{ currentUser, isLoggedIn, login, logout }}>

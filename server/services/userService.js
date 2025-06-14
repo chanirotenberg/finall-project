@@ -24,15 +24,38 @@ export const createUserService = async (userData) => {
   return { id: result.insertId, name, email, role, verified };
 };
 
-export const updateUserService = async (id, userData) => {
-  const { name, email, role, verified } = userData;
-  const [result] = await pool.query(
-    'UPDATE users SET name = ?, email = ?, role = ?, verified = ? WHERE id = ?',
-    [name, email, role, verified, id]
-  );
-  if (result.affectedRows === 0) return null;
-  return getUserByIdService(id);
-};
+export async function updateUserService(id, data) {
+  const fields = [];
+  const values = [];
+
+  if (data.name !== undefined) {
+    fields.push('name = ?');
+    values.push(data.name);
+  }
+
+  if (data.email !== undefined) {
+    fields.push('email = ?');
+    values.push(data.email);
+  }
+
+  if (data.role !== undefined) {
+    fields.push('role = ?');
+    values.push(data.role);
+  }
+
+  if (data.verified !== undefined) {
+    fields.push('verified = ?');
+    values.push(data.verified);
+  }
+
+  if (fields.length === 0) return; // אין מה לעדכן
+
+  const query = `UPDATE users SET ${fields.join(', ')} WHERE id = ?`;
+  values.push(id);
+  await pool.query(query, values);
+}
+
+
 
 export const deleteUserService = async (id) => {
   const [result] = await pool.query('DELETE FROM users WHERE id = ?', [id]);

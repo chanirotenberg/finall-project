@@ -1,33 +1,4 @@
-// import express from 'express';
-// import { authenticate } from '../middleware/authMiddleware.js';
 
-
-
-// import {
-//   getAllBookings,
-//   getBookingById,
-//   createBooking,
-//   updateBooking,
-//   deleteBooking,
-//   getMyBookings,
-//   getUnavailableDatesForHall
-// } from '../controllers/bookingController.js';
-
-// const router = express.Router();
-
-
-// router.get('/me', getMyBookings);
-// router.get('/unavailable/:hallId', getUnavailableDatesForHall);
-// // router.use(authenticate);
-
-// // router.get('/', getAllBookings);
-// // router.get('/:id', getBookingById);
-// // router.post('/', createBooking);
-// // router.put('/:id', updateBooking);
-// // router.delete('/:id', deleteBooking);
-
-
-// export default router;
 import express from 'express';
 import { authenticate } from '../middleware/authMiddleware.js';
 import {
