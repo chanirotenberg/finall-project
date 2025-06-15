@@ -91,7 +91,8 @@ const CateringSelection = () => {
 
     const savedData = JSON.parse(localStorage.getItem('bookingData') || '{}');
     const hallPrice = Number(savedData.hall_price) || 0; // גם כאן רצוי להמיר למספר
-    const eventDate = savedData.date;
+    const eventDate = new Date(savedData.date).toISOString().split('T')[0];
+
 
     const fullPayment = hallPrice + totalCatering;
     console.log("Full Payment:", fullPayment);
@@ -101,15 +102,20 @@ const CateringSelection = () => {
       user_id: user.id,
       hall_id: parseInt(hallId),
       event_date: eventDate,
-      status: "pending",
+      status: "confirmed", // עדיין לא שולם
       payment: fullPayment,
       first_course_id: selectedCourses.first,
       second_course_id: selectedCourses.second,
       third_course_id: selectedCourses.third,
-      total_catering_price: totalCatering
+      total_catering_price: totalCatering,
+      hall_price: hallPrice,
+      guestCount,
+      selectedCourses,
     };
 
-    navigate('/pay', { state: { bookingData } });
+    localStorage.setItem("bookingData", JSON.stringify(bookingData));
+    navigate("/pay", { state: { bookingData } });
+
   };
 
   return (

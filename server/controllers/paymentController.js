@@ -1,5 +1,11 @@
-// controllers/paymentController.js
-import { createOrderService, captureOrderService } from "../services/paymentService.js";
+import {
+  createOrderService,
+  captureOrderService,
+  saveCaptureIdToDb,
+  cancelBookingAndHandleRefund
+} from "../services/paymentService.js";
+
+import { getBookingByIdService } from "../services/bookingService.js";
 
 export const createOrder = async (req, res, next) => {
   try {
@@ -7,25 +13,40 @@ export const createOrder = async (req, res, next) => {
     if (!amount) return res.status(400).json({ error: "Missing amount" });
 
     const order = await createOrderService(amount);
-    console.log("PayPal order created:", order); // הוסף שורה זו
-
     res.json({ id: order.id });
   } catch (err) {
-    console.error("Error in createOrder:", err); // הוסף שורה זו
     next(err);
   }
 };
 
-
-
 export const captureOrder = async (req, res, next) => {
   try {
-    const { orderID } = req.body;
-
-    if (!orderID) return res.status(400).json({ error: "Missing order ID" });
+    const { orderID, bookingId } = req.body;
+    if (!orderID || !bookingId) return res.status(400).json({ error: "Missing order ID or booking ID" });
 
     const capture = await captureOrderService(orderID);
-    res.json(capture); // נחזיר מידע מלא על העסקה
+    const captureId = capture?.purchase_units?.[0]?.payments?.captures?.[0]?.id;
+    if (!captureId) return res.status(500).json({ error: "Failed to extract capture ID" });
+
+    await saveCaptureIdToDb(bookingId, captureId);
+    res.json({ success: true, captureId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const cancelBooking = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const booking = await getBookingByIdService(id);
+    if (!booking) return res.status(404).json({ error: "Booking not found" });
+
+    if (new Date(booking.event_date) < new Date()) {
+      return res.status(400).json({ error: "Cannot cancel past event" });
+    }
+
+    const { refund, cancellationFee } = await cancelBookingAndHandleRefund(id);
+    res.json({ message: "ההזמנה בוטלה", refund, cancellationFee });
   } catch (err) {
     next(err);
   }

@@ -2,9 +2,9 @@ import {
   getAllBookingsService,
   getBookingByIdService,
   createBookingService,
-  updateBookingService,
-  deleteBookingService,
+
   getUnavailableDatesForHallService,
+  getBookingsByUserIdService,
   getBookingsByUserIdService
 } from '../services/bookingService.js';
 
@@ -12,6 +12,20 @@ import {
   sendBookingConfirmation,
   sendOwnerNotification
 } from '../services/emailService.js';
+
+import {
+  cancelBookingAndHandleRefund
+} from '../services/paymentService.js';
+
+export const cancelBooking = async (req, res, next) => {
+  try {
+    const bookingId = req.params.id;
+    const result = await cancelBookingAndHandleRefund(bookingId);
+    res.json({ message: "ההזמנה בוטלה", ...result });
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const getAllBookings = async (req, res, next) => {
   try {

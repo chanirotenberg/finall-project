@@ -333,39 +333,46 @@
 =======
 [2025-06-15 01:46:09] INFO: 🚀 Server is running on http://localhost:3000
 >>>>>>> e9a3b707a99d513a385235e2751d926ead90ea14
-[2025-06-15 16:57:13] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 17:28:31] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 18:45:35] ERROR: ❌ Unhandled error: Invalid credentials
-[2025-06-15 19:16:32] ERROR: ❌ Unhandled error: Invalid credentials
-[2025-06-15 20:36:48] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:09:22] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:15:40] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:16:39] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:20:52] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:23:03] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:23:05] ERROR: ❌ Unhandled error: Cannot read properties of undefined (reading 'id')
-[2025-06-15 21:23:05] ERROR: ❌ Unhandled error: Cannot read properties of undefined (reading 'id')
-[2025-06-15 21:26:49] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:29:05] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:29:05] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:33:56] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:34:01] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:34:01] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:34:25] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:34:25] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
-[2025-06-15 21:36:47] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 21:50:13] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 23:30:27] ERROR: ❌ Unhandled error: Invalid credentials
-[2025-06-15 23:34:38] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 23:44:08] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:45:55] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:46:52] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:48:27] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 23:48:38] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:49:28] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:52:31] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-15 23:52:42] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
-[2025-06-15 23:56:23] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-16 00:04:29] ERROR: ❌ Unhandled error: Table 'mydb.hall_discounts' doesn't exist
-[2025-06-16 00:48:34] INFO: 🚀 Server is running on http://localhost:3000
-[2025-06-16 00:53:38] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 16:00:18] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 17:08:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 17:08:34] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 17:08:52] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 18:26:17] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 18:42:47] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 18:47:16] ERROR: ❌ Unhandled error: Incorrect date value: '2025-07-01T21:00:00.000Z' for column 'event_date' at row 1
+[2025-06-15 18:54:23] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 18:57:15] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 19:39:58] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 20:13:40] ERROR: ❌ Unhandled error: getDb is not defined
+[2025-06-15 22:04:22] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 22:05:22] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-15 22:06:25] ERROR: ❌ Unhandled error: getBookingById is not defined
+[2025-06-15 23:16:10] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:17:23] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:17:24] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:22:08] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:26:12] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:29:03] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:36:56] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:41:54] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:42:02] ERROR: ❌ Unhandled error: Cannot access 'refund' before initialization
+[2025-06-15 23:42:52] ERROR: ❌ Unhandled error: Cannot access 'refund' before initialization
+[2025-06-15 23:43:37] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:43:46] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:46:27] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:46:37] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:48:04] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:48:15] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-15 23:52:38] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:52:47] ERROR: ❌ Unhandled error: Failed to refund
+[2025-06-16 00:12:24] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:29:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:33:31] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:46:58] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:47:25] ERROR: ❌ Unhandled error: Data truncated for column 'status' at row 1
+[2025-06-16 00:47:25] ERROR: ❌ Unhandled error: Data truncated for column 'status' at row 1
+[2025-06-16 00:49:40] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 01:05:36] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 01:06:42] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 01:22:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 01:29:35] INFO: 🚀 Server is running on http://localhost:3000

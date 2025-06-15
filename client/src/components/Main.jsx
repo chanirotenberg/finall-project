@@ -26,6 +26,7 @@ import AdminBookingManagement from "./Admin/AdminBookingManagement";
 import NotFound from "./NotFound";
 import HallReviews from "./Halls/HallReviews";
 import AddReview from "./User/AddReview";
+import Success from "./User/Success";
 import OwnerDashboard from "./Owner/OwnerDashboard";
 import OwnerBookings from "./Owner/OwnerBookings";
 // import OwnerDiscounts from "./Owner/OwnerDiscounts";
@@ -67,6 +68,7 @@ function AppRoutes() {
           <Route path="/admin/bookings" element={<AdminBookingManagement />} />
           <Route path="/halls/:hallId/reviews" element={<HallReviews />} />
           <Route path="/review/add/:hallId" element={<AddReview />} />
+          <Route path="/success" element={<Success />} />
           <Route path="/owner" element={<OwnerDashboard />} />
           <Route path="/owner/bookings" element={<OwnerBookings />} />
           {/* <Route path="/owner/discounts" element={<OwnerDiscounts />} /> */}
