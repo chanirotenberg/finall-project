@@ -37,20 +37,22 @@ let pool;
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
       
-      CREATE TABLE halls (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        location VARCHAR(150) NOT NULL,
-        price DECIMAL(10, 2) NOT NULL,
-        capacity INT NOT NULL,
-        description TEXT,
-        about JSON,
-        category ENUM('חתונות', 'אירועים קטנים', 'גני אירועים') NOT NULL,
-        owner_id INT,
-        approved BOOLEAN DEFAULT FALSE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
-      );
+     CREATE TABLE halls (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  location VARCHAR(150) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  capacity INT NOT NULL,
+  description TEXT,
+  about JSON,
+  image VARCHAR(255), -- שדה חדש, לא חובה למלא
+  category ENUM('חתונות', 'אירועים קטנים', 'גני אירועים') NOT NULL,
+  owner_id INT,
+  approved BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
+);
+
         CREATE TABLE catering_options (
         id INT AUTO_INCREMENT PRIMARY KEY,
         hall_id INT NOT NULL,
@@ -66,7 +68,8 @@ let pool;
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   hall_id INT NOT NULL,
-  event_date DATE NOT NULL,
+   event_date DATE NOT NULL,
+  guests INT NOT NULL DEFAULT 0,  -- ✅ שדה חדש!
   status ENUM( 'confirmed', 'canceled') DEFAULT 'confirmed',
   payment DECIMAL(10, 2) DEFAULT 0.00,
   cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
@@ -143,20 +146,32 @@ let pool;
       );
     }
 
+
+
     // Insert bookings
     for (const booking of db.bookings) {
       await pool.query(
         `INSERT INTO bookings (
-      id, user_id, hall_id, event_date, status, payment, cancellation_fee,
-      first_course_id, second_course_id, third_course_id, total_catering_price
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    id, user_id, hall_id, event_date, status, payment, cancellation_fee,
+    guests,
+    first_course_id, second_course_id, third_course_id, total_catering_price
+  ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
-          booking.id, booking.user_id, booking.hall_id, booking.event_date,
-          booking.status, booking.payment, booking.cancellation_fee,
-          booking.first_course_id, booking.second_course_id, booking.third_course_id,
+          booking.id,
+          booking.user_id,
+          booking.hall_id,
+          booking.event_date,
+          booking.status,
+          booking.payment,
+          booking.cancellation_fee,
+          booking.guests,
+          booking.first_course_id,
+          booking.second_course_id,
+          booking.third_course_id,
           booking.total_catering_price
         ]
       );
+
     }
 
 

@@ -5,10 +5,16 @@ const pool = getDb();
 // הבאת הזמנה לפי מזהה
 export const getBookingByIdService = async (id) => {
   const [rows] = await pool.query(
-    `SELECT b.*, u.name AS user_name, h.name AS hall_name
+    `SELECT 
+      b.*, 
+      u.name AS user_name,
+      u.email AS user_email,
+      h.name AS hall_name,
+      o.email AS hall_owner_email
      FROM bookings b
      JOIN users u ON b.user_id = u.id
      JOIN halls h ON b.hall_id = h.id
+     LEFT JOIN users o ON h.owner_id = o.id
      WHERE b.id = ?`,
     [id]
   );
@@ -35,7 +41,7 @@ export const createBookingService = async (bookingData) => {
     user_id,
     hall_id,
     event_date,
-    status = 'pending',
+    status = 'confirmed',
     payment = 0.00,
     cancellation_fee = 0.00,
     first_course_id = null,
@@ -55,7 +61,8 @@ export const createBookingService = async (bookingData) => {
     ]
   );
 
-  return { id: result.insertId, ...bookingData };
+  // נחזיר את כל הנתונים כולל שמות ואימיילים
+  return getBookingByIdService(result.insertId);
 };
 
 // עדכון סטטוס בלבד

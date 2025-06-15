@@ -38,43 +38,46 @@ const Layout = () => {
 
   return (
     <>
-    <div className={styles.homeContainer}>
-      {/* סרגל ניווט */}
-      <nav className={styles.navBar}>
-        {isLoggedIn && currentUser?.role === "user" && (
-          <button onClick={() => navigate("/add-hall")}>הצע אולם חדש</button>
-        )}
-
-        <button onClick={() => handleCategoryClick("חתונות")}>אולמות חתונות</button>
-        <button onClick={() => handleCategoryClick("אירועים קטנים")}>אולמות אירועים קטנים</button>
-        <button onClick={() => handleCategoryClick("גני אירועים")}>גני אירועים</button>
-
-        {isLoggedIn && currentUser?.role === "admin" && (
-          <button onClick={() => navigate("/admin")}>אזור ניהול</button>
-        )}
-
-        <div className={styles.personalArea}>
-          <button onClick={handlePersonalAreaClick} className={styles.personalButton}>
-            אזור אישי
-          </button>
-          {showDropdown && (
-            <div className={styles.dropdownMenu}>
-              <button onClick={() => { setShowDropdown(false); navigate("/profile"); }}>פרטים אישיים</button>
-              <button onClick={() => { setShowDropdown(false); navigate("/my-orders"); }}>ההזמנות שלי</button>
-              <button onClick={() => { setShowDropdown(false); logout(); navigate("/"); }}>התנתקות</button>
-            </div>
+      <div className={styles.homeContainer}>
+        {/* סרגל ניווט */}
+        <nav className={styles.navBar}>
+          {isLoggedIn && currentUser?.role === "user" && (
+            <button onClick={() => navigate("/add-hall")}>הצע אולם חדש</button>
           )}
-        </div>
-      </nav>
 
-      {/* התוכן של כל העמודים */}
-      <Outlet />
+          <button onClick={() => handleCategoryClick("חתונות")}>אולמות חתונות</button>
+          <button onClick={() => handleCategoryClick("אירועים קטנים")}>אולמות אירועים קטנים</button>
+          <button onClick={() => handleCategoryClick("גני אירועים")}>גני אירועים</button>
 
-      {/* פוטר */}
-      <footer className={styles.footer}>
-        <p>© 2025 EventHalls | צור קשר: contact@eventhalls.com</p>
-      </footer>
-    </div>
+          {isLoggedIn && currentUser?.role === "admin" && (
+            <button onClick={() => navigate("/admin")}>אזור ניהול</button>
+          )}
+          {isLoggedIn && currentUser?.role === "owner" && (
+            <button onClick={() => navigate("/owner")}>אזור בעל אולם</button>
+          )}
+
+          <div className={styles.personalArea}>
+            <button onClick={handlePersonalAreaClick} className={styles.personalButton}>
+              אזור אישי
+            </button>
+            {showDropdown && (
+              <div className={styles.dropdownMenu}>
+                <button onClick={() => { setShowDropdown(false); navigate("/profile"); }}>פרטים אישיים</button>
+                <button onClick={() => { setShowDropdown(false); navigate("/my-orders"); }}>ההזמנות שלי</button>
+                <button onClick={() => { setShowDropdown(false); logout(); navigate("/"); }}>התנתקות</button>
+              </div>
+            )}
+          </div>
+        </nav>
+
+        {/* התוכן של כל העמודים */}
+        <Outlet />
+
+        {/* פוטר */}
+        <footer className={styles.footer}>
+          <p>© 2025 EventHalls | צור קשר: contact@eventhalls.com</p>
+        </footer>
+      </div>
     </>
   );
 };

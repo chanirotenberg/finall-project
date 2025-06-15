@@ -12,15 +12,28 @@ const AuthModal = () => {
   const isLogin = location.pathname === "/login";
   const isRegister = location.pathname === "/register";
 
- const handleClose = () => {
-  const returnTo = location.state?.backgroundLocation || "/";
-  navigate(returnTo.pathname + returnTo.search);
-};
+  // אם אין רקע שממנו נפתח, אל תציג בכלל את המודל — זה הגנה
+  const background = location.state?.backgroundLocation;
+  if ((isLogin || isRegister) && !background) {
+    // אם נכנסו ישירות ל /login או /register בלי רקע, נשלח לדף הבית
+    navigate("/", { replace: true });
+    return null;
+  }
 
+  const handleClose = () => {
+    if (background?.pathname) {
+      navigate(background.pathname + (background.search || ""));
+    } else {
+      // אין רקע? נחזור לדף הבית
+      navigate("/");
+    }
+  };
+  
   const switchForm = () => {
-navigate(isLogin ? "/register" : "/login", {
-  state: { backgroundLocation: location.state?.backgroundLocation || location },
-});  };
+    navigate(isLogin ? "/register" : "/login", {
+      state: { backgroundLocation: background },
+    });
+  };
 
   return (
     <Modal isOpen={isLogin || isRegister} onClose={handleClose}>
@@ -33,7 +46,9 @@ navigate(isLogin ? "/register" : "/login", {
               className={styles.switchButton}
               onClick={switchForm}
             >
-              {isLogin ? "אין לך חשבון? עבור להרשמה" : "כבר יש לך חשבון? התחבר"}
+              {isLogin
+                ? "אין לך חשבון? עבור להרשמה"
+                : "כבר יש לך חשבון? התחבר"}
             </button>
           </div>
         </div>

@@ -333,3 +333,38 @@
 =======
 [2025-06-15 01:46:09] INFO: 🚀 Server is running on http://localhost:3000
 >>>>>>> e9a3b707a99d513a385235e2751d926ead90ea14
+[2025-06-15 16:57:13] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 17:28:31] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 18:45:35] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-15 19:16:32] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-15 20:36:48] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:09:22] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:15:40] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:16:39] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:20:52] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:23:03] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:23:05] ERROR: ❌ Unhandled error: Cannot read properties of undefined (reading 'id')
+[2025-06-15 21:23:05] ERROR: ❌ Unhandled error: Cannot read properties of undefined (reading 'id')
+[2025-06-15 21:26:49] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:29:05] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:29:05] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:33:56] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:34:01] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:34:01] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:34:25] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:34:25] ERROR: ❌ Unhandled error: Unknown column 'name' in 'field list'
+[2025-06-15 21:36:47] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 21:50:13] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:30:27] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-15 23:34:38] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:44:08] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:45:55] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:46:52] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:48:27] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:48:38] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:49:28] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:52:31] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-15 23:52:42] ERROR: ❌ Unhandled error: Unknown column 'image' in 'field list'
+[2025-06-15 23:56:23] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:04:29] ERROR: ❌ Unhandled error: Table 'mydb.hall_discounts' doesn't exist
+[2025-06-16 00:48:34] INFO: 🚀 Server is running on http://localhost:3000

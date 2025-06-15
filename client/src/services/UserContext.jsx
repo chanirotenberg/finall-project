@@ -20,8 +20,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("currentUser");
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("currentUser");
+    localStorage.clear();
     setCurrentUser(null);
   };
 

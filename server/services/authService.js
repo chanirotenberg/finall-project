@@ -33,14 +33,23 @@ export const loginUserService = async ({ email, password }) => {
     { expiresIn: '1h' }
   );
 
-  // ⬅ מחזירים גם את ה־user, לא רק את ה־token
-return {
-  token,
-  user: {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    role: user.role  // ← חשוב!
-  }
+  return {
+    token,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role
+    }
+  };
 };
+
+// איפוס סיסמה
+export const resetUserPasswordService = async (email, newPassword) => {
+  const hashed = await bcrypt.hash(newPassword, saltRounds);
+  const [result] = await pool.query(
+    'UPDATE users SET password = ? WHERE email = ?',
+    [hashed, email]
+  );
+  return result.affectedRows > 0;
 };
