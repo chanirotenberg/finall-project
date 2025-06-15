@@ -101,24 +101,6 @@ export const updateBookingService = async (id, bookingData) => {
   return getBookingByIdService(id);
 };
 
-// מחיקת הזמנה
-export const deleteBookingService = async (id) => {
-  const [result] = await pool.query('DELETE FROM bookings WHERE id = ?', [id]);
-  return result.affectedRows > 0;
-};
-
-// הבאת כל ההזמנות לפי משתמש
-export const getBookingsByUserIdService = async (userId) => {
-  const [rows] = await pool.query(
-    `SELECT b.*, h.name as hall_name
-     FROM bookings b
-     JOIN halls h ON b.hall_id = h.id
-     WHERE b.user_id = ?`,
-    [userId]
-  );
-  return rows;
-};
-
 // תאריכים תפוסים לפי אולם
 export const getUnavailableDatesForHallService = async (hallId) => {
   const [rows] = await pool.query(

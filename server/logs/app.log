@@ -368,3 +368,4 @@
 [2025-06-15 23:56:23] INFO: 🚀 Server is running on http://localhost:3000
 [2025-06-16 00:04:29] ERROR: ❌ Unhandled error: Table 'mydb.hall_discounts' doesn't exist
 [2025-06-16 00:48:34] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 00:53:38] INFO: 🚀 Server is running on http://localhost:3000
