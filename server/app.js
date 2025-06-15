@@ -10,6 +10,7 @@ import adminRouter from './routes/admin.js';
 import userRouter from './routes/users.js'
 import cateringRouter from './routes/catering.js';
 import paymentRouter from './routes/payment.js';
+import ownerRoutes from './routes/owner.js'
   // הוספת קייטרינג
 
 const app = express();
@@ -29,6 +30,7 @@ app.use('/bookings', bookingRouter);
 app.use('/reviews', reviewRouter);
 app.use('/admin', adminRouter);
 app.use('/users', userRouter);
+app.use('/owner', ownerRoutes); // 👈 חשוב! הוספת ראוטים של owner
 
 // לוכד שגיאות גלובלי
 app.use((err, req, res, next) => {

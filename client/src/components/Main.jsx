@@ -1,9 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigationType } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { UserProvider } from "../services/UserContext";
-import AuthModal from "./Auth/AuthModal"; // Import the AuthModal component
+import AuthModal from "./Auth/AuthModal";
 
-// עמודים
+// עמודים ראשיים
 import Home from "./Home/Home";
 import HallsList from "./Halls/HallsList";
 import BookingStart from "./Halls/BookingStart";
@@ -22,22 +27,28 @@ import NotFound from "./NotFound";
 import HallReviews from "./Halls/HallReviews";
 import AddReview from "./User/AddReview";
 import Success from "./User/Success";
+import OwnerDashboard from "./Owner/OwnerDashboard";
+import OwnerBookings from "./Owner/OwnerBookings";
+// import OwnerDiscounts from "./Owner/OwnerDiscounts";
+import ManageOwnerHalls from "./Owner/ManageOwnerHalls";
+import ManageOwnerCatering from "./Owner/ManageOwnerCatering";
 
-// קומפוננטות מודל
+// מודלים
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
+import ResetPassword from "./Auth/ResetPassword";
 
-// Layout עם נביגציה
-import Layout from "../components/Layout"; // יצרת מראש או תוכל ליצור לפי ה־NavBar מה־Home
+// Layout עם header + footer
+import Layout from "../components/Layout";
 
-// חלק הפנימי שבו Routes
+// הפונקציה שמנהלת את כל ה־Routes
 function AppRoutes() {
   const location = useLocation();
   const state = location.state;
 
   return (
     <>
-      {/* מסכים רגילים, עטופים ב־Layout */}
+      {/* כל הדפים הרגילים עטופים ב־Layout */}
       <Routes location={state?.backgroundLocation || location}>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -58,11 +69,19 @@ function AppRoutes() {
           <Route path="/halls/:hallId/reviews" element={<HallReviews />} />
           <Route path="/review/add/:hallId" element={<AddReview />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/owner" element={<OwnerDashboard />} />
+          <Route path="/owner/bookings" element={<OwnerBookings />} />
+          {/* <Route path="/owner/discounts" element={<OwnerDiscounts />} /> */}
+          <Route path="/owner/manage-halls" element={<ManageOwnerHalls />} />
+          <Route path="/owner/manage-catering" element={<ManageOwnerCatering />} />
         </Route>
+
+        <Route path="/reset-password" element={<ResetPassword />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
 
-      {/* מודלים של login/register */}
+      {/* מודלים שמופיעים מעל הדף הנוכחי */}
       {state?.backgroundLocation && (
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -73,11 +92,12 @@ function AppRoutes() {
   );
 }
 
+// הפונקציה הראשית שעוטפת את הכול
 function Main() {
   return (
     <UserProvider>
       <Router>
-        <AuthModal /> {/* כאן! מחוץ לכל layout */}
+        <AuthModal />
         <AppRoutes />
       </Router>
     </UserProvider>
@@ -85,5 +105,3 @@ function Main() {
 }
 
 export default Main;
-
-

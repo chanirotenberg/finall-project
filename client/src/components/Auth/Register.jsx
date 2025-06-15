@@ -41,7 +41,11 @@ const Register = () => {
         // setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
         setError("");
         const returnTo = location.state?.backgroundLocation;
-        navigate(returnTo.pathname + returnTo.search);
+        if (returnTo) {
+          navigate(returnTo?.pathname + returnTo?.search || "/");
+        } else {
+          navigate(`/users/${res.user.id}/home`);
+        }
       } else {
         setError(res.error || "Registration failed");
       }
