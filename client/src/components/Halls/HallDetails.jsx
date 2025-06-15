@@ -23,10 +23,16 @@ const HallDetails = () => {
     fetchHall();
   }, [hallId]);
 
-  const handleBookClick = () => {
-    // נווט לתחילת תהליך ההזמנה (עמוד בחירת תאריך)
-    navigate(`/booking/start/${hallId}`);  // עובר עם hallId בתור פרמטר בנתיב
-  };
+const handleBookClick = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    alert("יש להתחבר כדי לבצע הזמנה.");
+    return;
+  }
+
+  navigate(`/booking/start/${hallId}`);
+};
+
 
   // בתוך הקומפוננטה, הוסף מתחת לפונקציה handleBookClick:
 const handleViewReviewsClick = () => {

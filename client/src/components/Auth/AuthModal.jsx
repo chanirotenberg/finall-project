@@ -12,13 +12,15 @@ const AuthModal = () => {
   const isLogin = location.pathname === "/login";
   const isRegister = location.pathname === "/register";
 
-  const handleClose = () => {
-    navigate("/");
-  };
+ const handleClose = () => {
+  const returnTo = location.state?.backgroundLocation || "/";
+  navigate(returnTo.pathname + returnTo.search);
+};
 
   const switchForm = () => {
-    navigate(isLogin ? "/register" : "/login");
-  };
+navigate(isLogin ? "/register" : "/login", {
+  state: { backgroundLocation: location.state?.backgroundLocation || location },
+});  };
 
   return (
     <Modal isOpen={isLogin || isRegister} onClose={handleClose}>
