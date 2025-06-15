@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
 import styles from "./AuthForm.module.css";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,8 @@ const Login = () => {
   const [error, setError] = useState("");
   const { login } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -33,7 +36,8 @@ const Login = () => {
           res.token
         );
         setError("");
-        navigate(`/users/${res.user.id}/home`);
+        const returnTo = location.state?.backgroundLocation;
+        navigate(returnTo.pathname + returnTo.search);
       } else {
         setError(res.error || "Invalid email or password");
       }

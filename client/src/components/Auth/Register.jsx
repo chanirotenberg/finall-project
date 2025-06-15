@@ -10,7 +10,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [verifyPassword, setVerifyPassword] = useState("");
   const [error, setError] = useState("");
-const { login } = useUser();
+  const { login } = useUser();
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -34,13 +34,14 @@ const { login } = useUser();
       if (res.token) {
         if (res.token && res.user) {
           // שמירה ב-localStorage
-        login(res.user, res.token);
+          login(res.user, res.token);
 
         }
         // localStorage.setItem("token", res.token);
         // setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
         setError("");
-        navigate(`/users/${res.user.id}/home`);
+        const returnTo = location.state?.backgroundLocation;
+        navigate(returnTo.pathname + returnTo.search);
       } else {
         setError(res.error || "Registration failed");
       }
