@@ -71,8 +71,6 @@ CREATE TABLE bookings (
    event_date DATE NOT NULL,
   guests INT NOT NULL DEFAULT 0,  -- ✅ שדה חדש!
   status ENUM( 'confirmed', 'canceled') DEFAULT 'confirmed',
-  event_date DATE NOT NULL,
-  status ENUM('confirmed', 'canceled') DEFAULT 'confirmed',
   payment DECIMAL(10, 2) DEFAULT 0.00,
   cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
   paypal_capture_id VARCHAR(255), -- חדש: מזהה התשלום של PayPal

@@ -1,5 +1,5 @@
 import getDb from './dbService.js';
-const db = getDb();
+const pool = getDb();
 
 // מביא את כל ההזמנות (למנהל)
 export const getAllBookingsService = async () => {
@@ -36,7 +36,7 @@ export const getBookingByIdService = async (id) => {
 
 // מביא את כל ההזמנות של משתמש מסוים
 export const getBookingsByUserIdService = async (userId) => {
-  const [rows] = await db.query(`
+  const [rows] = await pool.query(`
     SELECT b.*, h.name as hall_name
     FROM bookings b
     JOIN halls h ON b.hall_id = h.id
@@ -81,7 +81,7 @@ export const createBookingService = async (bookingData) => {
 
 // מביא את התאריכים התפוסים לאולם מסוים
 export const getUnavailableDatesForHallService = async (hallId) => {
-  const [rows] = await db.query(
+  const [rows] = await pool.query(
     `SELECT event_date FROM bookings WHERE hall_id = ? AND status = 'confirmed'`,
     [hallId]
   );
