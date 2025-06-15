@@ -121,3 +121,4 @@ export const updateBookingService = async (id, bookingData) => {
   if (result.affectedRows === 0) return null;
   return getBookingByIdService(id);
 };
+
