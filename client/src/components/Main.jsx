@@ -8,11 +8,14 @@ import HallsList from "./Halls/HallsList";
 import BookingStart from "./Halls/BookingStart";
 import Profile from "./User/UserProfile";
 import AddHallRequest from "./Halls/AddHallRequest";
-import MyBookings from "./User/MyBookings";
 import HallDetails from "./Halls/HallDetails";
 import CateringPage from './Halls/CateringSelection';
 import Pay from "./Halls/Pay"; // עמוד תשלום
- // הוספת אולם חדש
+import HallReviews from "./Halls/HallReviews";
+import MyBookings from "./User/MyBookings";
+import AddReview from "./User/AddReview";
+
+// הוספת אולם חדש
 
 // עמודים לניהול
 import AdminPage from "./Admin/AdminPage";
@@ -38,11 +41,15 @@ function Main() {
           {/* <Route path="/booking/:hallId" element={<BookingStart />} /> */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/add-hall" element={<AddHallRequest />} />
-          <Route path="/my-orders" element={<MyBookings />} />
           <Route path="/halls/:hallId" element={<HallDetails />} />
           <Route path="/booking/start/:hallId" element={<BookingStart />} />
           <Route path="/booking/catering/:hallId" element={<CateringPage />} />
           <Route path="/pay" element={<Pay />} />
+          <Route path="/halls/:hallId/reviews" element={<HallReviews />} />
+          <Route path="/my-orders" element={<MyBookings />} />
+          <Route path="/review/add/:hallId" element={<AddReview />} />
+
+
 
           {/* דפי ניהול */}
           <Route path="/admin" element={<AdminPage />} />
@@ -50,6 +57,7 @@ function Main() {
           <Route path="/admin/halls/pending" element={<AdminPendingHalls />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/bookings" element={<AdminBookingManagement />} />
+
 
           {/* עמוד ברירת מחדל */}
           <Route path="*" element={<NotFound />} />

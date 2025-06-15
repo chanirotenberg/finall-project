@@ -1,0 +1,31 @@
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  direction: rtl;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+}

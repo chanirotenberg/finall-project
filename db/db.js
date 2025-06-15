@@ -67,7 +67,7 @@ let pool;
   user_id INT NOT NULL,
   hall_id INT NOT NULL,
   event_date DATE NOT NULL,
-  status ENUM('pending', 'confirmed', 'canceled') DEFAULT 'pending',
+  status ENUM( 'confirmed', 'canceled') DEFAULT 'confirmed',
   payment DECIMAL(10, 2) DEFAULT 0.00,
   cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
   -- שדות הקייטרינג:

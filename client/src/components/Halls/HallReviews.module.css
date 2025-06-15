@@ -1,0 +1,29 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  direction: rtl;
+}
+
+.backButton {
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: #eee;
+  border: none;
+  cursor: pointer;
+}
+
+.reviewList {
+  list-style: none;
+  padding: 0;
+}
+
+.reviewItem {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.discount {
+  color: green;
+  font-weight: bold;
+}

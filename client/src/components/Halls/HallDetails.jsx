@@ -28,12 +28,20 @@ const HallDetails = () => {
     navigate(`/booking/start/${hallId}`);  // עובר עם hallId בתור פרמטר בנתיב
   };
 
+  // בתוך הקומפוננטה, הוסף מתחת לפונקציה handleBookClick:
+const handleViewReviewsClick = () => {
+  navigate(`/halls/${hallId}/reviews`);
+};
+
   return hall ? (
     <div className={styles.container}>
       <div className="details-side">
         {/* כפתור הזמנה מעל תמונת האולם */}
         <button onClick={handleBookClick} className="book-button">
           הזמנה
+        </button>
+        <button onClick={handleViewReviewsClick} className="book-button" style={{ marginRight: '10px' }}>
+          צפייה בתגובות
         </button>
         <img
           src={hall.image || "/images/hall.jpg"}
@@ -70,3 +78,4 @@ const HallDetails = () => {
 };
 
 export default HallDetails;
+
