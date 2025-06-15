@@ -2,10 +2,23 @@ import {
   getAllBookingsService,
   getBookingByIdService,
   createBookingService,
-  updateBookingService,
-  deleteBookingService,
-  getUnavailableDatesForHallService
+  getUnavailableDatesForHallService,
+  getBookingsByUserIdService
 } from '../services/bookingService.js';
+
+import {
+  cancelBookingAndHandleRefund
+} from '../services/paymentService.js';
+
+export const cancelBooking = async (req, res, next) => {
+  try {
+    const bookingId = req.params.id;
+    const result = await cancelBookingAndHandleRefund(bookingId);
+    res.json({ message: "ההזמנה בוטלה", ...result });
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const getAllBookings = async (req, res, next) => {
   try {
@@ -35,28 +48,6 @@ export const createBooking = async (req, res, next) => {
   }
 };
 
-export const updateBooking = async (req, res, next) => {
-  try {
-    const updatedBooking = await updateBookingService(req.params.id, req.body);
-    if (!updatedBooking) return res.status(404).json({ error: 'Booking not found' });
-    res.json(updatedBooking);
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const deleteBooking = async (req, res, next) => {
-  try {
-    const success = await deleteBookingService(req.params.id);
-    if (!success) return res.status(404).json({ error: 'Booking not found' });
-    res.json({ message: 'Booking deleted successfully' });
-  } catch (err) {
-    next(err);
-  }
-};
-
-import { getBookingsByUserIdService } from '../services/bookingService.js';
-
 export const getMyBookings = async (req, res, next) => {
   try {
     const bookings = await getBookingsByUserIdService(req.user.id);
@@ -66,7 +57,6 @@ export const getMyBookings = async (req, res, next) => {
   }
 };
 
-// controllers/bookingController.js
 export const getUnavailableDatesForHall = async (req, res, next) => {
   try {
     const hallId = req.params.hallId;
@@ -86,4 +76,3 @@ export const createBookingWithCatering = async (req, res) => {
     res.status(500).json({ error: 'Failed to create booking' });
   }
 };
-

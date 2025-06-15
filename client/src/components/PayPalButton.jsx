@@ -11,7 +11,7 @@ const PayPalButton = ({ amount, onSuccess }) => {
         body: { amount },
       });
 
-      return res.id; // ⚠️ חובה שתחזיר את ה-id של ההזמנה
+      return res.id;
     } catch (error) {
       console.error("Create order error:", error);
       throw error;
@@ -19,24 +19,23 @@ const PayPalButton = ({ amount, onSuccess }) => {
   };
 
   const handleApprove = async (data) => {
-    // אם אתה צריך לעשות משהו נוסף כאן, תוכל לשלוח את ה-data.orderID לשרת
-    onSuccess();
+    try {
+      console.log("✅ אישור תשלום עם orderID:", data.orderID);
+      onSuccess(data.orderID); // שולחים את orderID כדי לבצע capture במסך Pay
+    } catch (err) {
+      console.error("שגיאה באישור התשלום:", err);
+    }
   };
 
   return (
-   <PayPalScriptProvider
-  options={{
-    "client-id":"Ad48sRiZatN40R4PaZkSj_UBvpGHdBjcdAOy46XEuSrgCh8KSoL24eVmjMdwCcAvc86KJOx1Hn4O0CSe",
-    currency: "ILS"
-  }}
->
-  <PayPalButtons
-    style={{ layout: "vertical" }}
-    createOrder={handleCreateOrder}
-    onApprove={handleApprove}
-  />
-</PayPalScriptProvider>
-
+    <PayPalScriptProvider options={{ "client-id": "Ad48sRiZatN40R4PaZkSj_UBvpGHdBjcdAOy46XEuSrgCh8KSoL24eVmjMdwCcAvc86KJOx1Hn4O0CSe", currency: "ILS" }}>
+      <PayPalButtons
+        style={{ layout: "vertical" }}
+        createOrder={handleCreateOrder}
+        onApprove={handleApprove}
+      />
+    </PayPalScriptProvider>
   );
 };
+
 export default PayPalButton;

@@ -62,15 +62,15 @@ let pool;
         FOREIGN KEY (hall_id) REFERENCES halls(id) ON DELETE CASCADE
       );
 
- CREATE TABLE bookings (
+CREATE TABLE bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   hall_id INT NOT NULL,
   event_date DATE NOT NULL,
-  status ENUM( 'confirmed', 'canceled') DEFAULT 'confirmed',
+  status ENUM('confirmed', 'canceled') DEFAULT 'confirmed',
   payment DECIMAL(10, 2) DEFAULT 0.00,
   cancellation_fee DECIMAL(10, 2) DEFAULT 0.00,
-  -- שדות הקייטרינג:
+  paypal_capture_id VARCHAR(255), -- חדש: מזהה התשלום של PayPal
   first_course_id INT,
   second_course_id INT,
   third_course_id INT,
@@ -82,6 +82,7 @@ let pool;
   FOREIGN KEY (second_course_id) REFERENCES catering_options(id) ON DELETE SET NULL,
   FOREIGN KEY (third_course_id) REFERENCES catering_options(id) ON DELETE SET NULL
 );
+
 
       
     
@@ -143,21 +144,31 @@ let pool;
       );
     }
 
-    // Insert bookings
-    for (const booking of db.bookings) {
-      await pool.query(
-        `INSERT INTO bookings (
+  // Insert bookings
+for (const booking of db.bookings) {
+  await pool.query(
+    `INSERT INTO bookings (
       id, user_id, hall_id, event_date, status, payment, cancellation_fee,
+      paypal_capture_id,
       first_course_id, second_course_id, third_course_id, total_catering_price
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [
-          booking.id, booking.user_id, booking.hall_id, booking.event_date,
-          booking.status, booking.payment, booking.cancellation_fee,
-          booking.first_course_id, booking.second_course_id, booking.third_course_id,
-          booking.total_catering_price
-        ]
-      );
-    }
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      booking.id,
+      booking.user_id,
+      booking.hall_id,
+      booking.event_date,
+      booking.status,
+      booking.payment,
+      booking.cancellation_fee,
+      booking.paypal_capture_id || null, // הכנסה של מזהה PayPal אם קיים
+      booking.first_course_id,
+      booking.second_course_id,
+      booking.third_course_id,
+      booking.total_catering_price
+    ]
+  );
+}
+
 
 
     // Insert reviews

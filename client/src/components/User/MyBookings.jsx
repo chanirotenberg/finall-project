@@ -38,6 +38,29 @@ const MyBookings = () => {
     return eventDate < today;
   };
 
+  const handleCancelBooking = async (bookingId) => {
+    console.log(bookingId)
+    try {
+      const response = await ApiService.request({
+        method: "POST",
+        url: `http://localhost:3000/payment/cancel/${bookingId}`,
+      });
+
+      alert(
+        `ההזמנה בוטלה.\nקיבלת החזר של ₪${response.refund.toFixed(2)}.\nקנס ביטול: ₪${response.cancellationFee.toFixed(2)}`
+      );
+
+      // רענון הרשימה
+      const updated = bookings.map(b =>
+        b.id === bookingId ? { ...b, status: "canceled" } : b
+      );
+      setBookings(updated);
+    } catch (err) {
+      console.error("שגיאה בביטול ההזמנה:", err);
+      alert("שגיאה בביטול ההזמנה");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h2>ההזמנות שלי</h2>
@@ -56,13 +79,23 @@ const MyBookings = () => {
                 <strong>סטטוס:</strong> {booking.status}
               </p>
 
-              {/* הצגת כפתור רק אם התאריך עבר והסטטוס הוא confirmed */}
+              {/* כפתור הוספת תגובה – רק אם עבר תאריך ואישור */}
               {hasDatePassed(booking.event_date) && booking.status === "confirmed" && (
                 <button
                   className={styles.reviewButton}
                   onClick={() => navigate(`/review/add/${booking.hall_id}`)}
                 >
                   הוסף תגובה
+                </button>
+              )}
+
+              {/* כפתור ביטול – רק אם לא עבר תאריך וסטטוס מאושר */}
+              {!hasDatePassed(booking.event_date) && booking.status === "confirmed" && (
+                <button
+                  className={styles.cancelButton}
+                  onClick={() => handleCancelBooking(booking.id)}
+                >
+                  בטל הזמנה
                 </button>
               )}
             </li>

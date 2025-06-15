@@ -30,7 +30,7 @@ const AddReview = () => {
         headers: { Authorization: `Bearer ${token}` }
       });
 
-      navigate(`/`);
+      navigate("/my-orders");
     } catch (err) {
       console.error("שגיאה בשליחת תגובה:", err);
       setError("אירעה שגיאה בשליחה");

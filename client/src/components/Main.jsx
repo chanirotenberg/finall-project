@@ -21,6 +21,7 @@ import AdminBookingManagement from "./Admin/AdminBookingManagement";
 import NotFound from "./NotFound";
 import HallReviews from "./Halls/HallReviews";
 import AddReview from "./User/AddReview";
+import Success from "./User/Success";
 
 // קומפוננטות מודל
 import Login from "./Auth/Login";
@@ -56,6 +57,7 @@ function AppRoutes() {
           <Route path="/admin/bookings" element={<AdminBookingManagement />} />
           <Route path="/halls/:hallId/reviews" element={<HallReviews />} />
           <Route path="/review/add/:hallId" element={<AddReview />} />
+          <Route path="/success" element={<Success />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
