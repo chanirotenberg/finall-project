@@ -22,17 +22,22 @@ class ApiService {
 
       if (response.status === 204) return null;
 
+      const contentType = response.headers.get("content-type");
+      const isJson = contentType && contentType.includes("application/json");
+      const data = isJson ? await response.json() : await response.text();
+
       if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
+        const error = new Error(data?.message || data || "Request failed");
+        error.status = response.status;
+        throw error;
       }
 
-      return await response.json();
+      return data;
     } catch (error) {
       console.error("API Request Failed:", error);
       throw error;
     }
   }
 }
-
 
 export default ApiService;

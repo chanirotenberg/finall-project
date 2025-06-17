@@ -5,23 +5,23 @@ const saltRounds = 10;
 const pool = getDb();
 
 export const getAllUsersService = async () => {
-  const [rows] = await pool.query('SELECT id, name, email, role, verified, created_at FROM users');
+  const [rows] = await pool.query('SELECT id, name, email, role, created_at FROM users');
   return rows;
 };
 
 export const getUserByIdService = async (id) => {
-  const [rows] = await pool.query('SELECT id, name, email, role, verified, created_at FROM users WHERE id = ?', [id]);
+  const [rows] = await pool.query('SELECT id, name, email, role, created_at FROM users WHERE id = ?', [id]);
   return rows[0];
 };
 
 export const createUserService = async (userData) => {
-  const { name, email, password, role = 'user', verified = false } = userData;
+  const { name, email, password, role = 'user' } = userData;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   const [result] = await pool.query(
-    'INSERT INTO users (name, email, password, role, verified) VALUES (?, ?, ?, ?, ?)',
-    [name, email, hashedPassword, role, verified]
+    'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?, ?)',
+    [name, email, hashedPassword, role]
   );
-  return { id: result.insertId, name, email, role, verified };
+  return { id: result.insertId, name, email, role };
 };
 
 export async function updateUserService(id, data) {
@@ -41,11 +41,6 @@ export async function updateUserService(id, data) {
   if (data.role !== undefined) {
     fields.push('role = ?');
     values.push(data.role);
-  }
-
-  if (data.verified !== undefined) {
-    fields.push('verified = ?');
-    values.push(data.verified);
   }
 
   if (fields.length === 0) return; // אין מה לעדכן

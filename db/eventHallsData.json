@@ -5,24 +5,21 @@
             "name": "Alice",
             "email": "alice@example.com",
             "password": "password123",
-            "role": "user",
-            "verified": true
+            "role": "user"
         },
         {
             "id": 2,
             "name": "Bob",
             "email": "bob@example.com",
             "password": "securepass",
-            "role": "owner",
-            "verified": true
+            "role": "owner"
         },
         {
             "id": 3,
             "name": "Admin",
             "email": "admin@example.com",
             "password": "adminpass",
-            "role": "admin",
-            "verified": true
+            "role": "admin"
         }
     ],
     "halls": [

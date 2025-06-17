@@ -1,19 +1,25 @@
 import getDb from './dbService.js';
+import dayjs from 'dayjs'; // ודא שהתקנת את זה עם: npm install dayjs
 const pool = getDb();
 
 // מביא את כל ההזמנות (למנהל)
 export const getAllBookingsService = async () => {
   const [rows] = await pool.query(`
     SELECT 
-      b.*, 
-      u.name AS user_name, 
-      h.name AS hall_name
+      MIN(b.id) AS id,
+      b.event_date,
+      b.status,
+      b.guests,
+      h.name AS hall_name,
+      u.name AS user_name
     FROM bookings b
     JOIN users u ON b.user_id = u.id
     JOIN halls h ON b.hall_id = h.id
+    GROUP BY b.event_date, b.status, b.guests, h.name, u.name
   `);
   return rows;
 };
+
 
 // מביא הזמנה לפי מזהה
 export const getBookingByIdService = async (id) => {
@@ -46,7 +52,7 @@ export const getBookingsByUserIdService = async (userId) => {
   return rows;
 };
 
-// יצירת הזמנה חדשה
+// ✅ יצירת הזמנה חדשה עם תאריך תקני (ללא הטיות זמן)
 export const createBookingService = async (bookingData) => {
   const {
     user_id,
@@ -55,29 +61,28 @@ export const createBookingService = async (bookingData) => {
     status = 'confirmed',
     payment = 0.00,
     cancellation_fee = 0.00,
-    guests = 0, // ✅ חדש
+    guests = 0,
     first_course_id = null,
     second_course_id = null,
     third_course_id = null,
     total_catering_price = 0.00
   } = bookingData;
 
+  const formattedDate = dayjs(event_date).format('YYYY-MM-DD');
+
   const [result] = await pool.query(
     `INSERT INTO bookings (
       user_id, hall_id, event_date, status, payment, cancellation_fee,
-      guests, -- ✅ חדש
-      first_course_id, second_course_id, third_course_id, total_catering_price
+      guests, first_course_id, second_course_id, third_course_id, total_catering_price
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
-      user_id, hall_id, event_date, status, payment, cancellation_fee,
-      guests, // ✅ חדש
-      first_course_id, second_course_id, third_course_id, total_catering_price
+      user_id, hall_id, formattedDate, status, payment, cancellation_fee,
+      guests, first_course_id, second_course_id, third_course_id, total_catering_price
     ]
   );
 
   return getBookingByIdService(result.insertId);
 };
-
 
 // מביא את התאריכים התפוסים לאולם מסוים
 export const getUnavailableDatesForHallService = async (hallId) => {
@@ -92,6 +97,7 @@ export const getUnavailableDatesForHallService = async (hallId) => {
 export const updateBookingStatusService = async (id, newStatus) => {
   await pool.query("UPDATE bookings SET status = ? WHERE id = ?", [newStatus, id]);
 };
+
 export const updateBookingService = async (id, bookingData) => {
   const {
     user_id,
@@ -106,13 +112,15 @@ export const updateBookingService = async (id, bookingData) => {
     total_catering_price
   } = bookingData;
 
+  const formattedDate = dayjs(event_date).format('YYYY-MM-DD');
+
   const [result] = await pool.query(
     `UPDATE bookings SET 
       user_id = ?, hall_id = ?, event_date = ?, status = ?, payment = ?, cancellation_fee = ?,
       first_course_id = ?, second_course_id = ?, third_course_id = ?, total_catering_price = ?
      WHERE id = ?`,
     [
-      user_id, hall_id, event_date, status, payment, cancellation_fee,
+      user_id, hall_id, formattedDate, status, payment, cancellation_fee,
       first_course_id, second_course_id, third_course_id, total_catering_price,
       id
     ]
@@ -122,3 +130,6 @@ export const updateBookingService = async (id, bookingData) => {
   return getBookingByIdService(id);
 };
 
+export const markBookingEmailSent = async (bookingId) => {
+  await pool.query(`UPDATE bookings SET email_sent = TRUE WHERE id = ?`, [bookingId]);
+};

@@ -33,7 +33,6 @@ let pool;
         email VARCHAR(150) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
         role ENUM('user', 'owner', 'admin') DEFAULT 'user',
-        verified BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
       
@@ -115,8 +114,8 @@ CREATE TABLE bookings (
     for (const user of db.users) {
       const hashedPassword = await bcrypt.hash(user.password, saltRounds);
       await pool.query(
-        `INSERT INTO users (id, name, email, password, role, verified) VALUES (?, ?, ?, ?, ?, ?)`,
-        [user.id, user.name, user.email, hashedPassword, user.role, user.verified]
+        `INSERT INTO users (id, name, email, password, role) VALUES (?, ?, ?, ?, ?)`,
+        [user.id, user.name, user.email, hashedPassword, user.role]
       );
     }
 

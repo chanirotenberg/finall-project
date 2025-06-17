@@ -6,7 +6,7 @@ const Success = () => {
     <div style={{ padding: '2rem', textAlign: 'center' }}>
       <h2>🎉 ההזמנה בוצעה בהצלחה!</h2>
       <p>תודה שהזמנת אולם דרך האתר שלנו.</p>
-      <Link to="/my-bookings">
+      <Link to="/my-orders" style={{ textDecoration: 'none' }}>
         <button style={{ marginTop: '1rem' }}>לצפייה בהזמנות</button>
       </Link>
     </div>

@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-dotenv.config({ path: '../.env' }); // או איפה שהקובץ יושב בפועל
+import { formatDateTime } from '../utils/formatDateTime.js';
+
+dotenv.config({ path: '../.env' }); // עדכן נתיב אם צריך
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -8,8 +10,8 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
   },
-    tls: {
-    rejectUnauthorized: false // 👈 זה עוקף את הבדיקה על החתימה
+  tls: {
+    rejectUnauthorized: false
   }
 });
 
@@ -29,25 +31,35 @@ export const sendEmail = async ({ to, subject, html }) => {
   }
 };
 
-// לשלוח מייל לשחזור סיסמה
-export const sendForgotPasswordEmail = async (to, resetLink) => {
+// מייל לבעל אולם על הזמנה חדשה
+export const sendOwnerNotification = async (to, userName, eventDate, hallName) => {
+  const formattedDate = formatDateTime(eventDate);
+
   await sendEmail({
     to,
-    subject: 'שחזור סיסמה - מערכת אולמות',
-    html: `<p>לחץ על הקישור לשחזור סיסמה:</p><a href="${resetLink}">${resetLink}</a>`
+    subject: 'התקבלה הזמנה חדשה לאולם שלך!',
+    html: `<p>שלום,</p>
+           <p>המשתמש <strong>${userName}</strong> הזמין את האולם <strong>${hallName}</strong> לתאריך: <strong>${formattedDate}</strong></p>`
   });
 };
 
-// לשלוח מייל אישור הזמנה
-export const sendBookingConfirmation = async (to, htmlContent) => {
+
+
+export const sendBookingConfirmation = async (to, booking) => {
+  const formattedDate = formatDateTime(booking.event_date);
+
   await sendEmail({
     to,
     subject: 'אישור הזמנת אולם',
-    html: htmlContent
+    html: `  <h2>אישור הזמנה</h2>
+    <p>שלום ${booking.user_name},</p>
+    <p>האולם <strong>${booking.hall_name}</strong> הוזמן בהצלחה לתאריך <strong>${formattedDate}</strong>.</p>
+    <p>נשמח לראותך!</p>`
   });
 };
 
-// לשלוח מייל לביקורת
+
+// מייל תגובה ללקוח לאחר אירוע
 export const sendReviewRequest = async (to, hallName, reviewLink) => {
   await sendEmail({
     to,
@@ -57,12 +69,20 @@ export const sendReviewRequest = async (to, hallName, reviewLink) => {
   });
 };
 
-// להודיע לבעל אולם שהוזמן אולם שלו
-export const sendOwnerNotification = async (to, userName, eventDate, hallName) => {
+// מייל שחזור סיסמה
+export const sendForgotPasswordEmail = async (to, resetLink) => {
   await sendEmail({
     to,
-    subject: 'התקבלה הזמנה חדשה לאולם שלך!',
+    subject: 'שחזור סיסמה - מערכת אולמות',
+    html: `<p>לחץ על הקישור לשחזור סיסמה:</p><a href="${resetLink}">${resetLink}</a>`
+  });
+};
+export const sendHallApprovalEmail = async (to, hallName) => {
+  await sendEmail({
+    to,
+    subject: 'האולם שלך אושר',
     html: `<p>שלום,</p>
-           <p>המשתמש <strong>${userName}</strong> הזמין את האולם <strong>${hallName}</strong> לתאריך: ${eventDate}</p>`
+           <p>האולם <strong>${hallName}</strong> ששלחת לאישור אושר בהצלחה על ידי מנהל המערכת.</p>
+           <p>תודה שהצטרפת אלינו!</p>`
   });
 };

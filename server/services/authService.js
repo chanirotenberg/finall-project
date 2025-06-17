@@ -2,6 +2,7 @@ import getDb from './dbService.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+
 const pool = getDb();
 const saltRounds = 10;
 const jwtSecret = process.env.JWT_SECRET || 'mysecret';

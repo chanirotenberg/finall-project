@@ -7,18 +7,24 @@ export const getPendingHallsService = async () => {
 };
 
 
+// services/hallService.js
 export const getAllHallsService = async (category) => {
-  let query = "SELECT * FROM halls";
-  let params = [];
+  let query = `
+    SELECT halls.*, users.name AS owner_name
+    FROM halls
+    LEFT JOIN users ON halls.owner_id = users.id
+  `;
+  const params = [];
 
   if (category) {
-    query += " WHERE category = ?";
+    query += " WHERE halls.category = ?";
     params.push(category);
   }
 
   const [rows] = await pool.query(query, params);
   return rows;
 };
+
 
 
 export const getHallByIdService = async (id) => {

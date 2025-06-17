@@ -10,7 +10,10 @@ import adminRouter from './routes/admin.js';
 import userRouter from './routes/users.js'
 import cateringRouter from './routes/catering.js';
 import paymentRouter from './routes/payment.js';
-import ownerRoutes from './routes/owner.js'
+import ownerRoutes from './routes/owner.js';
+import startReviewReminderCron from './services/reviewCron.js';
+startReviewReminderCron();
+
   // הוספת קייטרינג
 
 const app = express();

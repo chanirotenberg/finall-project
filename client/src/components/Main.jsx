@@ -1,4 +1,6 @@
 import React from "react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -29,6 +31,7 @@ import AddReview from "./User/AddReview";
 import Success from "./User/Success";
 import OwnerDashboard from "./Owner/OwnerDashboard";
 import OwnerBookings from "./Owner/OwnerBookings";
+import AddCateringForHall from "./Halls/AddCateringForHall";
 // import OwnerDiscounts from "./Owner/OwnerDiscounts";
 import ManageOwnerHalls from "./Owner/ManageOwnerHalls";
 import ManageOwnerCatering from "./Owner/ManageOwnerCatering";
@@ -71,6 +74,8 @@ function AppRoutes() {
           <Route path="/success" element={<Success />} />
           <Route path="/owner" element={<OwnerDashboard />} />
           <Route path="/owner/bookings" element={<OwnerBookings />} />
+          <Route path="/add-catering/:hallId" element={<AddCateringForHall />} />
+
           {/* <Route path="/owner/discounts" element={<OwnerDiscounts />} /> */}
           <Route path="/owner/manage-halls" element={<ManageOwnerHalls />} />
           <Route path="/owner/manage-catering" element={<ManageOwnerCatering />} />
@@ -95,12 +100,15 @@ function AppRoutes() {
 // הפונקציה הראשית שעוטפת את הכול
 function Main() {
   return (
+      <GoogleOAuthProvider clientId="1032852609169-p3qacavert3r8t33t35t4nr3rv6a5nl6.apps.googleusercontent.com">
     <UserProvider>
       <Router>
         <AuthModal />
         <AppRoutes />
       </Router>
     </UserProvider>
+      </GoogleOAuthProvider>
+
   );
 }
 

@@ -1,27 +1,48 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import ApiService from "./ApiService";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
-  // טוען משתמש מה-localStorage כשנכנסים לדף
+  // טען את המשתמש מהשרת לפי הטוקן אם קיים
   useEffect(() => {
-    const storedUser = localStorage.getItem("currentUser");
-    if (storedUser) {
-      setCurrentUser(JSON.parse(storedUser));
-    }
+    const token = localStorage.getItem("token");
+    
+    if (!token) return;
+
+    const fetchUser = async () => {
+      try {
+        const user = await ApiService.request({
+          url: "http://localhost:3000/users/me",
+          method: "GET",
+        });
+        setCurrentUser(user);
+      } catch (err) {
+        console.error("שגיאה בהבאת המשתמש מהשרת:", err);
+        setCurrentUser(null);
+      }
+    };
+
+    fetchUser();
   }, []);
 
-  const login = (user, token) => {
-    localStorage.setItem("token", token);
-    localStorage.setItem("currentUser", JSON.stringify(user));
-    setCurrentUser(user);
+  const login = async (token) => {
+    try {
+      localStorage.setItem("token", token);
+      const user = await ApiService.request({
+        url: "http://localhost:3000/users/me",
+        method: "GET",
+      });
+      setCurrentUser(user);
+    } catch (err) {
+      console.error("שגיאה במהלך login:", err);
+      logout();
+    }
   };
 
   const logout = () => {
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("currentUser");
     localStorage.clear();
     setCurrentUser(null);
   };

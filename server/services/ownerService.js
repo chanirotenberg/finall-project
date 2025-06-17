@@ -1,6 +1,7 @@
 import getDb from './dbService.js';
 const pool = getDb();
 import { sendEmail } from './emailService.js';
+import { formatDateTime } from '../utils/formatDateTime.js';
 
 export const cancelBookingByOwnerService = async (bookingId, ownerId) => {
     const [[booking]] = await pool.query(`
@@ -22,12 +23,14 @@ export const cancelBookingByOwnerService = async (bookingId, ownerId) => {
 
     await pool.query(`UPDATE bookings SET status = 'canceled' WHERE id = ?`, [bookingId]);
 
+    const formattedDate = formatDateTime(booking.event_date);
+
     await sendEmail({
         to: booking.email,
         subject: "הזמנתך בוטלה",
         html: `
       <p>שלום ${booking.user_name},</p>
-      <p>אנו מצטערים להודיעך כי בעל האולם ביטל את ההזמנה שלך לאירוע ב-${booking.event_date}.</p>
+      <p>אנו מצטערים להודיעך כי בעל האולם ביטל את ההזמנה שלך לאירוע ב־<strong>${formattedDate}</strong>.</p>
       <p>לפרטים נוספים ניתן ליצור קשר עם הנהלת המערכת.</p>
     `
     });
@@ -116,16 +119,20 @@ export const updateHallCateringService = async (hallId, ownerId, options) => {
 };
 
 export const getBookingsForOwnerService = async (ownerId) => {
-    const [rows] = await pool.query(
-        `SELECT b.*, h.name AS hall_name, u.name AS user_name
-     FROM bookings b
-     JOIN halls h ON b.hall_id = h.id
-     JOIN users u ON b.user_id = u.id
-     WHERE h.owner_id = ?`,
-        [ownerId]
-    );
-    return rows;
+  const [rows] = await pool.query(`
+SELECT MIN(b.id) AS id, b.event_date, b.status, b.guests,
+       h.name AS hall_name, u.name AS user_name
+FROM bookings b
+JOIN halls h ON b.hall_id = h.id
+JOIN users u ON b.user_id = u.id
+WHERE h.owner_id = ?
+GROUP BY b.event_date, b.status, b.guests, h.name, u.name
+
+
+  `, [ownerId]);
+  return rows;
 };
+
 
 export const addDiscountService = async (hallId, date, discount, ownerId) => {
     const [check] = await pool.query(

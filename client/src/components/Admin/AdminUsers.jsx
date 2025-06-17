@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApiService from "../../services/ApiService";
+import styles from "./AdminUsers.module.css";   
 
 const AdminUsers = () => {
     const [users, setUsers] = useState([]);
@@ -35,7 +36,6 @@ const AdminUsers = () => {
                             <th>שם</th>
                             <th>אימייל</th>
                             <th>תפקיד</th>
-                            <th>מאומת</th>
                             <th>תאריך יצירה</th>
                         </tr>
                     </thead>
@@ -45,7 +45,6 @@ const AdminUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user.verified ? "✔️" : "❌"}</td>
                                 <td>{new Date(user.created_at).toLocaleDateString("he-IL")}</td>
                             </tr>
                         ))}

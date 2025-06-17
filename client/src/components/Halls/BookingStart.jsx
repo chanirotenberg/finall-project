@@ -19,6 +19,14 @@ const BookingStart = () => {
   const [hallPrice, setHallPrice] = useState(0);
 
   useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
+
+    // אם ה־hallId השתנה – איפוס כל ההזמנה
+    if (saved.hallId && saved.hallId !== hallId) {
+      localStorage.setItem('bookingData', JSON.stringify({}));
+      console.log("🧹 הזמנה נוקתה כי נבחר אולם אחר");
+    }
+
     const fetchBlockedDates = async () => {
       try {
         const res = await ApiService.request({
@@ -36,6 +44,7 @@ const BookingStart = () => {
         setHallPrice(hall.price);
         const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
         saved.hall_price = hall.price;
+        saved.hallId = hallId;
         localStorage.setItem('bookingData', JSON.stringify(saved));
       } catch (err) {
         console.error("שגיאה בטעינת אולם:", err);
@@ -46,14 +55,21 @@ const BookingStart = () => {
     fetchHall();
   }, [hallId]);
 
+
   const handleDateChange = (date) => {
     setSelectedDate(date);
+
     const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    saved.date = date.toISOString();
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    saved.date = `${yyyy}-${mm}-${dd}`; // ← זה הפורמט המדויק!
     saved.hallId = hallId;
     saved.hall_price = hallPrice;
     localStorage.setItem('bookingData', JSON.stringify(saved));
   };
+
+
 
   const goNext = () => {
     if (selectedDate) navigate(`/booking/catering/${hallId}`);

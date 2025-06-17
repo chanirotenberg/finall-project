@@ -48,24 +48,12 @@ export const getBookingById = async (req, res, next) => {
 export const createBooking = async (req, res, next) => {
   try {
     const newBooking = await createBookingService(req.body);
-
-    // שליחת מייל ללקוח
-    const userEmail = req.body.user_email;
-    const htmlToUser = `
-      <h3>אישור הזמנתך</h3>
-      <p>הזמנתך לאולם <strong>${req.body.hall_name}</strong> בתאריך <strong>${req.body.event_date}</strong> התקבלה בהצלחה!</p>
-    `;
-    await sendBookingConfirmation(userEmail, htmlToUser);
-
-    // שליחת מייל לבעל האולם
-    const ownerEmail = req.body.hall_owner_email;
-    await sendOwnerNotification(ownerEmail, req.body.user_name, req.body.event_date, req.body.hall_name);
-
     res.status(201).json(newBooking);
   } catch (err) {
     next(err);
   }
 };
+
 
 export const updateBooking = async (req, res, next) => {
   try {

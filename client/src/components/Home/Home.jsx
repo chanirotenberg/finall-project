@@ -8,10 +8,6 @@ function Home() {
       <AuthModal />
 
       <div className={styles.banner}></div>
-
-      <footer className={styles.footer}>
-        <p>© 2025 EventHalls | Built with love and code | צור קשר: contact@eventhalls.com</p>
-      </footer>
     </div>
   );
 }

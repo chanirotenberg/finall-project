@@ -5,6 +5,8 @@ import {
   updateUserService,
   deleteUserService
 } from '../services/userService.js';
+import { sendHallApprovalEmail } from "../services/emailService.js";
+
 import { getAllBookingsService, updateBookingStatusService } from "../services/bookingService.js";
 
 export const getAllBookings = async (req, res, next) => {
@@ -106,22 +108,24 @@ export const getAllHalls = async (req, res, next) => {
 export const approveHall = async (req, res, next) => {
   const hallId = req.params.id;
   try {
-    // 1. קודם מביאים את האולם הקיים
     const existingHall = await getHallByIdService(hallId);
     if (!existingHall) return res.status(404).json({ error: "Hall not found" });
 
-    // 2. מוסיפים רק approved: true
     const updated = await updateHallService(hallId, {
       ...existingHall,
       approved: true
     });
 
-    // 3. מעדכנים את תפקיד הבעלים של האולם
     if (existingHall.owner_id) {
       await updateUserService(existingHall.owner_id, { role: 'owner' });
+
+      const owner = await getUserByIdService(existingHall.owner_id);
+      if (owner?.email) {
+        await sendHallApprovalEmail(owner.email, existingHall.name);
+      }
     }
 
-    res.json({ message: "Hall approved successfully, and owner role updated", updated });
+    res.json({ message: "Hall approved and email sent", updated });
   } catch (err) {
     next(err);
   }

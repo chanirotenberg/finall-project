@@ -72,22 +72,9 @@ const UserProfile = () => {
         אימייל:
         <input type="email" name="email" value={userData.email} onChange={handleChange} />
       </label>
-      <label>
-        תפקיד:
-        <select name="role" value={userData.role} onChange={handleChange}>
-          <option value="user">משתמש</option>
-          <option value="owner">בעל אולם</option>
-          <option value="admin">מנהל</option>
-        </select>
-      </label>
-      <label>
-        מאומת:
-        <input
-          type="checkbox"
-          name="verified"
-          checked={userData.verified}
-          onChange={handleChange}
-        />
+       <label>
+        אימייל:
+        <input type="text" name="role" value={userData.role} disabled="true"/>
       </label>
 
       <button onClick={handleSave} disabled={isSaving}>

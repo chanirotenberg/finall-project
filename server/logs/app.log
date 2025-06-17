@@ -381,3 +381,65 @@
 [2025-06-16 02:17:14] ERROR: ❌ Unhandled error: pool is not defined
 [2025-06-16 02:20:14] INFO: 🚀 Server is running on http://localhost:3000
 [2025-06-16 02:32:30] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 02:36:17] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 02:38:52] ERROR: ❌ Unhandled error: Access denied for user 'root'@'localhost' (using password: YES)
+[2025-06-16 02:39:55] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 02:47:04] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-16 03:12:59] ERROR: ❌ Unhandled error: Unauthorized
+[2025-06-16 03:19:29] ERROR: ❌ Unhandled error: Unauthorized
+[2025-06-16 03:23:13] ERROR: ❌ Unhandled error: Unauthorized
+[2025-06-16 15:05:02] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 16:38:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 17:01:49] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 17:32:38] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 17:46:27] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 17:51:15] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 18:02:09] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 18:05:00] INFO: ✅ Sent 0 review reminder emails.
+[2025-06-16 18:13:24] INFO: ✅ שלח 0 מיילים להזמנת תגובה.
+[2025-06-16 18:16:00] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 18:59:53] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 19:00:56] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-16 19:12:21] INFO: ✅ שלח 2 מיילים להזמנת תגובה.
+[2025-06-16 19:14:36] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 19:15:49] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 19:26:39] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 19:41:10] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 19:54:04] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 21:11:06] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 22:46:10] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:02:16] INFO: ✅ שלח 6 מיילים להזמנת תגובה.
+[2025-06-16 23:10:34] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:10:48] ERROR: ❌ Unhandled error: Cannot add or update a child row: a foreign key constraint fails (`mydb`.`reviews`, CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`hall_id`) REFERENCES `halls` (`id`) ON DELETE CASCADE)
+[2025-06-16 23:20:19] INFO: ✅ שלח 6 מיילים להזמנת תגובה.
+[2025-06-16 23:24:13] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:24:23] ERROR: ❌ Unhandled error: Cannot add or update a child row: a foreign key constraint fails (`mydb`.`reviews`, CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`hall_id`) REFERENCES `halls` (`id`) ON DELETE CASCADE)
+[2025-06-16 23:50:10] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:50:27] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:50:54] INFO: ✅ שלח 6 מיילים להזמנת תגובה.
+[2025-06-16 23:57:15] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:31:45] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:47:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:56:07] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:09:55] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:11:17] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:18:04] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:28:44] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:28:57] ERROR: ❌ Unhandled error: Unknown column 'verified' in 'field list'
+[2025-06-17 01:28:57] ERROR: ❌ Unhandled error: Unknown column 'verified' in 'field list'
+[2025-06-17 01:41:18] ERROR: ❌ Unhandled error: Unknown column 'verified' in 'field list'
+[2025-06-17 01:42:21] ERROR: ❌ Unhandled error: Unknown column 'verified' in 'field list'
+[2025-06-17 01:42:39] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:43:05] ERROR: ❌ Unhandled error: Email already registered
+[2025-06-17 01:44:20] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:44:51] ERROR: ❌ Unhandled error: Unknown column 'verified' in 'field list'
+[2025-06-17 01:46:15] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 02:05:20] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 02:06:42] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-17 02:17:13] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 04:23:01] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 04:40:24] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-17 04:41:29] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-17 04:45:20] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 05:02:57] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 08:00:00] INFO: ✅ Sent 0 review reminder emails.

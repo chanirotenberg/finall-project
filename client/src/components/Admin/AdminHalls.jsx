@@ -51,8 +51,8 @@ const AdminHalls = () => {
             <th>שם</th>
             <th>מיקום</th>
             <th>קטגוריה</th>
+            <th>בעל אולם</th> {/* חדש */}
             <th>סטטוס</th>
-            <th>פעולות</th>
           </tr>
         </thead>
         <tbody>
@@ -61,12 +61,8 @@ const AdminHalls = () => {
               <td>{hall.name}</td>
               <td>{hall.location}</td>
               <td>{hall.category}</td>
+              <td>{hall.owner_name || "לא ידוע"}</td> {/* חדש */}
               <td>{hall.approved ? "מאושר" : "ממתין לאישור"}</td>
-              <td>
-                {!hall.approved && (
-                  <button onClick={() => approveHall(hall.id)}>אשר</button>
-                )}
-              </td>
             </tr>
           ))}
         </tbody>

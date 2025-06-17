@@ -60,36 +60,41 @@ const OwnerBookings = () => {
       <h2>הזמנות לאולמות שבבעלותי</h2>
       {error && <p className={styles.error}>{error}</p>}
       {message && <p className={styles.success}>{message}</p>}
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>אולם</th>
-            <th>תאריך</th>
-            <th>מס' אורחים</th>
-            <th>סטטוס</th>
-            <th>שם מזמין</th>
-            <th>פעולות</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookings.map((b) => (
-            <tr key={b.id}>
-              <td>{b.hall_name}</td>
-              <td>{new Date(b.event_date).toLocaleDateString("he-IL")}</td>
-              <td>{b.guests}</td>
-              <td>{b.status}</td>
-              <td>{b.user_name}</td>
-              <td>
-                {isCancelable(b) && (
-                  <button onClick={() => handleCancel(b.id)}>
-                    בטל הזמנה
-                  </button>
-                )}
-              </td>
+
+      {bookings.length === 0 ? (
+        <p className={styles.noBookings}>אין הזמנות להצגה כרגע.</p>
+      ) : (
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>אולם</th>
+              <th>תאריך</th>
+              <th>מס' אורחים</th>
+              <th>סטטוס</th>
+              <th>שם מזמין</th>
+              <th>פעולות</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {bookings.map((b) => (
+              <tr key={b.id}>
+                <td>{b.hall_name}</td>
+                <td>{new Date(b.event_date).toLocaleDateString("he-IL")}</td>
+                <td>{b.guests}</td>
+                <td>{b.status}</td>
+                <td>{b.user_name}</td>
+                <td>
+                  {isCancelable(b) && (
+                    <button onClick={() => handleCancel(b.id)}>
+                      בטל הזמנה
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

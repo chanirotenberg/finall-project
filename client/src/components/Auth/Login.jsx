@@ -3,6 +3,7 @@ import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
 import styles from "./AuthForm.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+// import jwtDecode from "jwt-decode";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,16 +28,8 @@ const Login = () => {
         body: { email, password },
       });
 
-      if (res.token && res.user) {
-        login(
-          {
-            id: res.user.id,
-            name: res.user.name,
-            email: res.user.email,
-            role: res.user.role,
-          },
-          res.token
-        );
+      if (res.token) {
+        await login(res.token);
 
         const returnTo = location.state?.backgroundLocation;
         if (returnTo?.pathname) {
@@ -76,48 +69,48 @@ const Login = () => {
   };
 
   return (
-    <form className={styles.authForm} onSubmit={handleLogin}>
-      <h2>התחברות</h2>
+      <form className={styles.authForm} onSubmit={handleLogin}>
+        <h2>התחברות</h2>
 
-      <input
-        type="email"
-        placeholder="אימייל"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-
-      {!forgotMode && (
         <input
-          type="password"
-          placeholder="סיסמה"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          type="email"
+          placeholder="אימייל"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
-      )}
 
-      {error && <p className={styles.error}>{error}</p>}
-      {message && <p className={styles.success}>{message}</p>}
+        {!forgotMode && (
+          <input
+            type="password"
+            placeholder="סיסמה"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        )}
 
-      {!forgotMode ? (
-        <>
-          <button type="submit">התחבר</button>
-          <p className={styles.link} onClick={() => setForgotMode(true)}>
-            שכחת סיסמה?
-          </p>
-        </>
-      ) : (
-        <>
-          <button type="button" onClick={handleForgotPassword}>
-            שלח קישור לאיפוס סיסמה
-          </button>
-          <p className={styles.link} onClick={() => setForgotMode(false)}>
-            ← חזרה להתחברות
-          </p>
-        </>
-      )}
-    </form>
+        {error && <p className={styles.error}>{error}</p>}
+        {message && <p className={styles.success}>{message}</p>}
+
+        {!forgotMode ? (
+          <>
+            <button type="submit">התחבר</button>
+            <p className={styles.link} onClick={() => setForgotMode(true)}>
+              שכחת סיסמה?
+            </p>
+          </>
+        ) : (
+          <>
+            <button type="button" onClick={handleForgotPassword}>
+              שלח קישור לאיפוס סיסמה
+            </button>
+            <p className={styles.link} onClick={() => setForgotMode(false)}>
+              ← חזרה להתחברות
+            </p>
+          </>
+        )}
+      </form>      
   );
 };
 
