@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
 import styles from "./AuthForm.module.css";

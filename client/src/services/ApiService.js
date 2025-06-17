@@ -22,9 +22,9 @@ class ApiService {
 
       if (response.status === 204) return null;
 
-      const contentType = response.headers.get("content-type");
-      const isJson = contentType && contentType.includes("application/json");
-      const data = isJson ? await response.json() : await response.text();
+      // const contentType = response.headers.get("content-type");
+      // const isJson = contentType && contentType.includes("application/json");
+      // const data = isJson ? await response.json() : await response.text();
 
       if (!response.ok) {
       const errorBody = await response.json().catch(() => ({}));

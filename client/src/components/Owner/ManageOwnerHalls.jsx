@@ -4,7 +4,6 @@ import styles from "./ManageOwnerHalls.module.css";
 
 const ManageOwnerHalls = () => {
   const [halls, setHalls] = useState([]);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -70,7 +69,6 @@ const ManageOwnerHalls = () => {
   };
 
   const handleSave = async (hall) => {
-    setMessage("");
     setError("");
     console.log("Saving hall:", hall.about);
     try {
@@ -88,8 +86,7 @@ const ManageOwnerHalls = () => {
           about: hall.about, // ← חשוב שזה יהיה אובייקט
         },
       });
-
-      setMessage("האולם עודכן בהצלחה");
+      alert("האולם עודכן בהצלחה");
     } catch (err) {
       console.error(err);
       setError("שגיאה בעת עדכון האולם");
@@ -101,7 +98,6 @@ const ManageOwnerHalls = () => {
       <h2>ניהול האולמות שלי</h2>
 
       {error && <p className={styles.error}>{error}</p>}
-      {message && <p className={styles.success}>{message}</p>}
 
       {halls.map((hall, index) => (
         <div key={hall.id} className={styles.hallCard}>

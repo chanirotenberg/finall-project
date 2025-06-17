@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ApiService from "../../services/ApiService";
 import styles from "./CateringSelection.module.css";
+import { useUser } from "../../services/UserContext"; // ← הוספת שימוש בקונטקסט
 
 const CateringSelection = () => {
   const { hallId } = useParams();
@@ -11,8 +12,7 @@ const CateringSelection = () => {
   const [guests, setGuests] = useState(100);
   const [error, setError] = useState("");
 
-  // 🟢 שליפת המשתמש המחובר
-  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
+  const { currentUser } = useUser(); // ← במקום localStorage
 
   useEffect(() => {
     const fetchCatering = async () => {
@@ -39,30 +39,34 @@ const CateringSelection = () => {
     }
   };
 
- const handleNext = () => {
-  const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
-  const hallPrice = parseFloat(bookingData.hall_price || 0);
-  const totalCateringPrice = selectedOptions.reduce(
-    (sum, dish) => sum + parseFloat(dish.price || 0),
-    0
-  );
-  const cateringCost = totalCateringPrice * guests;
-  const payment = hallPrice + cateringCost;
+  const handleNext = () => {
+    if (!currentUser) {
+      alert("משתמש לא מחובר");
+      return;
+    }
 
-  const fullData = {
-    ...bookingData,
-    catering: selectedOptions,
-    guests: guests,
-    total_catering_price: totalCateringPrice,
-    payment: payment.toFixed(2),
-    user_id: currentUser.id,    // ✅ מזהה משתמש מחובר
-    hall_id: parseInt(hallId),  // ✅ מזהה אולם מה־URL
+    const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
+    const hallPrice = parseFloat(bookingData.hall_price || 0);
+    const totalCateringPrice = selectedOptions.reduce(
+      (sum, dish) => sum + parseFloat(dish.price || 0),
+      0
+    );
+    const cateringCost = totalCateringPrice * guests;
+    const payment = hallPrice + cateringCost;
+
+    const fullData = {
+      ...bookingData,
+      catering: selectedOptions,
+      guests: guests,
+      total_catering_price: totalCateringPrice,
+      payment: payment.toFixed(2),
+      user_id: currentUser.id, // ← מזהה מה־Context
+      hall_id: parseInt(hallId),
+    };
+
+    localStorage.setItem("bookingData", JSON.stringify(fullData));
+    navigate("/pay", { state: { bookingData: fullData } });
   };
-
-  localStorage.setItem("bookingData", JSON.stringify(fullData));
-  navigate("/pay", { state: { bookingData: fullData } });
-};
-
 
   const renderSection = (title, type) => {
     const filtered = options.filter((dish) => dish.course_type === type);
