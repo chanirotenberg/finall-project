@@ -1,39 +1,109 @@
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
   direction: rtl;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: #333;
+  text-align: center;
 }
 
 .list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .item {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #f9f9f9;
+  border: 2px solid #d0d0d0;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  background-color: #fefefe;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.item:hover {
+  border-color: #aaa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.item h3 {
+  margin: 0 0 12px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.item p {
+  margin: 6px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.cateringTitle {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+}
+
+.cateringList {
+  margin: 4px 0 0;
+  padding: 0 0 0 18px;
+  list-style: square;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.buttonGroup {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .reviewButton {
   background-color: #4caf50;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.reviewButton:hover {
+  background-color: #45a049;
 }
 
 .cancelButton {
   background-color: #f44336;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: #d32f2f;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 60px;
 }

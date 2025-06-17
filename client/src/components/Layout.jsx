@@ -9,8 +9,21 @@ const Layout = () => {
   const { currentUser, isLoggedIn, logout } = useUser();
   const [showDropdown, setShowDropdown] = useState(false);
 
+  useEffect(() => {
+    const publicRoutes = ["/", "/halls", "/halls/", "/halls/:hallId"];
+    const isPublic = publicRoutes.some((path) => {
+      return location.pathname.startsWith(path.replace(":hallId", ""));
+    });
+
+    if (!isPublic && !localStorage.getItem("token")) {
+      navigate("/");
+    }
+  }, [location.pathname, navigate]);
+
   const handlePersonalAreaClick = () => {
-    if (!isLoggedIn) {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
       navigate("/login", { state: { backgroundLocation: location } });
     } else {
       setShowDropdown(!showDropdown);
@@ -36,10 +49,12 @@ const Layout = () => {
 
   return (
     <div className={styles.homeContainer}>
+      {/* סרגל ניווט */}
       <nav className={styles.navBar}>
-        {(isLoggedIn && (currentUser?.role === "user" || currentUser?.role === "owner")) && (
+        {isLoggedIn && currentUser?.role === "user" && (
           <button onClick={() => navigate("/add-hall")}>הצע אולם חדש</button>
         )}
+
         <button onClick={() => handleCategoryClick("חתונות")}>אולמות חתונות</button>
         <button onClick={() => handleCategoryClick("אירועים קטנים")}>אולמות אירועים קטנים</button>
         <button onClick={() => handleCategoryClick("גני אירועים")}>גני אירועים</button>
@@ -57,16 +72,33 @@ const Layout = () => {
           </button>
           {showDropdown && (
             <div className={styles.dropdownMenu}>
-              <button onClick={() => { setShowDropdown(false); navigate("/profile"); }}>פרטים אישיים</button>
-              <button onClick={() => { setShowDropdown(false); navigate("/my-orders"); }}>ההזמנות שלי</button>
-              <button onClick={() => { setShowDropdown(false); logout(); navigate("/"); }}>התנתקות</button>
+              <button onClick={() => { setShowDropdown(false); navigate("/profile"); }}>
+                פרטים אישיים
+              </button>
+              <button onClick={() => { setShowDropdown(false); navigate("/my-orders"); }}>
+                ההזמנות שלי
+              </button>
+              <button onClick={() => {
+                setShowDropdown(false);
+                logout();
+                window.location.replace("/");
+              }}>
+                התנתקות
+              </button>
             </div>
           )}
         </div>
+
+        {/* ליצירת קשר */}
+        <div className={styles.contact}>
+          ליצירת קשר: c0583212923@gmail.com
+        </div>
       </nav>
 
+      {/* תוכן פנימי */}
       <Outlet />
 
+      {/* פוטר */}
       <footer className={styles.footer}>
         <p>© 2025 EventHalls | צור קשר: contact@eventhalls.com</p>
       </footer>

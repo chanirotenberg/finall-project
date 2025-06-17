@@ -130,6 +130,3 @@ export const approveHall = async (req, res, next) => {
     next(err);
   }
 };
-
-
-

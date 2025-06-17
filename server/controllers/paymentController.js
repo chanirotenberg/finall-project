@@ -23,11 +23,15 @@ export const createOrder = async (req, res, next) => {
 export const captureOrder = async (req, res, next) => {
   try {
     const { orderID, bookingId } = req.body;
-    if (!orderID || !bookingId) return res.status(400).json({ error: "Missing order ID or booking ID" });
+    if (!orderID || !bookingId) {
+      return res.status(400).json({ error: "Missing order ID or booking ID" });
+    }
 
     const capture = await captureOrderService(orderID, bookingId);
     const captureId = capture?.purchase_units?.[0]?.payments?.captures?.[0]?.id;
-    if (!captureId) return res.status(500).json({ error: "Failed to extract capture ID" });
+    if (!captureId) {
+      return res.status(500).json({ error: "Failed to extract capture ID" });
+    }
 
     await saveCaptureIdToDb(bookingId, captureId);
     res.json({ success: true, captureId });

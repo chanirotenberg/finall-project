@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
 import styles from "./AuthForm.module.css";
@@ -16,6 +17,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (password !== verifyPassword) {
       setError("הסיסמאות אינן תואמות");
@@ -41,13 +43,17 @@ const Register = () => {
         setError(res.error || "הרשמה נכשלה");
       }
     } catch (err) {
-      console.error("שגיאה בהרשמה:", err);
-      setError("שגיאה בחיבור לשרת");
+      if (err.status === 400 && err.body?.error) {
+        setError(err.body.error); // לדוגמה: "כתובת האימייל כבר קיימת"
+      } else {
+        setError("שגיאה בחיבור לשרת");
+      }
     }
   };
 
   return (
     <form className={styles.authForm} onSubmit={handleRegister}>
+      <h2>הרשמה</h2>
       <h2>הרשמה</h2>
       <input
         type="text"

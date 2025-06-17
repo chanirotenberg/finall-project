@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ApiService from "../../services/ApiService";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import styles from "./MyBookings.module.css";
 
 const MyBookings = () => {
@@ -11,95 +10,98 @@ const MyBookings = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (!token) return;
-
-        const decoded = jwtDecode(token);
-        const userId = decoded.id;
-
         const res = await ApiService.request({
-          url: `http://localhost:3000/bookings/me`,
+          url: "http://localhost:3000/bookings/me/details",
           method: "GET",
-          headers: { Authorization: `Bearer ${token}` }
         });
-
         setBookings(res);
       } catch (err) {
-        console.error("שגיאה בטעינת ההזמנות:", err);
+        console.error("שגיאה בקבלת ההזמנות:", err);
+        alert("שגיאה בטעינת ההזמנות");
       }
     };
 
     fetchBookings();
   }, []);
 
-  const hasDatePassed = (dateStr) => {
-    const today = new Date();
-    const eventDate = new Date(dateStr);
-    return eventDate < today;
-  };
-
-  const handleCancelBooking = async (bookingId) => {
-    console.log(bookingId)
+  const handleCancel = async (bookingId) => {
+    if (!window.confirm("האם אתה בטוח שברצונך לבטל את ההזמנה?")) return;
     try {
-      const response = await ApiService.request({
-        method: "POST",
-        url: `http://localhost:3000/payment/cancel/${bookingId}`,
+      await ApiService.request({
+        url: `http://localhost:3000/bookings/${bookingId}/cancel`,
+        method: "PATCH",
       });
-
-      alert(
-        `ההזמנה בוטלה.\nקיבלת החזר של ₪${response.refund.toFixed(2)}.\nקנס ביטול: ₪${response.cancellationFee.toFixed(2)}`
+      setBookings((prev) =>
+        prev.map((b) =>
+          b.id === bookingId ? { ...b, status: "canceled" } : b
+        )
       );
-
-      // רענון הרשימה
-      const updated = bookings.map(b =>
-        b.id === bookingId ? { ...b, status: "canceled" } : b
-      );
-      setBookings(updated);
     } catch (err) {
-      console.error("שגיאה בביטול ההזמנה:", err);
       alert("שגיאה בביטול ההזמנה");
     }
+  };
+
+  const handleAddReview = (hallId) => {
+    navigate(`/review/add/${hallId}`);
   };
 
   return (
     <div className={styles.container}>
       <h2>ההזמנות שלי</h2>
       {bookings.length === 0 ? (
-        <p>אין הזמנות להצגה.</p>
+        <p>אין הזמנות להצגה</p>
       ) : (
         <ul className={styles.list}>
-          {bookings.map((booking) => (
-            <li key={booking.id} className={styles.item}>
-              <h3>{booking.hall_name}</h3>
-              <p>
-                <strong>תאריך האירוע:</strong>{" "}
-                {new Date(booking.event_date).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>סטטוס:</strong> {booking.status}
-              </p>
+          {bookings.map((booking) => {
+            const eventDate = new Date(booking.event_date);
+            const isPast = eventDate < new Date();
+            const canCancel = !isPast && booking.status === "confirmed";
+            const canReview = isPast && !booking.has_reviewed;
 
-              {/* כפתור הוספת תגובה – רק אם עבר תאריך ואישור */}
-              {hasDatePassed(booking.event_date) && booking.status === "confirmed" && (
-                <button
-                  className={styles.reviewButton}
-                  onClick={() => navigate(`/review/add/${booking.hall_id}`)}
-                >
-                  הוסף תגובה
-                </button>
-              )}
+            return (
+              <li key={booking.id} className={styles.item}>
+                <h3>{booking.hall.name}</h3>
+                <p><strong>תאריך:</strong> {eventDate.toLocaleDateString()}</p>
+                <p><strong>כתובת:</strong> {booking.hall.location}</p>
+                <p><strong>סטטוס:</strong> {booking.status === "confirmed" ? "מאושרת" : "בוטלה"}</p>
+                <p><strong>מס' סועדים:</strong> {booking.guests}</p>
+                <p><strong>סכום לתשלום:</strong> ₪{Number(booking.payment || 0).toFixed(2)}</p>
 
-              {/* כפתור ביטול – רק אם לא עבר תאריך וסטטוס מאושר */}
-              {!hasDatePassed(booking.event_date) && booking.status === "confirmed" && (
-                <button
-                  className={styles.cancelButton}
-                  onClick={() => handleCancelBooking(booking.id)}
-                >
-                  בטל הזמנה
-                </button>
-              )}
-            </li>
-          ))}
+                <p><strong>מנות קייטרינג:</strong></p>
+                {booking.catering?.length > 0 ? (
+                  <ul>
+                    {booking.catering.map((dish, i) => (
+                      <li key={i}>
+                        {dish.type === "first" ? "ראשונה" :
+                         dish.type === "second" ? "עיקרית" : "קינוח"}: {dish.name}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>לא נבחרו מנות</p>
+                )}
+
+                <div className={styles.buttonGroup}>
+                  {canCancel && (
+                    <button
+                      className={styles.cancelButton}
+                      onClick={() => handleCancel(booking.id)}
+                    >
+                      בטל הזמנה
+                    </button>
+                  )}
+                  {canReview && (
+                    <button
+                      className={styles.reviewButton}
+                      onClick={() => handleAddReview(booking.hall.id)}
+                    >
+                      הוסף תגובה
+                    </button>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

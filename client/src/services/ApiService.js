@@ -27,12 +27,22 @@ class ApiService {
       const data = isJson ? await response.json() : await response.text();
 
       if (!response.ok) {
-        const error = new Error(data?.message || data || "Request failed");
-        error.status = response.status;
-        throw error;
-      }
+      const errorBody = await response.json().catch(() => ({}));
 
-      return data;
+  if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.href = "/"; // הפנייה לעמוד הבית
+  }
+
+  const error = new Error(errorBody.error || `Error: ${response.status} ${response.statusText}`);
+  error.status = response.status;
+  error.body = errorBody;
+  throw error;
+}
+
+
+
+      return await response.json();
     } catch (error) {
       console.error("API Request Failed:", error);
       throw error;

@@ -17,6 +17,12 @@ const BookingStart = () => {
     return null;
   });
   const [hallPrice, setHallPrice] = useState(0);
+    useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');

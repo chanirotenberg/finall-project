@@ -4,8 +4,9 @@ import ApiService from "../../services/ApiService";
 import styles from "./HallDetails.module.css";
 
 const HallDetails = () => {
-  const { hallId } = useParams(); // hallId מ-URL params
+  const { hallId } = useParams();
   const [hall, setHall] = useState(null);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,35 +18,35 @@ const HallDetails = () => {
         setHall(res);
       } catch (err) {
         console.error("שגיאה בטעינת האולם:", err);
+        setError("שגיאה בטעינת האולם");
       }
     };
 
     fetchHall();
   }, [hallId]);
 
-const handleBookClick = () => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    alert("יש להתחבר כדי לבצע הזמנה.");
-    return;
+  const handleBookClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("יש להתחבר כדי לבצע הזמנה.");
+      return;
+    }
+
+    navigate(`/booking/start/${hallId}`);
+  };
+
+  const handleViewReviewsClick = () => {
+    navigate(`/halls/${hallId}/reviews`);
+  };
+
+  if (error) {
+    return <p className={styles.error}>{error}</p>;
   }
-
-  navigate(`/booking/start/${hallId}`);
-};
-
-
-  // בתוך הקומפוננטה, הוסף מתחת לפונקציה handleBookClick:
-const handleViewReviewsClick = () => {
-  navigate(`/halls/${hallId}/reviews`);
-};
 
   return hall ? (
     <div className={styles.container}>
       <div className="details-side">
-        {/* כפתור הזמנה מעל תמונת האולם */}
-        <button onClick={handleBookClick} className="book-button">
-          הזמנה
-        </button>
+        <button onClick={handleBookClick} className="book-button">הזמנה</button>
         <button onClick={handleViewReviewsClick} className="book-button" style={{ marginRight: '10px' }}>
           צפייה בתגובות
         </button>
@@ -84,4 +85,3 @@ const handleViewReviewsClick = () => {
 };
 
 export default HallDetails;
-

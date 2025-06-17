@@ -47,6 +47,13 @@ const AddHallRequest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+      setError("");
+
+  // ולידציה בסיסית בלבד בצד לקוח
+  if (!form.name || !form.location || !form.price || !form.capacity) {
+    setError("נא למלא את כל השדות החיוניים");
+    return;
+  }
     try {
       // המרת רשימת about (מערך של אובייקטים) לאובייקט רגיל
       const aboutObj = {};
@@ -68,8 +75,9 @@ const AddHallRequest = () => {
           about: aboutObj,
         },
       });
+          alert("הבקשה נשלחה בהצלחה! האולם ממתין לאישור מנהל.");
 
-      console.log("res:", res); // כדי לבדוק מה באמת חוזר
+
 
       const newHallId = res.id; // ודא שזה קיים
 
@@ -78,8 +86,9 @@ const AddHallRequest = () => {
       navigate(`/add-catering/${newHallId}`);
 
     } catch (err) {
-      console.error(err);
-      setError("שגיאה בשליחת הבקשה");
+      const msg =
+      err.body?.error || err.message || "שגיאה בשליחת הבקשה. נסה שוב מאוחר יותר.";
+    setError(msg);
     }
   };
 

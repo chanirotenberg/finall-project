@@ -4,7 +4,8 @@ import {
   createBooking,
   // cancelBooking,
   getMyBookings,
-  getUnavailableDatesForHall
+  getUnavailableDatesForHall,
+  getUserBookingsWithDetails
 } from '../controllers/bookingController.js';
 
 const router = express.Router();
@@ -14,7 +15,9 @@ router.post('/new', createBooking);
 // router.post('/cancel/:id', cancelBooking);
 
 router.use(authenticate);
+router.get('/me/details', getUserBookingsWithDetails);
+// router.get('/me', getMyBookings);
 
-router.get('/me', getMyBookings);
+
 
 export default router;

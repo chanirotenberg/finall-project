@@ -1,154 +1,117 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import ApiService from "../../services/ApiService";
 import styles from "./CateringSelection.module.css";
-import { jwtDecode } from 'jwt-decode';
 
 const CateringSelection = () => {
   const { hallId } = useParams();
-  const [cateringOptions, setCateringOptions] = useState({ first: [], second: [], third: [] });
-  const [selectedCourses, setSelectedCourses] = useState(() => {
-    const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    return saved.selectedCourses || { first: null, second: null, third: null };
-  });
-  const [guestCount, setGuestCount] = useState(() => {
-    const saved = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    return saved.guestCount || 1;
-  });
   const navigate = useNavigate();
+  const [options, setOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [guests, setGuests] = useState(100);
+  const [error, setError] = useState("");
+
+  // 🟢 שליפת המשתמש המחובר
+  const currentUser = JSON.parse(localStorage.getItem("currentUser") || "{}");
 
   useEffect(() => {
-    const fetchOptions = async () => {
+    const fetchCatering = async () => {
       try {
-        const data = await ApiService.request({ url: `http://localhost:3000/catering/hall/${hallId}` });
-        const options = { first: [], second: [], third: [] };
-        data.forEach(opt => {
-          if (opt.course_type === 'first') options.first.push(opt);
-          if (opt.course_type === 'second') options.second.push(opt);
-          if (opt.course_type === 'third') options.third.push(opt);
+        const res = await ApiService.request({
+          url: `http://localhost:3000/catering/hall/${hallId}`,
         });
-        setCateringOptions(options);
+        setOptions(res);
       } catch (err) {
-        console.error("בעיה בקבלת קייטרינג:", err);
+        console.error(err);
+        setError("שגיאה בטעינת אפשרויות הקייטרינג");
+        alert("שגיאה בטעינת אפשרויות הקייטרינג");
       }
     };
-    fetchOptions();
+
+    fetchCatering();
   }, [hallId]);
 
-  const handleCourseChange = (type, id) => {
-    const updated = { ...selectedCourses, [type]: id };
-    setSelectedCourses(updated);
-
-    const save = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    save.selectedCourses = updated;
-    localStorage.setItem('bookingData', JSON.stringify(save));
+  const handleSelect = (dish) => {
+    if (selectedOptions.some((d) => d.id === dish.id)) {
+      setSelectedOptions(selectedOptions.filter((d) => d.id !== dish.id));
+    } else {
+      setSelectedOptions([...selectedOptions, dish]);
+    }
   };
 
-  const handleGuestChange = (e) => {
-    const count = parseInt(e.target.value);
-    setGuestCount(count);
+ const handleNext = () => {
+  const bookingData = JSON.parse(localStorage.getItem("bookingData") || "{}");
+  const hallPrice = parseFloat(bookingData.hall_price || 0);
+  const totalCateringPrice = selectedOptions.reduce(
+    (sum, dish) => sum + parseFloat(dish.price || 0),
+    0
+  );
+  const cateringCost = totalCateringPrice * guests;
+  const payment = hallPrice + cateringCost;
 
-    const save = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    save.guestCount = count;
-    localStorage.setItem('bookingData', JSON.stringify(save));
+  const fullData = {
+    ...bookingData,
+    catering: selectedOptions,
+    guests: guests,
+    total_catering_price: totalCateringPrice,
+    payment: payment.toFixed(2),
+    user_id: currentUser.id,    // ✅ מזהה משתמש מחובר
+    hall_id: parseInt(hallId),  // ✅ מזהה אולם מה־URL
   };
 
-  const handleSubmit = () => {
-    if (!selectedCourses.first || !selectedCourses.second || !selectedCourses.third) {
-      alert("יש לבחור את כל המנות");
-      return;
-    }
-
-    const token = localStorage.getItem("token");
-    let user = null;
-    if (token) {
-      try {
-        user = jwtDecode(token);
-      } catch (e) {
-        console.error("טוקן לא תקין:", e);
-      }
-    }
-    if (!user || !user.id) {
-      alert("משתמש לא מחובר");
-      return;
-    }
-
-    const getPrice = (type, id) =>
-      Number(cateringOptions[type].find(o => o.id === id)?.price) || 0;
-
-    const perMealPrice =
-      getPrice('first', selectedCourses.first) +
-      getPrice('second', selectedCourses.second) +
-      getPrice('third', selectedCourses.third);
-
-    console.log("Price per Meal:", perMealPrice);
+  localStorage.setItem("bookingData", JSON.stringify(fullData));
+  navigate("/pay", { state: { bookingData: fullData } });
+};
 
 
+  const renderSection = (title, type) => {
+    const filtered = options.filter((dish) => dish.course_type === type);
+    if (filtered.length === 0) return null;
 
-    const totalCatering = perMealPrice * Number(guestCount);
-    console.log("Total Catering per Guest:", guestCount);
-    console.log("Total Catering Price:", totalCatering);
-
-    const savedData = JSON.parse(localStorage.getItem('bookingData') || '{}');
-    const hallPrice = Number(savedData.hall_price) || 0; // גם כאן רצוי להמיר למספר
-    const eventDate = new Date(savedData.date).toISOString().split('T')[0];
-
-
-    const fullPayment = hallPrice + totalCatering;
-    console.log("Full Payment:", fullPayment);
-
-
-    const bookingData = {
-      user_id: user.id,
-      hall_id: parseInt(hallId),
-      event_date: eventDate,
-      status: "confirmed", // עדיין לא שולם
-      payment: fullPayment,
-      first_course_id: selectedCourses.first,
-      second_course_id: selectedCourses.second,
-      third_course_id: selectedCourses.third,
-      total_catering_price: totalCatering,
-      hall_price: hallPrice,
-      guestCount,
-      selectedCourses,
-    };
-
-    localStorage.setItem("bookingData", JSON.stringify(bookingData));
-    navigate("/pay", { state: { bookingData } });
-
+    return (
+      <div className={styles.section}>
+        <h3>{title}</h3>
+        <div className={styles.grid}>
+          {filtered.map((dish) => (
+            <div
+              key={dish.id}
+              className={`${styles.card} ${
+                selectedOptions.some((d) => d.id === dish.id) ? styles.selected : ""
+              }`}
+              onClick={() => handleSelect(dish)}
+            >
+              <h4>{dish.option_name}</h4>
+              <p>{dish.description}</p>
+              <p>₪{dish.price}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   return (
     <div className={styles.cateringContainer}>
-      <h2>בחירת מנות לאירוע</h2>
+      <h2>בחירת מנות קייטרינג</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      <p>בחרו מנות שתרצו (אפשר גם לא לבחור בכלל):</p>
 
-      <div>
-        <label>מספר מנות:</label>
-        <input type="number" min="1" value={guestCount} onChange={handleGuestChange} />
+      {renderSection("מנות ראשונות", "first")}
+      {renderSection("מנות עיקריות", "second")}
+      {renderSection("קינוחים", "third")}
+
+      <div className={styles.controls}>
+        <label>
+          מספר אורחים:
+          <input
+            type="number"
+            value={guests}
+            onChange={(e) => setGuests(Number(e.target.value))}
+            min={1}
+          />
+        </label>
+        <button onClick={handleNext}>המשך לתשלום</button>
       </div>
-
-      {['first', 'second', 'third'].map(type => (
-        <div key={type}>
-          <h3>מנה {type === 'first' ? 'ראשונה' : type === 'second' ? 'שנייה' : 'שלישית'}</h3>
-          {cateringOptions[type].map(opt => (
-            <div key={opt.id}>
-              <input
-                type="radio"
-                name={`${type}_course`}
-                id={`${type}-${opt.id}`}
-                value={opt.id}
-                checked={selectedCourses[type] === opt.id}
-                onChange={() => handleCourseChange(type, opt.id)}
-              />
-              <label htmlFor={`${type}-${opt.id}`}>
-                {opt.option_name} - ₪{opt.price}
-              </label>
-            </div>
-          ))}
-        </div>
-      ))}
-
-      <button onClick={handleSubmit}>המשך לתשלום</button>
     </div>
   );
 };

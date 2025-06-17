@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
-import styles from "./Info.module.css"; 
+import styles from "./Info.module.css";
 
 const Info = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -16,7 +16,8 @@ const Info = () => {
                 });
                 setUserInfo(data);
             } catch (err) {
-                setError(err.message);
+                console.error("שגיאה בטעינת מידע המשתמש:", err);
+                setError("לא ניתן לטעון את פרטי המשתמש. נסה שוב מאוחר יותר.");
             }
         };
 
@@ -26,28 +27,20 @@ const Info = () => {
     }, [currentUser?.id]);
 
     if (error) {
-        return <p className={styles.errorMessage}>Error: {error}</p>;
+        return <p className={styles.error}>{error}</p>;
     }
 
     if (!userInfo) {
-        return <p className={styles.loadingMessage}>Loading user information...</p>;
+        return <p className={styles.loadingMessage}>טוען מידע על המשתמש...</p>;
     }
 
     return (
         <div className={styles.infoContainer}>
-            <h2 className={styles.infoHeader}>User Information</h2>
-              <p className={styles.infoRow}>
-                <strong>ID:</strong> {userInfo.id}
-            </p>
-            <p className={styles.infoRow}>
-                <strong>Username:</strong> {userInfo.username}
-            </p>          
-            <p className={styles.infoRow}>
-                <strong>Email:</strong> {userInfo.email}
-            </p>
-            <p className={styles.infoRow}>
-                <strong>Phone:</strong> {userInfo.phone_number}
-            </p>
+            <h2 className={styles.infoHeader}>פרטי משתמש</h2>
+            <p className={styles.infoRow}><strong>ID:</strong> {userInfo.id}</p>
+            <p className={styles.infoRow}><strong>שם משתמש:</strong> {userInfo.username}</p>
+            <p className={styles.infoRow}><strong>אימייל:</strong> {userInfo.email}</p>
+            <p className={styles.infoRow}><strong>טלפון:</strong> {userInfo.phone_number}</p>
         </div>
     );
 };

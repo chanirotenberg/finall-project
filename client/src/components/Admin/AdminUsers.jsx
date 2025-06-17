@@ -17,8 +17,11 @@ const AdminUsers = () => {
             });
             setUsers(data);
         } catch (err) {
-            console.error(err);
-            setError("שגיאה בטעינת המשתמשים");
+            if (err.status && err.body?.error) {
+                setError(err.body.error);
+            } else {
+                setError("שגיאה בטעינת המשתמשים");
+            }
         }
     };
 

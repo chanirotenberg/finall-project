@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import ApiService from "../services/ApiService";
 
 const PayPalButton = ({ amount, onSuccess }) => {
+  const [error, setError] = useState("");
+
   const handleCreateOrder = async () => {
     try {
+      setError("");
       const res = await ApiService.request({
         url: "http://localhost:3000/payment/create-order",
         method: "POST",
@@ -12,29 +15,40 @@ const PayPalButton = ({ amount, onSuccess }) => {
       });
 
       return res.id;
-    } catch (error) {
-      console.error("Create order error:", error);
-      throw error;
+    } catch (err) {
+      console.error("Create order error:", err);
+      setError("שגיאה ביצירת ההזמנה. נסה שוב.");
+      throw err;
     }
   };
 
   const handleApprove = async (data) => {
     try {
+      setError("");
       console.log("✅ אישור תשלום עם orderID:", data.orderID);
-      onSuccess(data.orderID); // שולחים את orderID כדי לבצע capture במסך Pay
+      onSuccess(data.orderID);
     } catch (err) {
       console.error("שגיאה באישור התשלום:", err);
+      setError("שגיאה בעת אישור התשלום. נסה שוב.");
     }
   };
 
   return (
-    <PayPalScriptProvider options={{ "client-id": "Ad48sRiZatN40R4PaZkSj_UBvpGHdBjcdAOy46XEuSrgCh8KSoL24eVmjMdwCcAvc86KJOx1Hn4O0CSe", currency: "ILS" }}>
-      <PayPalButtons
-        style={{ layout: "vertical" }}
-        createOrder={handleCreateOrder}
-        onApprove={handleApprove}
-      />
-    </PayPalScriptProvider>
+    <div>
+      <PayPalScriptProvider
+        options={{
+          "client-id": "Ad48sRiZatN40R4PaZkSj_UBvpGHdBjcdAOy46XEuSrgCh8KSoL24eVmjMdwCcAvc86KJOx1Hn4O0CSe",
+          currency: "ILS",
+        }}
+      >
+        <PayPalButtons
+          createOrder={handleCreateOrder}
+          onApprove={handleApprove}
+        />
+      </PayPalScriptProvider>
+
+      {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+    </div>
   );
 };
 

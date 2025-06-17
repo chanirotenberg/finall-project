@@ -16,12 +16,10 @@ export const getAllReviews = async (req, res, next) => {
   }
 };
 
-
 export const getReviewByHallId = async (req, res, next) => {
   try {
     const review = await getReviewByHallIdService(req.params.id);
     if (!review) return res.status(404).json({ error: 'Review not found' });
-    console.log(review)
     res.json(review);
   } catch (err) {
     next(err);

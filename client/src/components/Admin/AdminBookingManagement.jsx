@@ -19,7 +19,45 @@ const AdminBookingManagement = () => {
       });
       setBookings(res);
     } catch (err) {
-      setError("שגיאה בטעינת ההזמנות");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה בטעינת ההזמנות");
+      }
+    }
+  };
+
+  const updateStatus = async (id, newStatus) => {
+    try {
+      await ApiService.request({
+        url: `http://localhost:3000/admin/bookings/${id}`,
+        method: "PATCH",
+        body: { status: newStatus },
+      });
+      fetchBookings();
+    } catch (err) {
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה בעדכון הסטטוס");
+      }
+    }
+  };
+
+  const deleteBooking = async (id) => {
+    if (!window.confirm("האם אתה בטוח שברצונך למחוק הזמנה זו?")) return;
+    try {
+      await ApiService.request({
+        url: `/admin/bookings/${id}`,
+        method: "DELETE",
+      });
+      fetchBookings();
+    } catch (err) {
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה במחיקת ההזמנה");
+      }
     }
   };
 
