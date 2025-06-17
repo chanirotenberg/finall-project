@@ -51,7 +51,7 @@ const Layout = () => {
     <div className={styles.homeContainer}>
       {/* סרגל ניווט */}
       <nav className={styles.navBar}>
-        {isLoggedIn && currentUser?.role === "user" && (
+        {isLoggedIn && ((currentUser?.role === "user")||(currentUser?.role === "owner")) && (
           <button onClick={() => navigate("/add-hall")}>הצע אולם חדש</button>
         )}
 

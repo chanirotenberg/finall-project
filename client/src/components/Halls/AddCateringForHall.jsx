@@ -27,6 +27,9 @@ const AddCateringForHall = () => {
   const handleAddRow = () => {
     setCatering([...catering, { course_type: "first", option_name: "", price: 0 }]);
   };
+    const handleContinue = () => {
+    navigate("/");
+  };
 
   const handleRemoveRow = (index) => {
     const updated = [...catering];
@@ -92,6 +95,8 @@ const AddCateringForHall = () => {
 
         <button type="button" onClick={handleAddRow}>➕ הוסף מנה</button>
         <button type="submit">💾 שמור</button>
+        <button type="button" onClick={handleContinue}>לא כרגע</button>
+
       </form>
 
       {error && <p className={styles.error}>{error}</p>}
