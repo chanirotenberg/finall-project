@@ -34,10 +34,13 @@ app.use('/owner', ownerRoutes); // 👈 חשוב! הוספת ראוטים של o
 
 // לוכד שגיאות גלובלי
 app.use((err, req, res, next) => {
-  logger.error("❌ Unhandled error:", err); // יציג גם את ה-stack trace
-  res.status(500).json({ error: 'Internal server error' });
-});
+  logger.error("❌ Unhandled error:", err);
 
+  const status = err.status || 500;
+  const message = err.message || 'Internal server error';
+
+  res.status(status).json({ error: message });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

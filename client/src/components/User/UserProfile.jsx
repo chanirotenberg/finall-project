@@ -53,7 +53,7 @@ const UserProfile = () => {
       setMessage("הפרטים עודכנו בהצלחה!");
     } catch (err) {
       console.error(err);
-      setMessage("אירעה שגיאה בעת שמירת הנתונים");
+      setMessage("שגיאה בעת שמירת הנתונים");
     } finally {
       setIsSaving(false);
     }
@@ -94,7 +94,11 @@ const UserProfile = () => {
         {isSaving ? "שומר..." : "שמור"}
       </button>
 
-      {message && <p>{message}</p>}
+      {message && (
+        <p className={message.includes("שגיאה") ? styles.error : styles.success}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };

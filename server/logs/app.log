@@ -381,3 +381,56 @@
 [2025-06-16 02:17:14] ERROR: ❌ Unhandled error: pool is not defined
 [2025-06-16 02:20:14] INFO: 🚀 Server is running on http://localhost:3000
 [2025-06-16 02:32:30] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 16:06:10] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 16:14:04] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-16 16:14:36] ERROR: ❌ Unhandled error: Invalid credentials
+[2025-06-16 18:13:53] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 18:17:52] ERROR: ❌ Unhandled error: Email already registered
+[2025-06-16 18:23:07] ERROR: ❌ Unhandled error: Email already registered
+[2025-06-16 18:25:09] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:21:54] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-16 23:59:22] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:11:48] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:15:18] ERROR: ❌ Unhandled error: אולם עם שם זה כבר קיים בעיר שנבחרה
+[2025-06-17 00:18:17] ERROR: ❌ Unhandled error: אולם עם שם זה כבר קיים בעיר שנבחרה
+[2025-06-17 00:22:52] ERROR: ❌ Unhandled error: אולם עם שם זה כבר קיים בעיר שנבחרה
+[2025-06-17 00:23:19] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:23:43] ERROR: ❌ Unhandled error: אולם עם שם זה כבר קיים בעיר שנבחרה
+[2025-06-17 00:28:22] ERROR: ❌ Unhandled error: אולם עם שם זה כבר קיים בעיר שנבחרה
+[2025-06-17 00:43:19] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 00:47:22] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:22:44] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 01:35:38] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 02:59:25] ERROR: ❌ Unhandled error: Unknown column 'first_course_id' in 'field list'
+[2025-06-17 03:12:00] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 03:13:35] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 03:14:05] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 03:19:22] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 03:27:49] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 03:28:35] ERROR: ❌ Unhandled error: Column 'hall_id' cannot be null
+[2025-06-17 03:34:03] ERROR: ❌ Unhandled error: Incorrect date value: '2025-07-31T21:00:00.000Z' for column 'event_date' at row 1
+[2025-06-17 03:59:56] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 04:11:22] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:12:52] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:14:39] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:15:30] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:20:03] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:20:46] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:39:11] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 04:44:33] ERROR: ❌ Unhandled error: Column 'user_id' cannot be null
+[2025-06-17 04:47:36] ERROR: ❌ Unhandled error: Column 'event_date' cannot be null
+[2025-06-17 05:21:32] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 05:21:36] ERROR: ❌ Unhandled error: Table 'mydb.booking_catering' doesn't exist
+[2025-06-17 05:21:36] ERROR: ❌ Unhandled error: Table 'mydb.booking_catering' doesn't exist
+[2025-06-17 05:23:58] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:15:43] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:22:59] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:24:09] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:34:51] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:43:09] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:49:41] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:50:23] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:52:50] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:54:39] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 12:57:20] INFO: 🚀 Server is running on http://localhost:3000
+[2025-06-17 13:02:30] INFO: 🚀 Server is running on http://localhost:3000

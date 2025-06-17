@@ -30,7 +30,7 @@ export const loginUserService = async ({ email, password }) => {
   const token = jwt.sign(
     { id: user.id, role: user.role },
     jwtSecret,
-    { expiresIn: '1h' }
+    { expiresIn: '7h' }
   );
 
   return {

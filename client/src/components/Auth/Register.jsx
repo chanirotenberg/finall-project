@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "../../services/UserContext";
 import ApiService from "../../services/ApiService";
 import styles from "./AuthForm.module.css";
@@ -12,12 +12,14 @@ const Register = () => {
   const [error, setError] = useState("");
   const { login } = useUser();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (password !== verifyPassword) {
-      setError("Passwords do not match");
+      setError("הסיסמאות לא תואמות");
       return;
     }
 
@@ -30,64 +32,60 @@ const Register = () => {
         body: newUser,
       });
 
+      if (res.token && res.user) {
+        login(res.user, res.token);
 
-      if (res.token) {
-        if (res.token && res.user) {
-          // שמירה ב-localStorage
-          login(res.user, res.token);
-
-        }
-        // localStorage.setItem("token", res.token);
-        // setCurrentUser({ id: res.user.id, name: res.user.name, email: res.user.email });
-        setError("");
         const returnTo = location.state?.backgroundLocation;
         if (returnTo) {
-          navigate(returnTo?.pathname + returnTo?.search || "/");
+          navigate(returnTo.pathname + (returnTo.search || ""));
         } else {
           navigate(`/users/${res.user.id}/home`);
         }
       } else {
-        setError(res.error || "Registration failed");
+        setError(res.error || "הרשמה נכשלה");
       }
     } catch (err) {
-      console.error("Error during registration:", err);
-      setError("Error connecting to the server");
+      if (err.status === 400 && err.body?.error) {
+        setError(err.body.error); // לדוגמה: "כתובת האימייל כבר קיימת"
+      } else {
+        setError("שגיאה בחיבור לשרת");
+      }
     }
   };
 
   return (
     <form className={styles.authForm} onSubmit={handleRegister}>
-      <h2>Register</h2>
+      <h2>הרשמה</h2>
       <input
         type="text"
-        placeholder="Name"
+        placeholder="שם מלא"
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
       />
       <input
         type="email"
-        placeholder="Email"
+        placeholder="אימייל"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="Password"
+        placeholder="סיסמה"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <input
         type="password"
-        placeholder="Verify Password"
+        placeholder="אימות סיסמה"
         value={verifyPassword}
         onChange={(e) => setVerifyPassword(e.target.value)}
         required
       />
       {error && <p className={styles.error}>{error}</p>}
-      <button type="submit">Register</button>
+      <button type="submit">הרשם</button>
     </form>
   );
 };

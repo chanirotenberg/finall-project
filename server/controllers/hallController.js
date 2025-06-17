@@ -17,7 +17,6 @@ export const getAllHalls = async (req, res, next) => {
   }
 };
 
-
 export const getHallById = async (req, res, next) => {
   try {
     const hall = await getHallByIdService(req.params.id);

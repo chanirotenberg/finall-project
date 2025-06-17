@@ -5,8 +5,20 @@ import {
   updateUserService,
   deleteUserService
 } from '../services/userService.js';
-import { getAllBookingsService, updateBookingStatusService } from "../services/bookingService.js";
 
+import {
+  getAllBookingsService,
+  updateBookingStatusService
+} from "../services/bookingService.js";
+
+import {
+  getAllHallsService,
+  updateHallService,
+  getPendingHallsService,
+  getHallByIdService
+} from "../services/hallService.js";
+
+// כל ההזמנות
 export const getAllBookings = async (req, res, next) => {
   try {
     const bookings = await getAllBookingsService();
@@ -16,9 +28,11 @@ export const getAllBookings = async (req, res, next) => {
   }
 };
 
+// עדכון סטטוס הזמנה
 export const updateBookingStatus = async (req, res, next) => {
   const bookingId = req.params.id;
   const { status } = req.body;
+
   try {
     await updateBookingStatusService(bookingId, status);
     res.json({ message: "Booking status updated successfully" });
@@ -27,6 +41,7 @@ export const updateBookingStatus = async (req, res, next) => {
   }
 };
 
+// כל האולמות שממתינים לאישור
 export const getPendingHalls = async (req, res, next) => {
   try {
     const halls = await getPendingHallsService();
@@ -36,6 +51,7 @@ export const getPendingHalls = async (req, res, next) => {
   }
 };
 
+// כל המשתמשים
 export const getAllUsers = async (req, res, next) => {
   try {
     const users = await getAllUsersService();
@@ -45,6 +61,7 @@ export const getAllUsers = async (req, res, next) => {
   }
 };
 
+// משתמש לפי ID
 export const getUserById = async (req, res, next) => {
   try {
     const user = await getUserByIdService(req.params.id);
@@ -55,6 +72,7 @@ export const getUserById = async (req, res, next) => {
   }
 };
 
+// יצירת משתמש חדש
 export const createUser = async (req, res, next) => {
   try {
     const newUser = await createUserService(req.body);
@@ -64,6 +82,7 @@ export const createUser = async (req, res, next) => {
   }
 };
 
+// עדכון משתמש
 export const updateUser = async (req, res, next) => {
   try {
     const updatedUser = await updateUserService(req.params.id, req.body);
@@ -74,6 +93,7 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
+// מחיקת משתמש
 export const deleteUser = async (req, res, next) => {
   try {
     const success = await deleteUserService(req.params.id);
@@ -83,15 +103,8 @@ export const deleteUser = async (req, res, next) => {
     next(err);
   }
 };
-// controllers/adminController.js
-import {
-  getAllHallsService,
-  updateHallService,
-  getPendingHallsService,
-  getHallByIdService 
-} from "../services/hallService.js";
 
-// מחזיר את כל האולמות - בלי סינון
+// קבלת כל האולמות
 export const getAllHalls = async (req, res, next) => {
   try {
     const halls = await getAllHallsService(); // בלי category
@@ -101,22 +114,18 @@ export const getAllHalls = async (req, res, next) => {
   }
 };
 
-// מאשר אולם לפי ID (מאפס את approved = true)
-// adminController.js
+// אישור אולם לפי ID
 export const approveHall = async (req, res, next) => {
   const hallId = req.params.id;
   try {
-    // 1. קודם מביאים את האולם הקיים
     const existingHall = await getHallByIdService(hallId);
     if (!existingHall) return res.status(404).json({ error: "Hall not found" });
 
-    // 2. מוסיפים רק approved: true
     const updated = await updateHallService(hallId, {
       ...existingHall,
       approved: true
     });
 
-    // 3. מעדכנים את תפקיד הבעלים של האולם
     if (existingHall.owner_id) {
       await updateUserService(existingHall.owner_id, { role: 'owner' });
     }
@@ -126,6 +135,3 @@ export const approveHall = async (req, res, next) => {
     next(err);
   }
 };
-
-
-

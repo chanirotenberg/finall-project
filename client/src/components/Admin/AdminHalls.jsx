@@ -19,7 +19,11 @@ const AdminHalls = () => {
       });
       setHalls(data);
     } catch (err) {
-      setError("שגיאה בטעינת רשימת האולמות");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה בטעינת רשימת האולמות");
+      }
     }
   };
 
@@ -31,7 +35,11 @@ const AdminHalls = () => {
       });
       fetchHalls(); // רענון
     } catch (err) {
-      setError("אירעה שגיאה באישור האולם");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("אירעה שגיאה באישור האולם");
+      }
     }
   };
 

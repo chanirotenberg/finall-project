@@ -1,12 +1,14 @@
-import { getCateringOptionsService, createCateringOrderService } from '../services/cateringService.js';
+import {
+  getCateringOptionsService,
+  createCateringOrderService
+} from '../services/cateringService.js';
 
-// controllers/cateringController.js
 export const getCateringOptions = async (req, res, next) => {
   try {
     const options = await getCateringOptionsService(req.params.hallId);
     res.json(options);
   } catch (err) {
-    next(err);  // ידפיס 500 אם יש בעיה
+    next(err);
   }
 };
 

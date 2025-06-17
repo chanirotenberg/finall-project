@@ -22,9 +22,21 @@ class ApiService {
 
       if (response.status === 204) return null;
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
+   if (!response.ok) {
+  const errorBody = await response.json().catch(() => ({}));
+
+  if (response.status === 401) {
+    localStorage.removeItem("token");
+    window.location.href = "/"; // הפנייה לעמוד הבית
+  }
+
+  const error = new Error(errorBody.error || `Error: ${response.status} ${response.statusText}`);
+  error.status = response.status;
+  error.body = errorBody;
+  throw error;
+}
+
+
 
       return await response.json();
     } catch (error) {

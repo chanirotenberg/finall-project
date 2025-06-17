@@ -2,9 +2,11 @@ import {
   getAllBookingsService,
   getBookingByIdService,
   createBookingService,
-
   getUnavailableDatesForHallService,
-  getBookingsByUserIdService
+  getBookingsByUserIdService,
+  updateBookingService,
+  getUserBookingsDetailsService
+  // deleteBookingService
 } from '../services/bookingService.js';
 
 import {
@@ -49,7 +51,6 @@ export const createBooking = async (req, res, next) => {
   try {
     const newBooking = await createBookingService(req.body);
 
-    // שליחת מייל ללקוח
     const userEmail = req.body.user_email;
     const htmlToUser = `
       <h3>אישור הזמנתך</h3>
@@ -57,7 +58,6 @@ export const createBooking = async (req, res, next) => {
     `;
     await sendBookingConfirmation(userEmail, htmlToUser);
 
-    // שליחת מייל לבעל האולם
     const ownerEmail = req.body.hall_owner_email;
     await sendOwnerNotification(ownerEmail, req.body.user_name, req.body.event_date, req.body.hall_name);
 
@@ -77,15 +77,15 @@ export const updateBooking = async (req, res, next) => {
   }
 };
 
-export const deleteBooking = async (req, res, next) => {
-  try {
-    const success = await deleteBookingService(req.params.id);
-    if (!success) return res.status(404).json({ error: 'Booking not found' });
-    res.json({ message: 'Booking deleted successfully' });
-  } catch (err) {
-    next(err);
-  }
-};
+// export const deleteBooking = async (req, res, next) => {
+//   try {
+//     const success = await deleteBookingService(req.params.id);
+//     if (!success) return res.status(404).json({ error: 'Booking not found' });
+//     res.json({ message: 'Booking deleted successfully' });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 export const getMyBookings = async (req, res, next) => {
   try {
@@ -113,5 +113,17 @@ export const createBookingWithCatering = async (req, res) => {
   } catch (error) {
     console.error('Error creating booking with catering:', error);
     res.status(500).json({ error: 'Failed to create booking' });
+  }
+};
+
+
+
+export const getUserBookingsWithDetails = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const bookings = await getUserBookingsDetailsService(userId);
+    res.json(bookings);
+  } catch (err) {
+    next(err);
   }
 };

@@ -16,12 +16,13 @@ const HallsList = () => {
 
   useEffect(() => {
     const fetchHallsWithRatings = async () => {
+      setError(""); // איפוס שגיאה
       try {
         const url = category
           ? `http://localhost:3000/halls?category=${encodeURIComponent(category)}`
           : "http://localhost:3000/halls";
-        const hallsData = await ApiService.request({ url });
 
+        const hallsData = await ApiService.request({ url });
         const allReviews = await ApiService.request({ url: "http://localhost:3000/reviews" });
 
         const hallsWithRatings = hallsData.map(hall => {
@@ -29,10 +30,10 @@ const HallsList = () => {
           const avg = hallReviews.length
             ? (hallReviews.reduce((sum, r) => sum + r.rating, 0) / hallReviews.length).toFixed(1)
             : 0;
-          return { 
-            ...hall, 
-            avg_rating: Number(avg), 
-            popularity: hallReviews.length 
+          return {
+            ...hall,
+            avg_rating: Number(avg),
+            popularity: hallReviews.length
           };
         });
 
@@ -40,7 +41,7 @@ const HallsList = () => {
         setFilteredHalls(hallsWithRatings);
       } catch (err) {
         console.error("Error fetching halls or reviews:", err);
-        setError("Failed to load halls.");
+        setError("אירעה שגיאה בטעינת האולמות. נסה שוב מאוחר יותר.");
       }
     };
 
@@ -93,10 +94,6 @@ const HallsList = () => {
     return sorted;
   };
 
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ padding: "10px", background: "#f0f0f0", textAlign: "center" }}>
@@ -112,15 +109,27 @@ const HallsList = () => {
 
       <div style={{ display: "flex" }}>
         <SidebarFilter allHalls={halls} onFilterChange={handleFilterChange} />
+
         <div style={{ flex: 1, padding: "20px" }}>
           <h2>{category ? `אולמות בקטגוריה: ${category}` : "כל האולמות"}</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
-            {filteredHalls.length > 0 ? (
-              filteredHalls.map((hall) => <HallCard key={hall.id} hall={hall} />)
-            ) : (
-              <p>לא נמצאו אולמות תואמים.</p>
-            )}
-          </div>
+
+          {error ? (
+            <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
+          ) : (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+                gap: "20px"
+              }}
+            >
+              {filteredHalls.length > 0 ? (
+                filteredHalls.map((hall) => <HallCard key={hall.id} hall={hall} />)
+              ) : (
+                <p>לא נמצאו אולמות תואמים.</p>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

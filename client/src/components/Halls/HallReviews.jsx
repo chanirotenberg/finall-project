@@ -1,51 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ApiService from "../../services/ApiService";
 import styles from "./HallReviews.module.css";
 
 const HallReviews = () => {
   const { hallId } = useParams();
   const [reviews, setReviews] = useState([]);
-  const [hallName, setHallName] = useState("");
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchReviews = async () => {
       try {
-        // משיכת שם האולם
-        const hall = await ApiService.request({
-          url: `http://localhost:3000/halls/${hallId}`
-        });
-        setHallName(hall.name);
-
-        // משיכת תגובות
-        const res = await ApiService.request({
-          url: `http://localhost:3000/reviews?hall_id=${hallId}`
-        });
-        setReviews(res);
+        const allReviews = await ApiService.request({ url: "http://localhost:3000/reviews" });
+        const hallSpecific = allReviews.filter(r => r.hall_id === parseInt(hallId));
+        setReviews(hallSpecific);
       } catch (err) {
-        console.error("שגיאה בטעינת התגובות", err);
+        console.error(err);
+        alert("אירעה שגיאה בעת טעינת הביקורות");
       }
     };
 
-    fetchData();
+    fetchReviews();
   }, [hallId]);
 
   return (
     <div className={styles.container}>
-      <h2>תגובות על {hallName}</h2>
-      <button onClick={() => navigate(-1)} className={styles.backButton}>
-        חזור לאולם
-      </button>
+      <h2>ביקורות לאולם</h2>
       {reviews.length === 0 ? (
-        <p>אין תגובות עדיין.</p>
+        <p>אין עדיין ביקורות לאולם זה.</p>
       ) : (
         <ul className={styles.reviewList}>
-          {reviews.map((review) => (
-            <li key={review.id} className={styles.reviewItem}>
-              <p><strong>דירוג:</strong> {review.rating}/5</p>
-              <p><strong>תגובה:</strong> {review.comment}</p>
-              {review.discount_given && <p className={styles.discount}>🟢 קיבל הנחה</p>}
+          {reviews.map((r) => (
+            <li key={r.id} className={styles.reviewItem}>
+              <p><strong>{r.user_name}:</strong> {r.comment}</p>
+              <p>⭐ {r.rating}/5</p>
             </li>
           ))}
         </ul>

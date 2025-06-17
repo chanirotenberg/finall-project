@@ -45,11 +45,14 @@ const Login = () => {
           navigate("/");
         }
       } else {
-        setError(res.error || "כתובת אימייל או סיסמה שגויים");
+        setError("כתובת אימייל או סיסמה שגויים");
       }
     } catch (err) {
-      console.error("Error during login:", err);
-      setError("שגיאה בחיבור לשרת");
+      if (err.status === 401 && err.body?.error) {
+        setError(err.body.error); // ← "שם משתמש או סיסמה שגויים"
+      } else {
+        setError("שגיאה בחיבור לשרת");
+      }
     }
   };
 
@@ -70,7 +73,6 @@ const Login = () => {
       });
       setMessage("קישור לשחזור סיסמה נשלח למייל שלך.");
     } catch (err) {
-      console.error("Error sending forgot password email:", err);
       setError("שליחת מייל נכשלה");
     }
   };

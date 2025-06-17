@@ -8,6 +8,9 @@ import {
 import { UserProvider } from "../services/UserContext";
 import AuthModal from "./Auth/AuthModal";
 
+// קומפוננטת שמירה על התחברות
+import RequireAuth from "../components/RequireAuth";
+
 // עמודים ראשיים
 import Home from "./Home/Home";
 import HallsList from "./Halls/HallsList";
@@ -41,43 +44,47 @@ import ResetPassword from "./Auth/ResetPassword";
 // Layout עם header + footer
 import Layout from "../components/Layout";
 
-// הפונקציה שמנהלת את כל ה־Routes
 function AppRoutes() {
   const location = useLocation();
   const state = location.state;
 
   return (
     <>
-      {/* כל הדפים הרגילים עטופים ב־Layout */}
       <Routes location={state?.backgroundLocation || location}>
         <Route element={<Layout />}>
+          {/* פתוחים לציבור */}
           <Route path="/" element={<Home />} />
           <Route path="/users/:id/home" element={<Home />} />
           <Route path="/halls" element={<HallsList />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/add-hall" element={<AddHallRequest />} />
-          <Route path="/my-orders" element={<MyBookings />} />
           <Route path="/halls/:hallId" element={<HallDetails />} />
-          <Route path="/booking/start/:hallId" element={<BookingStart />} />
-          <Route path="/booking/catering/:hallId" element={<CateringPage />} />
-          <Route path="/pay" element={<Pay />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/admin/halls" element={<AdminHalls />} />
-          <Route path="/admin/halls/pending" element={<AdminPendingHalls />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-          <Route path="/admin/bookings" element={<AdminBookingManagement />} />
           <Route path="/halls/:hallId/reviews" element={<HallReviews />} />
-          <Route path="/review/add/:hallId" element={<AddReview />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/owner" element={<OwnerDashboard />} />
-          <Route path="/owner/bookings" element={<OwnerBookings />} />
-          {/* <Route path="/owner/discounts" element={<OwnerDiscounts />} /> */}
-          <Route path="/owner/manage-halls" element={<ManageOwnerHalls />} />
-          <Route path="/owner/manage-catering" element={<ManageOwnerCatering />} />
+
+          {/* מוגנים */}
+          <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+          <Route path="/add-hall" element={<RequireAuth><AddHallRequest /></RequireAuth>} />
+          <Route path="/my-orders" element={<RequireAuth><MyBookings /></RequireAuth>} />
+          <Route path="/booking/start/:hallId" element={<RequireAuth><BookingStart /></RequireAuth>} />
+          <Route path="/booking/catering/:hallId" element={<RequireAuth><CateringPage /></RequireAuth>} />
+          <Route path="/pay" element={<RequireAuth><Pay /></RequireAuth>} />
+          <Route path="/review/add/:hallId" element={<RequireAuth><AddReview /></RequireAuth>} />
+          <Route path="/success" element={<RequireAuth><Success /></RequireAuth>} />
+
+          {/* מנהל */}
+          <Route path="/admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
+          <Route path="/admin/halls" element={<RequireAuth><AdminHalls /></RequireAuth>} />
+          <Route path="/admin/halls/pending" element={<RequireAuth><AdminPendingHalls /></RequireAuth>} />
+          <Route path="/admin/users" element={<RequireAuth><AdminUsers /></RequireAuth>} />
+          <Route path="/admin/bookings" element={<RequireAuth><AdminBookingManagement /></RequireAuth>} />
+
+          {/* בעל אולם */}
+          <Route path="/owner" element={<RequireAuth><OwnerDashboard /></RequireAuth>} />
+          <Route path="/owner/bookings" element={<RequireAuth><OwnerBookings /></RequireAuth>} />
+          <Route path="/owner/manage-halls" element={<RequireAuth><ManageOwnerHalls /></RequireAuth>} />
+          <Route path="/owner/manage-catering" element={<RequireAuth><ManageOwnerCatering /></RequireAuth>} />
         </Route>
 
+        {/* עמודים חיצוניים ללא Layout */}
         <Route path="/reset-password" element={<ResetPassword />} />
-
         <Route path="*" element={<NotFound />} />
       </Routes>
 
@@ -92,7 +99,6 @@ function AppRoutes() {
   );
 }
 
-// הפונקציה הראשית שעוטפת את הכול
 function Main() {
   return (
     <UserProvider>

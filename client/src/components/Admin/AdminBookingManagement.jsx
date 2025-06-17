@@ -20,7 +20,11 @@ const AdminBookingManagement = () => {
       console.log("response:", res);
       setBookings(res);
     } catch (err) {
-      setError("שגיאה בטעינת ההזמנות");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה בטעינת ההזמנות");
+      }
     }
   };
 
@@ -33,7 +37,11 @@ const AdminBookingManagement = () => {
       });
       fetchBookings();
     } catch (err) {
-      setError("שגיאה בעדכון הסטטוס");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה בעדכון הסטטוס");
+      }
     }
   };
 
@@ -46,7 +54,11 @@ const AdminBookingManagement = () => {
       });
       fetchBookings();
     } catch (err) {
-      setError("שגיאה במחיקת ההזמנה");
+      if (err.status && err.body?.error) {
+        setError(err.body.error);
+      } else {
+        setError("שגיאה במחיקת ההזמנה");
+      }
     }
   };
 

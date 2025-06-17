@@ -17,7 +17,11 @@ const AdminPendingHalls = () => {
             });
             setPendingHalls(data);
         } catch (err) {
-            setError("שגיאה בטעינת האולמות הממתינים");
+            if (err.status && err.body?.error) {
+                setError(err.body.error);
+            } else {
+                setError("שגיאה בטעינת האולמות הממתינים");
+            }
         }
     };
 
@@ -33,7 +37,11 @@ const AdminPendingHalls = () => {
             });
             fetchPendingHalls();
         } catch (err) {
-            setError("שגיאה באישור האולם");
+            if (err.status && err.body?.error) {
+                setError(err.body.error);
+            } else {
+                setError("שגיאה באישור האולם");
+            }
         }
     };
 

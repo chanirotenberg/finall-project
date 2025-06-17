@@ -35,8 +35,20 @@ export const createHallService = async (hallData) => {
     description,
     category,
     approved = false,
-    owner_id // ← זה חשוב
+    owner_id
   } = hallData;
+
+  // בדיקת קיום אולם עם אותו שם ועיר
+  const [existing] = await pool.query(
+    "SELECT * FROM halls WHERE name = ? AND location = ?",
+    [name, location]
+  );
+
+  if (existing.length > 0) {
+    const err = new Error("אולם עם שם זה כבר קיים בעיר שנבחרה");
+    err.status = 400;
+    throw err;
+  }
 
   const [result] = await pool.query(
     `INSERT INTO halls (name, location, price, capacity, description, category, approved, owner_id)
@@ -46,6 +58,7 @@ export const createHallService = async (hallData) => {
 
   return { id: result.insertId, ...hallData };
 };
+
 
 
 
